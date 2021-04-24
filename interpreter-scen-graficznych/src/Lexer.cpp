@@ -82,7 +82,7 @@ char Lexer::GetSign()
     return present_sign;
 }
 
-Token Lexer::GetNextToken()
+Token* Lexer::GetNextToken()
 {
     // skip whiteSpaces
     while(IsWhiteSpace(GetSign()))
@@ -93,91 +93,92 @@ Token Lexer::GetNextToken()
 
     Token *new_token;
 
-    *new_token = BuildParenthesisOpen(present_sign, token_line, token_sign);
+    new_token = BuildParenthesisOpen(present_sign, token_line, token_sign);
     if(new_token != NULL)
-        return *new_token;
+        return new_token;
 
-    *new_token = BuildParenthesisClose(present_sign, token_line, token_sign);
+    new_token = BuildParenthesisClose(present_sign, token_line, token_sign);
     if(new_token != NULL)
-        return *new_token;
+        return new_token;
 
-    *new_token = BuildSquareBracketOpen(present_sign, token_line, token_sign);
+    new_token = BuildSquareBracketOpen(present_sign, token_line, token_sign);
     if(new_token != NULL)
-        return *new_token;
+        return new_token;
 
-    *new_token = BuildSquareBracketClose(present_sign, token_line, token_sign);
+    new_token = BuildSquareBracketClose(present_sign, token_line, token_sign);
     if(new_token != NULL)
-        return *new_token;
+        return new_token;
 
-    *new_token = BuildComma(present_sign, token_line, token_sign);
+    new_token = BuildComma(present_sign, token_line, token_sign);
     if(new_token != NULL)
-        return *new_token;
+        return new_token;
 
-    *new_token = BuildDot(present_sign, token_line, token_sign);
+    new_token = BuildDot(present_sign, token_line, token_sign);
     if(new_token != NULL)
-        return *new_token;
+        return new_token;
 
-    *new_token = BuildSemicolon(present_sign, token_line, token_sign);
+    new_token = BuildSemicolon(present_sign, token_line, token_sign);
     if(new_token != NULL)
-        return *new_token;
+        return new_token;
 
-    *new_token = BuildGreaterThan(present_sign, token_line, token_sign);
+    new_token = BuildGreaterThan(present_sign, token_line, token_sign);
     if(new_token != NULL)
-        return *new_token;
+        return new_token;
 
-    *new_token = BuildLessThan(present_sign, token_line, token_sign);
+    new_token = BuildLessThan(present_sign, token_line, token_sign);
     if(new_token != NULL)
-        return *new_token;
+        return new_token;
 
-    *new_token = BuildEqual(present_sign, token_line, token_sign);
+    new_token = BuildEqual(present_sign, token_line, token_sign);
     if(new_token != NULL)
-        return *new_token;
+        return new_token;
 
-    *new_token = BuildDoubleColon(present_sign, token_line, token_sign);
+    new_token = BuildDoubleColon(present_sign, token_line, token_sign);
     if(new_token != NULL)
-        return *new_token;
+        return new_token;
 
-    *new_token = BuildNotEqual(present_sign, token_line, token_sign);
+    new_token = BuildNotEqual(present_sign, token_line, token_sign);
     if(new_token != NULL)
-        return *new_token;
+        return new_token;
 
-    *new_token = BuildAndOperator(present_sign, token_line, token_sign);
+    new_token = BuildAndOperator(present_sign, token_line, token_sign);
     if(new_token != NULL)
-        return *new_token;
+        return new_token;
 
-    *new_token = BuildOrOperator(present_sign, token_line, token_sign);
+    new_token = BuildOrOperator(present_sign, token_line, token_sign);
     if(new_token != NULL)
-        return *new_token;
+        return new_token;
 
-    *new_token = BuildPlus(present_sign, token_line, token_sign);
+    new_token = BuildPlus(present_sign, token_line, token_sign);
     if(new_token != NULL)
-        return *new_token;
+        return new_token;
 
-    *new_token = BuildMinus(present_sign, token_line, token_sign);
+    new_token = BuildMinus(present_sign, token_line, token_sign);
     if(new_token != NULL)
-        return *new_token;
+        return new_token;
 
-    *new_token = BuildMultiplication(present_sign, token_line, token_sign);
+    new_token = BuildMultiplication(present_sign, token_line, token_sign);
     if(new_token != NULL)
-        return *new_token;
+        return new_token;
 
-    *new_token = BuildDivision(present_sign, token_line, token_sign);
+    new_token = BuildDivision(present_sign, token_line, token_sign);
     if(new_token != NULL)
-        return *new_token;
+        return new_token;
 
-    *new_token = BuildIdentifier(present_sign, token_line, token_sign);
+    new_token = BuildIdentifier(present_sign, token_line, token_sign);
     if(new_token != NULL)
-        return *new_token;
+        return new_token;
 
-    *new_token = BuildStringLiteral(present_sign, token_line, token_sign);
+    new_token = BuildStringLiteral(present_sign, token_line, token_sign);
     if(new_token != NULL)
-        return *new_token;
+        return new_token;
 
-    *new_token = BuildNumeric(present_sign, token_line, token_sign);
+    new_token = BuildNumeric(present_sign, token_line, token_sign);
     if(new_token != NULL)
-        return *new_token;
+        return new_token;
 
-    return NewToken(TokenType::Undefined, ""+present_sign, token_line, token_sign);
+    *new_token = Undefined(""+present_sign, token_line, token_sign);
+    return new_token;
 }
 
 string Lexer::MakeUpStreamBuffor()
@@ -252,101 +253,113 @@ string Lexer::ShowPresentPosition()
 }
 
 // TOKEN BUILDERS
-Token Lexer::BuildParenthesisOpen(char present_sign, int token_line, int token_sign)
+Token* Lexer::BuildParenthesisOpen(char present_sign, int token_line, int token_sign)
 {
     if(present_sign == '(')
     {
-        ParenthesisOpen token(token_line, token_sign);
-        *log_file << "Get new token:\ntype:'" << token.TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+        ParenthesisOpen *token = new ParenthesisOpen(token_line, token_sign);
+        tokens.push_back(token);
+        *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
 
         return token;
     }
+
+    return NULL;
 }
 
-Token Lexer::BuildParenthesisClose(char present_sign, int token_line, int token_sign)
+Token* Lexer::BuildParenthesisClose(char present_sign, int token_line, int token_sign)
 {
     if(present_sign == ')')
     {
-        ParenthesisOpen token(token_line, token_sign);
-        *log_file << "Get new token:\ntype:'" << token.TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+        ParenthesisClose *token = new ParenthesisClose(token_line, token_sign);
+        tokens.push_back(token);
+        *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
 
         return token;
     }
+
+    return NULL;
 }
 
-Token Lexer::BuildSquareBracketOpen(char present_sign, int token_line, int token_sign)
+Token* Lexer::BuildSquareBracketOpen(char present_sign, int token_line, int token_sign)
+{
+    if(present_sign == '[')
+    {
+        SquareBracketOpen *token = new SquareBracketOpen(token_line, token_sign);
+        tokens.push_back(token);
+        *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+
+        return token;
+    }
+
+    return NULL;
+}
+
+Token* Lexer::BuildSquareBracketClose(char present_sign, int token_line, int token_sign)
 {
     if(present_sign == ']')
     {
-        Dot token(token_line, token_sign);
-        *log_file << "Get new token:\ntype:'" << token.TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+        SquareBracketClose *token = new SquareBracketClose(token_line, token_sign);
+        tokens.push_back(token);
+        *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
 
         return token;
     }
 
-    return Empty();
+    return NULL;
 }
 
-Token Lexer::BuildSquareBracketClose(char present_sign, int token_line, int token_sign)
-{
-    if(present_sign == ']')
-    {
-        Dot token(token_line, token_sign);
-        *log_file << "Get new token:\ntype:'" << token.TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
-
-        return token;
-    }
-
-    return Empty();
-}
-
-Token Lexer::BuildComma(char present_sign, int token_line, int token_sign)
+Token* Lexer::BuildComma(char present_sign, int token_line, int token_sign)
 {
     if(present_sign == ',')
     {
-        Dot token(token_line, token_sign);
-        *log_file << "Get new token:\ntype:'" << token.TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+        Comma *token = new Comma(token_line, token_sign);
+        tokens.push_back(token);
+        *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
 
         return token;
     }
 
-    return Empty();
+    return NULL;
 }
 
-Token Lexer::BuildDot(char present_sign, int token_line, int token_sign)
+Token* Lexer::BuildDot(char present_sign, int token_line, int token_sign)
 {
     if(present_sign == '.')
     {
-        Dot token(token_line, token_sign);
-        *log_file << "Get new token:\ntype:'" << token.TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+        Dot *token = new Dot(token_line, token_sign);
+        tokens.push_back(token);
+        *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
 
         return token;
     }
 
-    return Empty();
+    return NULL;
 }
 
-Token Lexer::BuildSemicolon(char present_sign, int token_line, int token_sign)
+Token* Lexer::BuildSemicolon(char present_sign, int token_line, int token_sign)
 {
     if(present_sign == ';')
     {
-        Semicolon token(token_line, token_sign);
-        *log_file << "Get new token:\ntype:'" << token.TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+        Semicolon *token = new Semicolon(token_line, token_sign);
+        tokens.push_back(token);
+        *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
 
         return token;
     }
 
-    return Empty();
+    return NULL;
 }
 
-Token Lexer::BuildGreaterThan(char present_sign, int token_line, int token_sign)
+Token* Lexer::BuildGreaterThan(char present_sign, int token_line, int token_sign)
 {
     if(present_sign == '>')
     {
         if(GetSign() == '=')
         {
-            GreaterEqualThan token(token_line, token_sign);
-            *log_file << "Get new token:\ntype:'" << token.TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+            GreaterEqualThan *token = new GreaterEqualThan(token_line, token_sign);
+            tokens.push_back(token);
+            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
 
             return token;
         }
@@ -355,24 +368,26 @@ Token Lexer::BuildGreaterThan(char present_sign, int token_line, int token_sign)
             if(!IsWhiteSpace(present_sign))
                 StepBack();
 
-            GreaterThan token(token_line, token_sign);
-            *log_file << "Get new token:\ntype:'" << token.TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+            GreaterThan *token = new GreaterThan(token_line, token_sign);
+            tokens.push_back(token);
+            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
 
             return token;
         }
     }
 
-    return Empty();
+    return NULL;
 }
 
-Token Lexer::BuildLessThan(char present_sign, int token_line, int token_sign)
+Token* Lexer::BuildLessThan(char present_sign, int token_line, int token_sign)
 {
     if(present_sign == '<')
     {
         if(GetSign() == '=')
         {
-            LessEqualThan token(token_line, token_sign);
-            *log_file << "Get new token:\ntype:'" << token.TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+            LessEqualThan *token = new LessEqualThan(token_line, token_sign);
+            tokens.push_back(token);
+            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
 
             return token;
         }
@@ -381,24 +396,26 @@ Token Lexer::BuildLessThan(char present_sign, int token_line, int token_sign)
             if(!IsWhiteSpace(present_sign))
                 StepBack();
 
-            LessThan token(token_line, token_sign);
-            *log_file << "Get new token:\ntype:'" << token.TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+            LessThan *token = new LessThan(token_line, token_sign);
+            tokens.push_back(token);
+            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
 
             return token;
         }
     }
 
-    return Empty();
+    return NULL;
 }
 
-Token Lexer::BuildEqual(char present_sign, int token_line, int token_sign)
+Token* Lexer::BuildEqual(char present_sign, int token_line, int token_sign)
 {
     if(present_sign == '=')
     {
         if(GetSign() == '=')
         {
-            Equal token(token_line, token_sign);
-            *log_file << "Get new token:\ntype:'" << token.TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+            Equal *token = new Equal(token_line, token_sign);
+            tokens.push_back(token);
+            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
 
             return token;
         }
@@ -407,24 +424,26 @@ Token Lexer::BuildEqual(char present_sign, int token_line, int token_sign)
             if(!IsWhiteSpace(present_sign))
                 StepBack();
 
-            Rewriting token(token_line, token_sign);
-            *log_file << "Get new token:\ntype:'" << token.TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+            Rewriting *token = new Rewriting(token_line, token_sign);
+            tokens.push_back(token);
+            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
 
             return token;
         }
     }
 
-    return Empty();
+    return NULL;
 }
 
-Token Lexer::BuildDoubleColon(char present_sign, int token_line, int token_sign)
+Token* Lexer::BuildDoubleColon(char present_sign, int token_line, int token_sign)
 {
     if(present_sign == ':')
     {
         if(GetSign() == ':')
         {
-            DoubleColon token(token_line, token_sign);
-            *log_file << "Get new token:\ntype:'" << token.TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+            DoubleColon *token = new DoubleColon(token_line, token_sign);
+            tokens.push_back(token);
+            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
 
             return token;
         }
@@ -433,24 +452,26 @@ Token Lexer::BuildDoubleColon(char present_sign, int token_line, int token_sign)
             if(!IsWhiteSpace(present_sign))
                 StepBack();
 
-            Undefined token(":"+present_sign, token_line, token_sign);
-            *log_file << "Get new token:\ntype:'" << token.TypeToString() << "; value: " << token.GetValue() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+            Undefined *token = new Undefined(":"+present_sign, token_line, token_sign);
+            tokens.push_back(token);
+            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
 
             return token;
         }
     }
 
-    return Empty();
+    return NULL;
 }
 
-Token Lexer::BuildNotEqual(char present_sign, int token_line, int token_sign)
+Token* Lexer::BuildNotEqual(char present_sign, int token_line, int token_sign)
 {
     if(present_sign == '!')
     {
         if(GetSign() == '=')
         {
-            NotEqual token(token_line, token_sign);
-            *log_file << "Get new token:\ntype:'" << token.TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+            NotEqual *token = new NotEqual(token_line, token_sign);
+            tokens.push_back(token);
+            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
 
             return token;
         }
@@ -459,24 +480,26 @@ Token Lexer::BuildNotEqual(char present_sign, int token_line, int token_sign)
             if(!IsWhiteSpace(present_sign))
                 StepBack();
 
-            Undefined token("!"+present_sign, token_line, token_sign);
-            *log_file << "Get new token:\ntype:'" << token.TypeToString() << "; value: " << token.GetValue() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+            Undefined *token = new Undefined("!"+present_sign, token_line, token_sign);
+            tokens.push_back(token);
+            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
 
             return token;
         }
     }
 
-    return Empty();
+    return NULL;
 }
 
-Token Lexer::BuildAndOperator(char present_sign, int token_line, int token_sign)
+Token* Lexer::BuildAndOperator(char present_sign, int token_line, int token_sign)
 {
     if(present_sign == '&')
     {
         if(GetSign() == '&')
         {
-            AndOperator token(token_line, token_sign);
-            *log_file << "Get new token:\ntype:'" << token.TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+            AndOperator *token = new AndOperator(token_line, token_sign);
+            tokens.push_back(token);
+            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
 
             return token;
         }
@@ -485,24 +508,26 @@ Token Lexer::BuildAndOperator(char present_sign, int token_line, int token_sign)
             if(!IsWhiteSpace(present_sign))
                 StepBack();
 
-            Undefined token("&"+present_sign, token_line, token_sign);
-            *log_file << "Get new token:\ntype:'" << token.TypeToString() << "; value: " << token.GetValue() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+            Undefined *token = new Undefined("&"+present_sign, token_line, token_sign);
+            tokens.push_back(token);
+            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
 
             return token;
         }
     }
 
-    return Empty();
+    return NULL;
 }
 
-Token Lexer::BuildOrOperator(char present_sign, int token_line, int token_sign)
+Token* Lexer::BuildOrOperator(char present_sign, int token_line, int token_sign)
 {
     if(present_sign == '|')
     {
         if(GetSign() == '|')
         {
-            OrOperator token(token_line, token_sign);
-            *log_file << "Get new token:\ntype:'" << token.TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+            OrOperator *token = new OrOperator(token_line, token_sign);
+            tokens.push_back(token);
+            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
 
             return token;
         }
@@ -511,24 +536,26 @@ Token Lexer::BuildOrOperator(char present_sign, int token_line, int token_sign)
             if(!IsWhiteSpace(present_sign))
                 StepBack();
 
-            Undefined token("|"+present_sign, token_line, token_sign);
-            *log_file << "Get new token:\ntype:'" << token.TypeToString() << "; value: " << token.GetValue() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+            Undefined *token = new Undefined("|"+present_sign, token_line, token_sign);
+            tokens.push_back(token);
+            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
 
             return token;
         }
     }
 
-    return Empty();
+    return NULL;
 }
 
-Token Lexer::BuildPlus(char present_sign, int token_line, int token_sign)
+Token* Lexer::BuildPlus(char present_sign, int token_line, int token_sign)
 {
     if(present_sign == '+')
     {
         if(GetSign() == '=')
         {
-            PlusRewriting token(token_line, token_sign);
-            *log_file << "Get new token:\ntype:'" << token.TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+            PlusRewriting *token = new PlusRewriting(token_line, token_sign);
+            tokens.push_back(token);
+            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
 
             return token;
         }
@@ -537,24 +564,26 @@ Token Lexer::BuildPlus(char present_sign, int token_line, int token_sign)
             if(!IsWhiteSpace(present_sign))
                 StepBack();
 
-            Plus token(token_line, token_sign);
-            *log_file << "Get new token:\ntype:'" << token.TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+            Plus *token = new Plus(token_line, token_sign);
+            tokens.push_back(token);
+            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
 
             return token;
         }
     }
 
-    return Empty();
+    return NULL;
 }
 
-Token Lexer::BuildMinus(char present_sign, int token_line, int token_sign)
+Token* Lexer::BuildMinus(char present_sign, int token_line, int token_sign)
 {
     if(present_sign == '-')
     {
         if(GetSign() == '=')
         {
-            MinusRewriting token(token_line, token_sign);
-            *log_file << "Get new token:\ntype:'" << token.TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+            MinusRewriting *token = new MinusRewriting(token_line, token_sign);
+            tokens.push_back(token);
+            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
 
             return token;
         }
@@ -563,24 +592,26 @@ Token Lexer::BuildMinus(char present_sign, int token_line, int token_sign)
             if(!IsWhiteSpace(present_sign))
                 StepBack();
 
-            Minus token(token_line, token_sign);
-            *log_file << "Get new token:\ntype:'" << token.TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+            Minus *token = new Minus(token_line, token_sign);
+            tokens.push_back(token);
+            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
 
             return token;
         }
     }
 
-    return Empty();
+    return NULL;
 }
 
-Token Lexer::BuildMultiplication(char present_sign, int token_line, int token_sign)
+Token* Lexer::BuildMultiplication(char present_sign, int token_line, int token_sign)
 {
     if(present_sign == '*')
     {
         if(GetSign() == '=')
         {
-            MultRewriting token(token_line, token_sign);
-            *log_file << "Get new token:\ntype:'" << token.TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+            MultRewriting *token = new MultRewriting(token_line, token_sign);
+            tokens.push_back(token);
+            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
 
             return token;
         }
@@ -589,24 +620,26 @@ Token Lexer::BuildMultiplication(char present_sign, int token_line, int token_si
             if(!IsWhiteSpace(present_sign))
                 StepBack();
 
-            Multiplication token(token_line, token_sign);
-            *log_file << "Get new token:\ntype:'" << token.TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+            Multiplication *token = new Multiplication(token_line, token_sign);
+            tokens.push_back(token);
+            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
 
             return token;
         }
     }
 
-    return Empty();
+    return NULL;
 }
 
-Token Lexer::BuildDivision(char present_sign, int token_line, int token_sign)
+Token* Lexer::BuildDivision(char present_sign, int token_line, int token_sign)
 {
     if(present_sign == '/')
     {
         if(GetSign() == '=')
         {
-            DivisionRewriting token(token_line, token_sign);
-            *log_file << "Get new token:\ntype:'" << token.TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+            DivisionRewriting *token = new DivisionRewriting(token_line, token_sign);
+            tokens.push_back(token);
+            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
 
             return token;
         }
@@ -615,17 +648,18 @@ Token Lexer::BuildDivision(char present_sign, int token_line, int token_sign)
             if(!IsWhiteSpace(present_sign))
                 StepBack();
 
-            Division token(token_line, token_sign);
-            *log_file << "Get new token:\ntype:'" << token.TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+            Division *token = new Division(token_line, token_sign);
+            tokens.push_back(token);
+            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
 
             return token;
         }
     }
 
-    return Empty();
+    return NULL;
 }
 
-Token Lexer::BuildIdentifier(char present_sign, int token_line, int token_sign)
+Token* Lexer::BuildIdentifier(char present_sign, int token_line, int token_sign)
 {
     if(IsStringBegin(present_sign))
     {
@@ -649,8 +683,10 @@ Token Lexer::BuildIdentifier(char present_sign, int token_line, int token_sign)
                 if(!IsWhiteSpace(present_sign))
                     StepBack();
 
-                Undefined token(token_value.str(), token_line, token_sign);
-                *log_file << "Get new token:\ntype:'" << token.TypeToString() << "; value: " << token.GetValue() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+                Undefined *token = new Undefined(token_value.str(), token_line, token_sign);
+                tokens.push_back(token);
+                *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+
                 return token;
             }
         }
@@ -663,90 +699,114 @@ Token Lexer::BuildIdentifier(char present_sign, int token_line, int token_sign)
 
         if(token_value.str() == "int")
         {
-            Int token(token_line, token_sign);
-            *log_file << "Get new token:\ntype:'" << token.TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+            Int *token = new Int(token_line, token_sign);
+            tokens.push_back(token);
+            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+
             return token;
         }
 
         if(token_value.str() == "float")
         {
-            Float token(token_line, token_sign);
-            *log_file << "Get new token:\ntype:'" << token.TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+            Float *token = new Float(token_line, token_sign);
+            tokens.push_back(token);
+            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+
             return token;
         }
 
         if(token_value.str() == "true")
         {
-            True token(token_line, token_sign);
-            *log_file << "Get new token:\ntype:'" << token.TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+            True *token = new True(token_line, token_sign);
+            tokens.push_back(token);
+            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+
             return token;
         }
 
         if(token_value.str() == "false")
         {
-            False token(token_line, token_sign);
-            *log_file << "Get new token:\ntype:'" << token.TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+            False *token = new False(token_line, token_sign);
+            tokens.push_back(token);
+            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+
             return token;
         }
 
         if(token_value.str() == "NULL")
         {
-            Null token(token_line, token_sign);
-            *log_file << "Get new token:\ntype:'" << token.TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+            Null *token = new Null(token_line, token_sign);
+            tokens.push_back(token);
+            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+
             return token;
         }
 
         if(token_value.str() == "for")
         {
-            For token(token_line, token_sign);
-            *log_file << "Get new token:\ntype:'" << token.TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+            For *token = new For(token_line, token_sign);
+            tokens.push_back(token);
+            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+
             return token;
         }
 
         if(token_value.str() == "foreach")
         {
-            Foreach token(token_line, token_sign);
-            *log_file << "Get new token:\ntype:'" << token.TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+            Foreach *token = new Foreach(token_line, token_sign);
+            tokens.push_back(token);
+            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+
             return token;
         }
 
         if(token_value.str() == "if")
         {
-            If token(token_line, token_sign);
-            *log_file << "Get new token:\ntype:'" << token.TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+            If *token = new If(token_line, token_sign);
+            tokens.push_back(token);
+            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+
             return token;
         }
 
         if(token_value.str() == "else")
         {
-            Else token(token_line, token_sign);
-            *log_file << "Get new token:\ntype:'" << token.TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+            Else *token = new Else(token_line, token_sign);
+            tokens.push_back(token);
+            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+
             return token;
         }
 
         if(token_value.str() == "collection")
         {
-            Collection token(token_line, token_sign);
-            *log_file << "Get new token:\ntype:'" << token.TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+            Collection *token = new Collection(token_line, token_sign);
+            tokens.push_back(token);
+            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+
             return token;
         }
 
         if(token_value.str() == "return")
         {
-            Return token(token_line, token_sign);
-            *log_file << "Get new token:\ntype:'" << token.TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+            Return *token = new Return(token_line, token_sign);
+            tokens.push_back(token);
+            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+
             return token;
         }
 
-        Identifier token(token_value.str(), token_line, token_sign);
-        *log_file << "Get new token:\ntype:'" << token.TypeToString() << "; value: " << token.GetValue() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+        Identifier *token = new Identifier(token_value.str(), token_line, token_sign);
+        tokens.push_back(token);
+        *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+
         return token;
     }
 
-    return Empty();
+    return NULL;
 }
 
-Token Lexer::BuildStringLiteral(char present_sign, int token_line, int token_sign)
+Token* Lexer::BuildStringLiteral(char present_sign, int token_line, int token_sign)
 {
     if(present_sign == '"')
     {
@@ -782,22 +842,26 @@ Token Lexer::BuildStringLiteral(char present_sign, int token_line, int token_sig
 
         if(correct_string)
         {
-            StringLiteral token(token_value.str(), token_line, token_sign);
-            *log_file << "Get new token:\ntype:'" << token.TypeToString() << "; value: " << token.GetValue() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+            StringLiteral *token = new StringLiteral(token_value.str(), token_line, token_sign);
+            tokens.push_back(token);
+            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+
             return token;
         }
         else
         {
-            Undefined token(token_line, token_sign);
-            *log_file << "Get new token:\ntype:'" << token.TypeToString() << "; value: " << token.GetValue() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+            Undefined *token = new Undefined(token_value.str(), token_line, token_sign);
+            tokens.push_back(token);
+            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+
             return token;
         }
     }
 
-    return Empty();
+    return NULL;
 }
 
-Token Lexer::BuildNumeric(char present_sign, int token_line, int token_sign)
+Token* Lexer::BuildNumeric(char present_sign, int token_line, int token_sign)
 {
     if(present_sign == '0')
     {
@@ -806,61 +870,122 @@ Token Lexer::BuildNumeric(char present_sign, int token_line, int token_sign)
 
         if(GetSign() == '.')
         {
+            float float_value = 0;
             token_value << present_sign;
 
             if(IsDigit(GetSign()))
+            {
                 token_value << present_sign;
+                float_value += (present_sign - '0')/10;
+            }
             else
-                return NewToken(TokenType::Undefined, token_value.str(), token_line, token_sign);
+            {
+                Undefined *token = new Undefined(token_value.str(), token_line, token_sign);
+                tokens.push_back(token);
+                *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
 
+                return token;
+            }
+
+            int i = 100;
             while(IsDigit(GetSign()))
+            {
                 token_value << present_sign;
+                float_value += (present_sign - '0')/i;
+
+                i *= 10;
+            }
 
             if(!IsWhiteSpace(present_sign))
                 StepBack();
 
-            return NewToken(NumericType::Float, token_value.str(), token_line, token_sign);
+            FloatValue *token = new FloatValue(float_value, token_line, token_sign);
+            tokens.push_back(token);
+            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+
+            return token;
         }
         else if(IsStringElem(present_sign))
-            return NewToken(TokenType::Undefined, token_value.str(), token_line, token_sign);
+        {
+            Undefined *token = new Undefined(token_value.str(), token_line, token_sign);
+            tokens.push_back(token);
+            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+
+            return token;
+        }
         else
             if(!IsWhiteSpace(present_sign))
                 StepBack();
-        return NewToken(TokenType::Int, token_value.str(), token_line, token_sign);
+
+        IntValue *token = new IntValue(0, token_line, token_sign);
+        tokens.push_back(token);
+        *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+
+        return token;
     }
 
     if(IsNonZeroDigit(present_sign))
     {
         stringstream token_value;
         token_value << present_sign;
+        int int_value = present_sign - '0';
 
         while(IsDigit(GetSign()))
-            token_value << present_sign;
-
-        if(present_sign == '.')
         {
             token_value << present_sign;
 
-            if(IsDigit(GetSign()))
-                token_value << present_sign;
-            else
-                return NewToken(TokenType::Undefined, token_value.str(), token_line, token_sign);
+            int_value *= 10;
+            int_value += present_sign - '0';
+        }
 
-            while(IsDigit(GetSign()))
+        if(present_sign == '.')
+        {
+            float float_value = int_value;
+
+            token_value << present_sign;
+
+            if(IsDigit(GetSign()))
+            {
                 token_value << present_sign;
+                float_value += (present_sign - '0')/10;
+            }
+            else
+            {
+                Undefined token(token_value.str(), token_line, token_sign);
+                *log_file << "Get new token:\ntype:'" << token.TypeToString() << "; value: " << token.GetValue() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+                return &token;
+            }
+
+            int i = 100;
+            while(IsDigit(GetSign()))
+            {
+                token_value << present_sign;
+                float_value += (present_sign - '0')/i;
+
+                i *= 10;
+            }
 
             if(!IsWhiteSpace(present_sign))
                 StepBack();
-            return NewToken(TokenType::Float, token_value.str(), token_line, token_sign);
+
+            FloatValue *token = new FloatValue(float_value, token_line, token_sign);
+            tokens.push_back(token);
+            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+
+            return token;
         }
         else
             if(!IsWhiteSpace(present_sign))
                 StepBack();
 
-        return NewToken(TokenType::Int, token_value.str(), token_line, token_sign);
+        IntValue *token = new IntValue(0, token_line, token_sign);
+        tokens.push_back(token);
+        *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+
+        return token;
     }
 
-    return Empty();
+    return NULL;
 }
 
 // SETTERS
@@ -877,6 +1002,8 @@ int Lexer::SetInputStream(iostream* new_input_stream)
 
 Lexer::~Lexer()
 {
+    for(list<Token*>::iterator i = tokens.begin(); i != tokens.end(); i++)
+        delete *i;
     //input_stream = NULL;
     //*log_file << "Lexer closing..." << endl;
 }

@@ -18766,3 +18766,390 @@ Get new token:
 type:'float; value:123.123; line: 14; sign:1;
 All tests passed.
 End Lexer::Test all.
+
+Lexer starting...
+Starting testing lexer...
+Start Lexer::Test all:
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 1; sign:1;
+
+Lexer starting...
+Starting testing lexer...
+Start Lexer::Test all:
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 1; sign:1;
+
+Lexer starting...
+Starting testing lexer...
+Start Lexer::Test all:
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 1; sign:1;
+
+Lexer starting...
+Starting testing lexer...
+Start Lexer::Test all:
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 1; sign:1;
+
+Lexer starting...
+Starting testing lexer...
+Start Lexer::Test all:
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 1; sign:1;
+Error in Lexer::TestGetNextToken: The TestGetNextToken error: eq. 
+Parenthesis::ParenthesisOpen
+ when exp. 
+Parenthesis::ParenthesisOpen
+in line: sign:.
+...
+
+(...
+^
+
+End Lexer::Test all. -- FAILED
+
+Lexer starting...
+Starting testing lexer...
+Start Lexer::Test all:
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 1; sign:1;
+
+Lexer starting...
+Starting testing lexer...
+Start Lexer::Test all:
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 1; sign:1;
+Error in Lexer::TestGetNextToken: The TestGetNextToken error: eq. 
+Parenthesis::ParenthesisOpen
+ when exp. 
+Parenthesis::ParenthesisOpen
+in line: sign:.
+...
+
+(...
+^
+
+End Lexer::Test all. -- FAILED
+
+Lexer starting...
+Starting testing lexer...
+Start Lexer::Test all:
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 1; sign:1;
+Error in Lexer::TestGetNextToken: The TestGetNextToken error: eq. 
+Parenthesis::ParenthesisOpen
+ when exp. 
+Parenthesis::ParenthesisOpen
+in line: sign:.
+...
+
+(...
+^
+
+End Lexer::Test all. -- FAILED
+
+Lexer starting...
+Starting testing lexer...
+Start Lexer::Test all:
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 1; sign:1;
+
+Lexer starting...
+Starting testing lexer...
+Start Lexer::Test all:
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 1; sign:1;
+
+Lexer starting...
+Starting testing lexer...
+Start Lexer::Test all:
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 1; sign:1;
+Error in Lexer::TestGetNextToken: The TestGetNextToken error: eq. 
+Parenthesis::ParenthesisOpen
+ when exp. 
+Parenthesis::ParenthesisOpen
+in line: sign:.
+...
+
+(...
+^
+
+End Lexer::Test all. -- FAILED
+
+Lexer starting...
+Starting testing lexer...
+Start Lexer::Test all:
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 1; sign:1;
+All tests passed.
+End Lexer::Test all.
+
+Lexer starting...
+Starting testing lexer...
+Start Lexer::Test all:
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 1; sign:1;
+Error in Lexer::TestGetNextToken: The TestGetNextToken error: eq. 
+Parenthesis::ParenthesisOpen
+ when exp. 
+Parenthesis::ParenthesisOpen
+in line: sign:.
+...
+
+(...
+^
+
+End Lexer::Test all. -- FAILED
+
+Lexer starting...
+Starting testing lexer...
+Start Lexer::Test all:
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 1; sign:1;
+Error in Lexer::TestGetNextToken: The TestGetNextToken error: eq. 
+Parenthesis::ParenthesisOpen
+ when exp. 
+Parenthesis::ParenthesisOpen
+in line: sign:.
+...
+
+(...
+^
+
+End Lexer::Test all. -- FAILED
+
+Lexer starting...
+Starting testing lexer...
+Start Lexer::Test all:
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 1; sign:1;
+Error in Lexer::TestGetNextToken: The TestGetNextToken error: eq. 
+Parenthesis::ParenthesisOpen
+ when exp. 
+Parenthesis::ParenthesisOpen
+in line: sign:.
+...
+
+(...
+^
+
+End Lexer::Test all. -- FAILED
+
+Lexer starting...
+Starting testing lexer...
+Start Lexer::Test all:
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 1; sign:1;
+Error in Lexer::TestGetNextToken: The TestGetNextToken error: eq. 
+Parenthesis::ParenthesisOpen
+ when exp. 
+Parenthesis::ParenthesisOpen
+in line: sign:.
+...
+
+(...
+^
+
+End Lexer::Test all. -- FAILED
+
+Lexer starting...
+Starting testing lexer...
+Start Lexer::Test all:
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 1; sign:1;
+All tests passed.
+End Lexer::Test all.
+
+Lexer starting...
+Starting testing lexer...
+Start Lexer::Test all:
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 1; sign:1;
+All tests passed.
+End Lexer::Test all.
+
+Lexer starting...
+Starting testing lexer...
+Start Lexer::Test all:
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 1; sign:1;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 1; sign:2;
+
+Lexer starting...
+Starting testing lexer...
+Start Lexer::Test all:
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 1; sign:1;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 1; sign:2;
+Error in Lexer::TestGetNextToken: The TestGetNextToken error: eq. 
+Parenthesis::ParenthesisClose
+ when exp. 
+Parenthesis::ParenthesisClose
+in line: sign:.
+...
+
+()...
+ ^
+
+End Lexer::Test all. -- FAILED
+
+Lexer starting...
+Starting testing lexer...
+Start Lexer::Test all:
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 1; sign:1;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 1; sign:2;
+Error in Lexer::TestGetNextToken: The TestGetNextToken error: eq. 
+Parenthesis::ParenthesisClose
+ when exp. 
+Parenthesis::ParenthesisClose
+in line: sign:.
+...
+
+()...
+ ^
+
+End Lexer::Test all. -- FAILED
+
+Lexer starting...
+Starting testing lexer...
+Start Lexer::Test all:
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 1; sign:1;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 1; sign:2;
+All tests passed.
+End Lexer::Test all.
+
+Lexer starting...
+Starting testing lexer...
+Start Lexer::Test all:
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 1; sign:1;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 1; sign:2;
+
+Lexer starting...
+Starting testing lexer...
+Start Lexer::Test all:
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 1; sign:1;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 1; sign:2;
+
+Lexer starting...
+Starting testing lexer...
+Start Lexer::Test all:
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 1; sign:1;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 1; sign:2;
+
+Lexer starting...
+Starting testing lexer...
+Start Lexer::Test all:
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 1; sign:1;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 1; sign:2;
+Get new token:
+type:'Dot; line: 1; sign:3;
+
+Lexer starting...
+Starting testing lexer...
+Start Lexer::Test all:
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 1; sign:1;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 1; sign:2;
+Get new token:
+type:'SquareBracket::SquareBracketOpen; line: 1; sign:3;
+All tests passed.
+End Lexer::Test all.
+
+Lexer starting...
+Starting testing lexer...
+Start Lexer::Test all:
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 1; sign:1;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 1; sign:2;
+Get new token:
+type:'SquareBracket::SquareBracketOpen; line: 1; sign:3;
+Get new token:
+type:'Dot; line: 1; sign:4;
+
+Lexer starting...
+Starting testing lexer...
+Start Lexer::Test all:
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 1; sign:1;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 1; sign:2;
+Get new token:
+type:'SquareBracket::SquareBracketOpen; line: 1; sign:3;
+Get new token:
+type:'SquareBracket::SquareBracketClose; line: 1; sign:4;
+All tests passed.
+End Lexer::Test all.
+
+Lexer starting...
+Starting testing lexer...
+Start Lexer::Test all:
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 1; sign:1;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 1; sign:2;
+Get new token:
+type:'SquareBracket::SquareBracketOpen; line: 1; sign:3;
+Get new token:
+type:'SquareBracket::SquareBracketClose; line: 1; sign:4;
+Get new token:
+type:'Comma; line: 1; sign:5;
+Error in Lexer::TestGetNextToken: The TestGetNextToken error: eq. 
+Comma
+ when exp. 
+Comma
+in line: sign:.
+...
+
+()[],...
+    ^
+
+End Lexer::Test all. -- FAILED
+
+Lexer starting...
+Starting testing lexer...
+Start Lexer::Test all:
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 1; sign:1;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 1; sign:2;
+Get new token:
+type:'SquareBracket::SquareBracketOpen; line: 1; sign:3;
+Get new token:
+type:'SquareBracket::SquareBracketClose; line: 1; sign:4;
+Get new token:
+type:'Comma; line: 1; sign:5;
+All tests passed.
+End Lexer::Test all.
+
+Lexer starting...
+Starting testing lexer...
+Start Lexer::Test all:
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 1; sign:1;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 1; sign:2;
+Get new token:
+type:'SquareBracket::SquareBracketOpen; line: 1; sign:3;
+Get new token:
+type:'SquareBracket::SquareBracketClose; line: 1; sign:4;
+Get new token:
+type:'Comma; line: 1; sign:5;
+Get new token:
+type:'Dot; line: 1; sign:6;
