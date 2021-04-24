@@ -1,0 +1,44 @@
+# depslib dependency file v1.0
+1617653056 source:c:\users\lenovo\documents\moje programy\c++\tkom2\interpreter-scen-graficznych\main.cpp
+	<iostream>
+	"Lexer.h"
+	"Tests.h"
+
+1619190184 source:c:\users\lenovo\documents\moje programy\c++\tkom2\interpreter-scen-graficznych\src\lexer.cpp
+	"Lexer.h"
+
+1619287190 c:\users\lenovo\documents\moje programy\c++\tkom2\interpreter-scen-graficznych\include\lexer.h
+	<iostream>
+	<fstream>
+	<sstream>
+	"Token.h"
+
+1617652958 c:\users\lenovo\documents\moje programy\c++\tkom2\interpreter-scen-graficznych\include\tests.h
+	"LexerTest.h"
+	<fstream>
+
+1618599049 c:\users\lenovo\documents\moje programy\c++\tkom2\interpreter-scen-graficznych\include\lexertest.h
+	"Lexer.h"
+	"Token.h"
+	<iostream>
+	<fstream>
+
+1619176921 source:c:\users\lenovo\documents\moje programy\c++\tkom2\interpreter-scen-graficznych\src\lexertest.cpp
+	"LexerTest.h"
+	"ExceptionData.h"
+
+1618078038 source:c:\users\lenovo\documents\moje programy\c++\tkom2\interpreter-scen-graficznych\src\tests.cpp
+	"Tests.h"
+	<iostream>
+	<fstream>
+	<sstream>
+
+1617912892 c:\users\lenovo\documents\moje programy\c++\tkom2\interpreter-scen-graficznych\include\exceptiondata.h
+	<iostream>
+
+1619284604 source:c:\users\lenovo\documents\moje programy\c++\tkom2\interpreter-scen-graficznych\src\token.cpp
+	"Token.h"
+
+1619289377 c:\users\lenovo\documents\moje programy\c++\tkom2\interpreter-scen-graficznych\include\token.h
+	<iostream>
+
