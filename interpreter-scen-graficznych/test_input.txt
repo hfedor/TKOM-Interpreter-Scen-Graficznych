@@ -1,0 +1,38 @@
+Domek
+{
+	Polygon dach([(-30.0,0),(0,25.0),(30.0,0)]);	
+	Rectangle parter(50.0,30.0,0,-25.0);
+	Collection okna;
+
+	Domek(float x, float y, int liczba_okien)	
+	{
+		parter.fillColor = blue;
+		dach.fillColor = red;
+		if(liczba_okien > 0)
+		{
+			if(liczba_okien <= 4)
+			{
+				float odstep = (parter.width - 4) / liczba_okien;
+
+				for(int i = 0; i < liczba_okien; i++)
+				{
+					Rectangle okno(4.0,5.0,-10,odstep*i);
+					okno.fillColor = gray;
+					okna.add(okno);
+				}
+			}
+		}
+	}
+}
+
+void main()
+{
+	Scene scena(500.0,300.0);
+	Collection domki;
+	Domek domek1(40,50,3); 
+	domki.add(demek1); 
+	Domek domek2(250,50,3);
+	domki.add(demek2);
+	Domek domek3(360,50,3);
+	domki.add(demek3);
+}

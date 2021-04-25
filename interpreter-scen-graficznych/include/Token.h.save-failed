@@ -4,6 +4,7 @@
 #pragma once
 
 #include <iostream>
+#include <string>
 
 enum class TokenType
 {
@@ -32,90 +33,88 @@ enum class TokenType
     //SquareBracketOpen,      // [
     //SquareBracketClose,     // ]
 
-    Rewriting,              // =
+    Rewriting,                  // =
 
     Relation,
-    //GreaterThan,            // >
-    //LessThan,               // <
-    //GreaterEqualThan,       // >=
-    //LessEqualThan,          // <=
-    //Equal,                  // ==
-    //NotEqual,               // !=
+    //GreaterThan,              // >
+    //LessThan,                 // <
+    //GreaterEqualThan,         // >=
+    //LessEqualThan,            // <=
+    //Equal,                    // ==
+    //NotEqual,                 // !=
 
-    Comma,                  // ,
-    Dot,                    // .
-    DoubleColon,            // ::
-    Semicolon,              // ;
+    Comma,                      // ,
+    Dot,                        // .
+    DoubleColon,                // ::
+    Semicolon,                  // ;
 
     Operator,
-    //AndOperator,            // &&
-    //OrOperator,             // ||
+    //AndOperator,              // &&
+    //OrOperator,               // ||
 
     Aritmetic,
-    //Plus,                   // +
-    //Minus,                  // -
-    //Multiplication,         // *
-    //Division,                // /
+    //Plus,                     // +
+    //Minus,                    // -
+    //Multiplication,           // *
+    //Division,                 // /
 
     AritmeticRewriting,
-    //PlusRewriting,          // +=
-    //MinusRewriting,         // -=
-    //MultRewriting,          // *=
-    //DivisionRewriting,       // /=
+    //PlusRewriting,            // +=
+    //MinusRewriting,           // -=
+    //MultRewriting,            // *=
+    //DivisionRewriting,        // /=
 
-    Data,                    // typy danych
+    Data,                       // typy danych
 
-    For,                    // for
-    Foreach,                // foteach
-    If,                     // if
-    Else,                   // else
-    Collection,             // collection
-    Return,                 // Return
+    For,                        // for
+    Foreach,                    // foteach
+    If,                         // if
+    Else,                       // else
+    Collection,                 // collection
+    Return,                     // Return
 
-    Eof,                    // znak koñca pliku
-
-    Empty,                  // jeszcze nie zdefiniowany
+    Eof,                        // znak koñca pliku
 };
 
 enum class NumericType
 {
-    IntValue,                    // int
-    FloatValue,                  // float
+    IntValue,                   // int
+    FloatValue,                 // float
 };
 
 enum class BooleanType
 {
-    False,                  // false
-    True,                   // true
+    False,                      // false
+    True,                       // true
 };
 
 enum class ParenthesisType
 {
-    ParenthesisOpen,        // (
-    ParenthesisClose,       // )
+    ParenthesisOpen,            // (
+    ParenthesisClose,           // )
 };
 
 enum class SquareBracketType
 {
-    SquareBracketOpen,      // [
-    SquareBracketClose,     // ]
+    SquareBracketOpen,          // [
+    SquareBracketClose,         // ]
 };
 
 enum class RelationType
 {
-    GreaterThan,            // >
-    LessThan,               // <
-    Rewriting,              // =
-    GreaterEqualThan,       // >=
-    LessEqualThan,          // <=
-    Equal,                  // ==
-    NotEqual,               // !=
+    GreaterThan,                // >
+    LessThan,                   // <
+    Rewriting,                  // =
+    GreaterEqualThan,           // >=
+    LessEqualThan,              // <=
+    Equal,                      // ==
+    NotEqual,                   // !=
 };
 
 enum class OperatorType
 {
-    AndOperator,            // &&
-    OrOperator,             // ||
+    AndOperator,                // &&
+    OrOperator,                 // ||
 };
 
 enum class AritmeticType
@@ -126,28 +125,28 @@ enum class AritmeticType
 
 enum class PlusMinusType
 {
-    Plus,                   // +
-    Minus,                  // -
+    Plus,                       // +
+    Minus,                      // -
 };
 
 enum class MultDivType
 {
-    Multiplication,         // *
-    Division,                // /
+    Multiplication,             // *
+    Division,                   // /
 };
 
 enum class AritmeticRewritingType
 {
-    PlusRewriting,          // +=
-    MinusRewriting,         // -=
-    MultRewriting,          // *=
-    DivisionRewriting,       // /=
+    PlusRewriting,              // +=
+    MinusRewriting,             // -=
+    MultRewriting,              // *=
+    DivisionRewriting,          // /=
 };
 
 enum class DataType
 {
-    Int,            // int
-    Float,          // float
+    Int,                        // int
+    Float,                      // float
 };
 
 class Token
@@ -157,19 +156,21 @@ protected:
     int line = 0;
     int sign = 0;
 public:
-    Token(){}
-    Token(int line, int sign):line(line),sign(sign){}
+    Token(TokenType type):type(type){}
+    Token(TokenType type, int line, int sign):type(type),line(line),sign(sign){}
     TokenType GetType() { return type; }
     int GetLine() { return line; }
     int GetSign() { return sign; }
     void SetType(TokenType newType) { type = newType; }
     void SetLine(int new_line) { line = new_line; }
     void SetSign(int new_sign) { sign = new_sign; }
-    std::string ToString();
+    virtual const std::string ToString(){return TypeToString();}
+    virtual const std::string TypeToString() = 0;
+    std::string ToStreamBegin(){return "Token:"+TypeToString();}
+    std::string ToStreamEnd(){return ",line:"+to_string(line)+",sign:"+to_string(sign)+";";}
+    friend std::ostream & operator <<( const std::ostream & s, const Token & t){s<<t.ToStreamBegin()<<t.ToStreamEnd()<<endl;return s;}
     friend bool operator ==( const Token &, const Token & );
     friend bool operator !=( const Token &, const Token & );
-    friend bool operator ==( const Token &, const TokenType & );
-    friend bool operator !=( const Token &, const TokenType & );
     friend std::string operator +=( std::string &, const Token & );
     friend std::string operator +=( std::string &, const TokenType & );
     friend std::string operator +( std::string &, const Token & );
@@ -179,439 +180,474 @@ public:
 class Numeric : public Token
 {
 protected:
-    TokenType type = TokenType::Numeric;
-    Numeric(int line, int sign):Token(line, sign){}
-    std::string TypeToString(){return "Numeric";}
+    NumericType numeric_type;
+public:
+    Numeric(NumericType numeric_type):numeric_type(numeric_type),Token(TokenType::Numeric){}
+    Numeric(NumericType numeric_type, int line, int sign):numeric_type(numeric_type),Token(TokenType::Numeric,line, sign){}
+    template <typename T>
+    friend bool operator ==( T p1, T p2 ){return p1.GetValue() == p2.GetValue()? true : false;}
+    template <typename T>
+    friend bool operator !=( T p1, T p2 ){return p1.GetValue() != p2.GetValue()? true : false;}
 };
 
 class IntValue : public Numeric
 {
 private:
-    NumericType type = NumericType::IntValue;
     int value;
 public:
-    IntValue(int value, int line, int sign):value(value),Numeric(line,sign){}
+    IntValue(int value):value(value),Numeric(NumericType::IntValue){}
+    IntValue(int value, int line, int sign):value(value),Numeric(NumericType::IntValue,line,sign){}
     int GetValue(){return value;}
-    std::string TypeToString(){return "Numeric::IntValue";}
+    const std::string TypeToString(){return "Numeric::IntValue";}
+    const std::string ToString(){return "Numeric::IntValue::"+value;}
 };
 
 class FloatValue : public Numeric
 {
 private:
-    NumericType numeric_type = NumericType::FloatValue;
     float value;
 public:
-    FloatValue(float value, int line, int sign):value(value),Numeric(line,sign){}
+    FloatValue(float value):value(value),Numeric(NumericType::FloatValue){}
+    FloatValue(float value, int line, int sign):value(value),Numeric(NumericType::FloatValue,line,sign){}
     float GetValue(){return value;}
-    std::string TypeToString(){return "Numeric::FloatValue";}
+    const std::string TypeToString(){return "Numeric::FloatValue";}
+    const std::string ToString(){return "Numeric::FloatValue::"+std::to_string(value);}
 };
 
 class StringLiteral : public Token  // tekst w ""
 {
-    TokenType type = TokenType::StringLiteral;
     std::string value;
 public:
-    StringLiteral(std::string value, int line, int sign):value(value),Token(line,sign){}
+    StringLiteral(std::string value):value(value),Token(TokenType::StringLiteral){}
+    StringLiteral(std::string value, int line, int sign):value(value),Token(TokenType::StringLiteral,line,sign){}
     std::string GetValue(){return value;}
-    std::string TypeToString(){return "StringLiteral";}
+    const std::string TypeToString(){return "StringLiteral";}
+    const std::string ToString(){return "StringLiteral::"+value;}
+    friend bool operator ==( const StringLiteral& s1, const StringLiteral& s2){return s1.value == s2.value;}
+    friend bool operator !=( const StringLiteral& s1, const StringLiteral& s2){return s1.value != s2.value;}
 };
 
 class Identifier : public Token  // nazwy funkcji, argumenty funkcji, właœciwoœci obiektów
 {
-    TokenType type = TokenType::Identifier;
     std::string value;
 public:
-    Identifier(std::string value, int line, int sign):value(value),Token(line,sign){}
+    Identifier(std::string value):value(value),Token(TokenType::Identifier){}
+    Identifier(std::string value, int line, int sign):value(value),Token(TokenType::Identifier,line,sign){}
     std::string GetValue(){return value;}
-    std::string TypeToString(){return "Identifier";}
+    const std::string TypeToString(){return "Identifier";}
+    const std::string ToString(){return "Identifier::"+value;}
+    friend bool operator ==( const Identifier& s1, const Identifier& s2){return s1.value == s2.value;}
+    friend bool operator !=( const Identifier& s1, const Identifier& s2){return s1.value != s2.value;}
 };
 
 class Boolean : public Token
 {
 protected:
-    TokenType type = TokenType::Boolean;
     BooleanType boolean_type;
     bool value;
 public:
-    Boolean(int line, int sign):Token(line,sign){}
+    Boolean(BooleanType boolean_type, bool value):boolean_type(boolean_type),value(value),Token(TokenType::Boolean){}
+    Boolean(BooleanType boolean_type, bool value, int line, int sign):boolean_type(boolean_type),value(value),Token(TokenType::Boolean,line,sign){}
     bool GetValue(){return value;}
-    std::string TypeToString(){return "Boolean";}
 };
 
 class False : public Boolean  // false
 {
-    BooleanType boolean_type = BooleanType::False;
-    bool value = false;
 public:
-    False(int line, int sign):Boolean(line,sign){}
+    False():Boolean(BooleanType::False,false){}
+    False(int line, int sign):Boolean(BooleanType::False,false,line,sign){}
     bool GetValue(){return value;}
-    std::string TypeToString(){return "Boolean::False";}
+    const std::string TypeToString(){return "Boolean::False";}
+    const std::string ToString(){return "Boolean::False::"+value;}
 };
 
 class True : public Boolean  // true
 {
-    BooleanType boolean_type = BooleanType::True;
-    bool value = true;
 public:
-    True(int line, int sign):Boolean(line,sign){}
+    True():Boolean(BooleanType::True,true){}
+    True(int line, int sign):Boolean(BooleanType::True,true,line,sign){}
     bool GetValue(){return value;}
-    std::string TypeToString(){return "Boolean::True";}
+    const std::string TypeToString(){return "Boolean::True";}
+    const std::string ToString(){return "Boolean::True::"+value;}
 };
 
 class Null : public Token  // null
 {
-    TokenType type = TokenType::Null;
 public:
-    Null(int line, int sign):Token(line,sign){}
-    std::string TypeToString(){return "Null";}
+    Null():Token(TokenType::Null){}
+    Null(int line, int sign):Token(TokenType::Null,line,sign){}
+    const std::string TypeToString(){return "Null";}
 };
 
 class Parenthesis : public Token
 {
-    TokenType type = TokenType::Parenthesis;
+protected:
+    ParenthesisType parenthesis_type;
 public:
-    Parenthesis(int line, int sign):Token(line,sign){}
-    std::string TypeToString(){return "Parenthesis";}
+    Parenthesis(ParenthesisType parenthesis_type):parenthesis_type(parenthesis_type),Token(TokenType::Parenthesis){}
+    Parenthesis(ParenthesisType parenthesis_type, int line, int sign):parenthesis_type(parenthesis_type),Token(TokenType::Parenthesis,line,sign){}
+    friend bool operator ==( const Parenthesis& p1, const Parenthesis& p2 ){return p1.parenthesis_type == p2.parenthesis_type ? true : false;}
+    friend bool operator !=( const Parenthesis& p1, const Parenthesis& p2 ){return p1.parenthesis_type != p2.parenthesis_type ? true : false;}
 };
 
 class ParenthesisOpen : public Parenthesis   // (
 {
-    ParenthesisType parenthesis_type = ParenthesisType::ParenthesisOpen;
 public:
-    ParenthesisOpen(int line, int sign):Parenthesis(line,sign){}
-    std::string TypeToString(){return "Parenthesis::ParenthesisOpen";}
+    ParenthesisOpen():Parenthesis(ParenthesisType::ParenthesisOpen){}
+    ParenthesisOpen(int line, int sign):Parenthesis(ParenthesisType::ParenthesisOpen,line,sign){}
+    const std::string TypeToString(){return "Parenthesis::ParenthesisOpen";}
 };
 
 class ParenthesisClose : public Parenthesis  // )
 {
-    ParenthesisType parenthesis_type = ParenthesisType::ParenthesisClose;
 public:
-    ParenthesisClose(int line, int sign):Parenthesis(line,sign){}
-    std::string TypeToString(){return "Parenthesis::ParenthesisClose";}
+    ParenthesisClose():Parenthesis(ParenthesisType::ParenthesisClose){}
+    ParenthesisClose(int line, int sign):Parenthesis(ParenthesisType::ParenthesisClose,line,sign){}
+    const std::string TypeToString(){return "Parenthesis::ParenthesisClose";}
 };
 
 class SquareBracket : public Token
 {
-    TokenType type = TokenType::SquareBracket;
+    SquareBracketType square_bracket_type;
 public:
-    SquareBracket(int line, int sign):Token(line,sign){}
-    std::string TypeToString(){return "SquareBracket";}
+    SquareBracket(SquareBracketType square_bracket_type):square_bracket_type(square_bracket_type),Token(TokenType::SquareBracket){}
+    SquareBracket(SquareBracketType square_bracket_type, int line, int sign):square_bracket_type(square_bracket_type),Token(TokenType::SquareBracket,line,sign){}
+    friend bool operator ==( const SquareBracket& p1, const SquareBracket& p2 ){return p1.square_bracket_type == p2.square_bracket_type ? true : false;}
+    friend bool operator !=( const SquareBracket& p1, const SquareBracket& p2 ){return p1.square_bracket_type != p2.square_bracket_type ? true : false;}
 };
 
 class SquareBracketOpen : public SquareBracket  // [
 {
-    SquareBracketType square_bracket_type = SquareBracketType::SquareBracketOpen;
 public:
-    SquareBracketOpen(int line, int sign):SquareBracket(line,sign){}
-    std::string TypeToString(){return "SquareBracket::SquareBracketOpen";}
+    SquareBracketOpen():SquareBracket(SquareBracketType::SquareBracketOpen){}
+    SquareBracketOpen(int line, int sign):SquareBracket(SquareBracketType::SquareBracketOpen,line,sign){}
+    const std::string TypeToString(){return "SquareBracket::SquareBracketOpen";}
 };
 
 class SquareBracketClose : public SquareBracket  // ]
 {
     SquareBracketType square_bracket_type = SquareBracketType::SquareBracketClose;
 public:
-    SquareBracketClose(int line, int sign):SquareBracket(line,sign){}
-    std::string TypeToString(){return "SquareBracket::SquareBracketClose";}
+    SquareBracketClose():SquareBracket(SquareBracketType::SquareBracketClose){}
+    SquareBracketClose(int line, int sign):SquareBracket(SquareBracketType::SquareBracketClose,line,sign){}
+    const std::string TypeToString(){return "SquareBracket::SquareBracketClose";}
 };
 
 class Relation : public Token
 {
-    TokenType type = TokenType::Relation;
+protected:
+    RelationType relation_type;
 public:
-    Relation(int line, int sign):Token(line,sign){}
+    Relation(RelationType relation_type):relation_type(relation_type),Token(TokenType::Relation){}
+    Relation(RelationType relation_type,int line, int sign):relation_type(relation_type),Token(TokenType::Relation,line,sign){}
+    friend bool operator ==( const Relation& p1, const Relation& p2 ){return p1.relation_type == p2.relation_type ? true : false;}
+    friend bool operator !=( const Relation& p1, const Relation& p2 ){return p1.relation_type != p2.relation_type ? true : false;}
 };
 
 class GreaterThan : public Relation  // >
 {
-    RelationType relation_type = RelationType::GreaterThan;
 public:
-    GreaterThan(int line, int sign):Relation(line,sign){}
-    std::string TypeToString(){return "Relation::GreaterThan";}
+    GreaterThan():Relation(RelationType::GreaterThan){}
+    GreaterThan(int line, int sign):Relation(RelationType::GreaterThan,line,sign){}
+    const std::string TypeToString(){return "Relation::GreaterThan";}
 };
 
 class LessThan : public Relation  // <
 {
-    RelationType relation_type = RelationType::LessThan;
 public:
-    LessThan(int line, int sign):Relation(line,sign){}
-    std::string TypeToString(){return "Relation::LessThan";}
+    LessThan():Relation(RelationType::LessThan){}
+    LessThan(int line, int sign):Relation(RelationType::LessThan,line,sign){}
+    const std::string TypeToString(){return "Relation::LessThan";}
 };
 
 class GreaterEqualThan : public Relation  // >=
 {
-    RelationType relation_type = RelationType::GreaterEqualThan;
 public:
-    GreaterEqualThan(int line, int sign):Relation(line,sign){}
-    std::string TypeToString(){return "Relation::GreaterEqualThan";}
+    GreaterEqualThan():Relation(RelationType::GreaterEqualThan){}
+    GreaterEqualThan(int line, int sign):Relation(RelationType::GreaterEqualThan,line,sign){}
+    const std::string TypeToString(){return "Relation::GreaterEqualThan";}
 };
 
 class LessEqualThan : public Relation  // <=
 {
-    RelationType relation_type = RelationType::LessEqualThan;
 public:
-    LessEqualThan(int line, int sign):Relation(line,sign){}
-    std::string TypeToString(){return "Relation::LessEqualThan";}
+    LessEqualThan():Relation(RelationType::LessEqualThan){}
+    LessEqualThan(int line, int sign):Relation(RelationType::LessEqualThan,line,sign){}
+    const std::string TypeToString(){return "Relation::LessEqualThan";}
 };
 
 class Equal : public Relation  // ==
 {
-    RelationType relation_type = RelationType::Equal;
 public:
-    Equal(int line, int sign):Relation(line,sign){}
-    std::string TypeToString(){return "Relation::Equal";}
+    Equal():Relation(RelationType::Equal){}
+    Equal(int line, int sign):Relation(RelationType::Equal,line,sign){}
+    const std::string TypeToString(){return "Relation::Equal";}
 };
 
 class NotEqual : public Relation  // !=
 {
-    RelationType relation_type = RelationType::NotEqual;
 public:
-    NotEqual(int line, int sign):Relation(line,sign){}
-    std::string TypeToString(){return "Relation::NotEqual";}
+    NotEqual():Relation(RelationType::NotEqual){}
+    NotEqual(int line, int sign):Relation(RelationType::NotEqual,line,sign){}
+    const std::string TypeToString(){return "Relation::NotEqual";}
 };
 
 class Comma : public Token  // ,
 {
-    TokenType type = TokenType::Comma;
 public:
-    Comma(int line, int sign):Token(line,sign){}
-    std::string TypeToString(){return "Comma";}
+    Comma():Token(TokenType::Comma){}
+    Comma(int line, int sign):Token(TokenType::Comma,line,sign){}
+    const std::string TypeToString(){return "Comma";}
 };
 
 class Dot : public Token  // .
 {
-    TokenType type = TokenType::Dot;
 public:
-    Dot(int line, int sign):Token(line,sign){}
-    std::string TypeToString(){return "Dot";}
+    Dot():Token(TokenType::Dot){}
+    Dot(int line, int sign):Token(TokenType::Dot,line,sign){}
+    const std::string TypeToString(){return "Dot";}
 };
 
 class DoubleColon : public Token  // ::
 {
-    TokenType type = TokenType::DoubleColon;
 public:
-    DoubleColon(int line, int sign):Token(line,sign){}
-    std::string TypeToString(){return "DoubleColon";}
+    DoubleColon():Token(TokenType::DoubleColon){}
+    DoubleColon(int line, int sign):Token(TokenType::DoubleColon,line,sign){}
+    const std::string TypeToString(){return "DoubleColon";}
 };
 
 class Semicolon : public Token  // ;
 {
-    TokenType type = TokenType::Semicolon;
 public:
-    Semicolon(int line, int sign):Token(line,sign){}
-    std::string TypeToString(){return "Semicolon";}
+    Semicolon():Token(TokenType::Semicolon){}
+    Semicolon(int line, int sign):Token(TokenType::Semicolon,line,sign){}
+    const std::string TypeToString(){return "Semicolon";}
 };
 
 class Rewriting : public Token  // =
 {
-    TokenType type = TokenType::Rewriting;
 public:
-    Rewriting(int line, int sign):Token(line,sign){}
-    std::string TypeToString(){return "Rewriting";}
+    Rewriting():Token(TokenType::Rewriting){}
+    Rewriting(int line, int sign):Token(TokenType::Rewriting,line,sign){}
+    const std::string TypeToString(){return "Rewriting";}
 };
 
 class Operator : public Token  // &&
 {
-    TokenType type = TokenType::Operator;
+protected:
+    OperatorType operator_type;
 public:
-    Operator(int line, int sign):Token(line,sign){}
+    Operator(OperatorType operator_type):operator_type(operator_type),Token(TokenType::Operator){}
+    Operator(OperatorType operator_type, int line, int sign):operator_type(operator_type),Token(TokenType::Operator,line,sign){}
 };
 
 class AndOperator : public Operator // &&
 {
-    OperatorType operator_type = OperatorType::AndOperator;
 public:
-    AndOperator(int line, int sign):Operator(line,sign){}
-    std::string TypeToString(){return "Operator::AndOperator";}
+    AndOperator():Operator(OperatorType::AndOperator){}
+    AndOperator(int line, int sign):Operator(OperatorType::AndOperator,line,sign){}
+    const std::string TypeToString(){return "Operator::AndOperator";}
 };
 
 class OrOperator : public Operator // ||
 {
-    OperatorType operator_type = OperatorType::OrOperator;
 public:
-    OrOperator(int line, int sign):Operator(line,sign){}
-    std::string TypeToString(){return "Operator::OrOperator";}
+    OrOperator():Operator(OperatorType::OrOperator){}
+    OrOperator(int line, int sign):Operator(OperatorType::OrOperator,line,sign){}
+    const std::string TypeToString(){return "Operator::OrOperator";}
 };
 
 class Aritmetic : public Token
 {
-    TokenType type = TokenType::Aritmetic;
+protected:
+    AritmeticType aritmetic_type;
 public:
-    Aritmetic(int line, int sign):Token(line,sign){}
+    Aritmetic(AritmeticType aritmetic_type):aritmetic_type(aritmetic_type),Token(TokenType::Aritmetic){}
+    Aritmetic(AritmeticType aritmetic_type, int line, int sign):aritmetic_type(aritmetic_type),Token(TokenType::Aritmetic,line,sign){}
 };
 
 class PlusMinus : public Aritmetic
 {
-    AritmeticType aritmetic_type = AritmeticType::PlusMinus;
+protected:
+    PlusMinusType plus_minus_type;
 public:
-    PlusMinus(int line, int sign):Aritmetic(line,sign){}
+    PlusMinus(PlusMinusType plus_minus_type):plus_minus_type(plus_minus_type),Aritmetic(AritmeticType::PlusMinus){}
+    PlusMinus(PlusMinusType plus_minus_type, int line, int sign):plus_minus_type(plus_minus_type),Aritmetic(AritmeticType::PlusMinus,line,sign){}
 };
 
 class Plus : public PlusMinus  // +
 {
-    PlusMinusType plus_minus_type = PlusMinusType::Plus;
 public:
-    Plus(int line, int sign):PlusMinus(line,sign){}
-    std::string TypeToString(){return "Aritmetic::PlusMinus::Plus";}
+    Plus():PlusMinus(PlusMinusType::Plus){}
+    Plus(int line, int sign):PlusMinus(PlusMinusType::Plus,line,sign){}
+    const std::string TypeToString(){return "Aritmetic::PlusMinus::Plus";}
 };
 
 class Minus : public PlusMinus  // -
 {
-    PlusMinusType plus_minus_type = PlusMinusType::Minus;
 public:
-    Minus(int line, int sign):PlusMinus(line,sign){}
-    std::string TypeToString(){return "Aritmetic::PlusMinus::Minus";}
+    Minus():PlusMinus(PlusMinusType::Minus){}
+    Minus(int line, int sign):PlusMinus(PlusMinusType::Minus,line,sign){}
+    const std::string TypeToString(){return "Aritmetic::PlusMinus::Minus";}
 };
 
 class MultDiv : public Aritmetic
 {
-    AritmeticType aritmetic_type = AritmeticType::MultDiv;
+    MultDivType mult_div_type;
 public:
-    MultDiv(int line, int sign):Aritmetic(line,sign){}
+    MultDiv(MultDivType mult_div_type):mult_div_type(mult_div_type),Aritmetic(AritmeticType::MultDiv){}
+    MultDiv(MultDivType mult_div_type, int line, int sign):mult_div_type(mult_div_type),Aritmetic(AritmeticType::MultDiv,line,sign){}
 };
 
 class Multiplication : public MultDiv  // *
 {
-    MultDivType mult_div_type = MultDivType::Multiplication;
 public:
-    Multiplication(int line, int sign):MultDiv(line,sign){}
-    std::string TypeToString(){return "Aritmetic::MultDiv::Multiplication";}
+    Multiplication():MultDiv(MultDivType::Multiplication){}
+    Multiplication(int line, int sign):MultDiv(MultDivType::Multiplication,line,sign){}
+    const std::string TypeToString(){return "Aritmetic::MultDiv::Multiplication";}
 };
 
 class Division : public MultDiv // /
 {
-    MultDivType mult_div_type = MultDivType::Division;
 public:
-    Division(int line, int sign):MultDiv(line,sign){}
-    std::string TypeToString(){return "Aritmetic::MultDiv::Division";}
+    Division():MultDiv(MultDivType::Division){}
+    Division(int line, int sign):MultDiv(MultDivType::Division,line,sign){}
+    const std::string TypeToString(){return "Aritmetic::MultDiv::Division";}
 };
 
 class AritmeticRewriting : public Token  // +=
 {
-    TokenType type = TokenType::AritmeticRewriting;
+protected:
+    AritmeticRewritingType aritmetic_rewriting_type;
 public:
-    AritmeticRewriting(int line, int sign):Token(line,sign){}
+    AritmeticRewriting(AritmeticRewritingType aritmetic_rewriting_type):aritmetic_rewriting_type(aritmetic_rewriting_type),Token(TokenType::AritmeticRewriting){}
+    AritmeticRewriting(AritmeticRewritingType aritmetic_rewriting_type,int line, int sign):aritmetic_rewriting_type(aritmetic_rewriting_type),Token(TokenType::AritmeticRewriting,line,sign){}
 };
 
 class PlusRewriting : public AritmeticRewriting  // +=
 {
-    AritmeticRewritingType type = AritmeticRewritingType::PlusRewriting;
 public:
-     PlusRewriting(int line, int sign):AritmeticRewriting(line,sign){}
-    std::string TypeToString(){return "AritmeticRewriting::PlusRewriting";}
+    PlusRewriting():AritmeticRewriting(AritmeticRewritingType::PlusRewriting){}
+    PlusRewriting(int line, int sign):AritmeticRewriting(AritmeticRewritingType::PlusRewriting,line,sign){}
+    const std::string TypeToString(){return "AritmeticRewriting::PlusRewriting";}
 };
 
 class MinusRewriting : public AritmeticRewriting  // -=
 {
-    AritmeticRewritingType type = AritmeticRewritingType::MinusRewriting;
 public:
-     MinusRewriting(int line, int sign):AritmeticRewriting(line,sign){}
-    std::string TypeToString(){return "AritmeticRewriting::MinusRewriting";}
+    MinusRewriting():AritmeticRewriting(AritmeticRewritingType::MinusRewriting){}
+    MinusRewriting(int line, int sign):AritmeticRewriting(AritmeticRewritingType::MinusRewriting,line,sign){}
+    const std::string TypeToString(){return "AritmeticRewriting::MinusRewriting";}
 };
 
 class MultRewriting : public AritmeticRewriting  // *=
 {
-    AritmeticRewritingType type = AritmeticRewritingType::MultRewriting;
 public:
-     MultRewriting(int line, int sign):AritmeticRewriting(line,sign){}
-    std::string TypeToString(){return "AritmeticRewriting::MultRewriting";}
+    MultRewriting():AritmeticRewriting(AritmeticRewritingType::MultRewriting){}
+    MultRewriting(int line, int sign):AritmeticRewriting(AritmeticRewritingType::MultRewriting,line,sign){}
+    const std::string TypeToString(){return "AritmeticRewriting::MultRewriting";}
 };
 
 class DivisionRewriting : public AritmeticRewriting // /=
 {
-    AritmeticRewritingType type = AritmeticRewritingType::DivisionRewriting;
 public:
-     DivisionRewriting(int line, int sign):AritmeticRewriting(line,sign){}
-    std::string TypeToString(){return "AritmeticRewriting::DivisionRewriting";}
+    DivisionRewriting():AritmeticRewriting(AritmeticRewritingType::DivisionRewriting){}
+    DivisionRewriting(int line, int sign):AritmeticRewriting(AritmeticRewritingType::DivisionRewriting,line,sign){}
+    const std::string TypeToString(){return "AritmeticRewriting::DivisionRewriting";}
 };
 
 class Data : public Token
 {
-    TokenType type = TokenType::Data;
+protected:
+    DataType data_type;
 public:
-    Data(int line, int sign):Token(line,sign){}
+    Data(DataType data_type):data_type(data_type),Token(TokenType::Data){}
+    Data(DataType data_type, int line, int sign):data_type(data_type),Token(TokenType::Data,line,sign){}
 };
 
 class Int : public Data
 {
-    DataType data_type = DataType::Int;
 public:
-    Int(int line, int sign):Data(line,sign){}
-    std::string TypeToString(){return "Data::Int";}
+    Int():Data(DataType::Int){}
+    Int(int line, int sign):Data(DataType::Int,line,sign){}
+    const std::string TypeToString(){return "Data::Int";}
 };
 
 class Float : public Data
 {
-    DataType data_type = DataType::Float;
 public:
-    Float(int line, int sign):Data(line,sign){}
-    std::string TypeToString(){return "Data::Int";}
+    Float():Data(DataType::Float){}
+    Float(int line, int sign):Data(DataType::Float,line,sign){}
+    const std::string TypeToString(){return "Data::Int";}
 };
 
 class For : public Token  // for
 {
-    TokenType type = TokenType::For;
 public:
-    For(int line, int sign):Token(line,sign){}
-    std::string TypeToString(){return "For";}
+    For():Token(TokenType::For){}
+    For(int line, int sign):Token(TokenType::For,line,sign){}
+    const std::string TypeToString(){return "For";}
 };
 
 class Foreach : public Token  // foteach
 {
-    TokenType type = TokenType::Foreach;
 public:
-    Foreach(int line, int sign):Token(line,sign){}
-    std::string TypeToString(){return "Foreach";}
+    Foreach():Token(TokenType::Foreach){}
+    Foreach(int line, int sign):Token(TokenType::Foreach,line,sign){}
+    const std::string TypeToString() {return "Foreach";}
 };
 
 class If : public Token  // if
 {
-    TokenType type = TokenType::If;
 public:
-    If(int line, int sign):Token(line,sign){}
-    std::string TypeToString(){return "If";}
+    If():Token(TokenType::If){}
+    If(int line, int sign):Token(TokenType::If,line,sign){}
+    const std::string TypeToString(){return "If";}
 };
 
 class Else : public Token  // else
 {
-    TokenType type = TokenType::Else;
 public:
-    Else(int line, int sign):Token(line,sign){}
-    std::string TypeToString(){return "Else";}
+    Else():Token(TokenType::Else){}
+    Else(int line, int sign):Token(TokenType::Else,line,sign){}
+    const std::string TypeToString(){return "Else";}
 };
 
 class Collection : public Token  // collection
 {
-    TokenType type = TokenType::Collection;
 public:
-    Collection(int line, int sign):Token(line,sign){}
-    std::string TypeToString(){return "Collection";}
+    Collection():Token(TokenType::Collection){}
+    Collection(int line, int sign):Token(TokenType::Collection,line,sign){}
+    const std::string TypeToString(){return "Collection";}
 };
 
 class Return : public Token  // Return
 {
-    TokenType type = TokenType::Return;
 public:
-    Return(int line, int sign):Token(line,sign){}
-    std::string TypeToString(){return "Return";}
+    Return():Token(TokenType::Return){}
+    Return(int line, int sign):Token(TokenType::Return,line,sign){}
+    const std::string TypeToString(){return "Return";}
 };
 
 class Undefined : public Token  // Return
 {
-    TokenType type = TokenType::Undefined;
     std::string value;
 public:
-    Undefined(std::string value, int line, int sign):value(value),Token(line,sign){}
+    Undefined():Token(TokenType::Undefined){}
+    Undefined(std::string value):value(value),Token(TokenType::Undefined){}
+    Undefined(std::string value, int line, int sign):value(value),Token(TokenType::Undefined,line,sign){}
     std::string GetValue(){return value;}
-    std::string TypeToString(){return "Undefined";}
+    const std::string TypeToString(){return "Undefined";}
+    friend bool operator ==( const Undefined& p1, const Undefined& p2 ){return p1.value == p2.value ? true : false;}
+    friend bool operator !=( const Undefined& p1, const Undefined& p2 ){return p1.value != p2.value ? true : false;}
 };
 
-class Empty : public Token  // Return
+class Eof : public Token  // Return
 {
-    TokenType type = TokenType::Empty;
 public:
-    Empty(){}
+    Eof():Token(TokenType::Eof){}
+    Eof(int line, int sign):Token(TokenType::Eof,line,sign){}
+    const std::string TypeToString(){return "Eof";}
 };
-
-std::string ToString(TokenType);
 
 #endif // TOKEN_H

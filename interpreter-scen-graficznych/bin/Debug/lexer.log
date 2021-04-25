@@ -1,0 +1,1533 @@
+
+Lexer starting...
+
+Lexer starting...
+
+Lexer starting...
+Get new token:
+type:'Identifier; line: 0; sign:1;
+
+Lexer starting...
+Get new token:
+type:'Identifier; line: 0; sign:1;
+Get new token:
+type:'Brace::BraceOpen; line: 1; sign:1;
+Get new token:
+type:'Identifier; line: 2; sign:2;
+Get new token:
+type:'Identifier; line: 2; sign:10;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 2; sign:14;
+Get new token:
+type:'SquareBracket::SquareBracketOpen; line: 2; sign:15;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 2; sign:16;
+Get new token:
+type:'Aritmetic::PlusMinus::Minus; line: 2; sign:17;
+Get new token:
+type:'Numeric::FloatValue; line: 2; sign:18;
+Get new token:
+type:'Comma; line: 2; sign:22;
+Get new token:
+type:'Numeric::IntValue; line: 2; sign:23;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 2; sign:24;
+Get new token:
+type:'Comma; line: 2; sign:25;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 2; sign:26;
+Get new token:
+type:'Numeric::IntValue; line: 2; sign:27;
+Get new token:
+type:'Comma; line: 2; sign:28;
+Get new token:
+type:'Numeric::FloatValue; line: 2; sign:29;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 2; sign:33;
+Get new token:
+type:'Comma; line: 2; sign:34;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 2; sign:35;
+Get new token:
+type:'Numeric::FloatValue; line: 2; sign:36;
+Get new token:
+type:'Comma; line: 2; sign:40;
+Get new token:
+type:'Numeric::IntValue; line: 2; sign:41;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 2; sign:42;
+Get new token:
+type:'SquareBracket::SquareBracketClose; line: 2; sign:43;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 2; sign:44;
+Get new token:
+type:'Semicolon; line: 2; sign:45;
+Get new token:
+type:'Identifier; line: 3; sign:2;
+Get new token:
+type:'Identifier; line: 3; sign:12;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 3; sign:18;
+Get new token:
+type:'Numeric::FloatValue; line: 3; sign:19;
+Get new token:
+type:'Comma; line: 3; sign:23;
+Get new token:
+type:'Numeric::FloatValue; line: 3; sign:24;
+Get new token:
+type:'Comma; line: 3; sign:28;
+Get new token:
+type:'Numeric::IntValue; line: 3; sign:29;
+Get new token:
+type:'Comma; line: 3; sign:30;
+Get new token:
+type:'Aritmetic::PlusMinus::Minus; line: 3; sign:31;
+Get new token:
+type:'Numeric::FloatValue; line: 3; sign:32;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 3; sign:36;
+Get new token:
+type:'Semicolon; line: 3; sign:37;
+Get new token:
+type:'Identifier; line: 4; sign:2;
+Get new token:
+type:'Identifier; line: 4; sign:13;
+Get new token:
+type:'Semicolon; line: 4; sign:17;
+Get new token:
+type:'Identifier; line: 6; sign:2;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 6; sign:7;
+Get new token:
+type:'Data::Int; line: 6; sign:8;
+Get new token:
+type:'Identifier; line: 6; sign:14;
+Get new token:
+type:'Comma; line: 6; sign:15;
+Get new token:
+type:'Data::Int; line: 6; sign:17;
+Get new token:
+type:'Identifier; line: 6; sign:23;
+Get new token:
+type:'Comma; line: 6; sign:24;
+Get new token:
+type:'Data::Int; line: 6; sign:26;
+Get new token:
+type:'Identifier; line: 6; sign:30;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 6; sign:42;
+Get new token:
+type:'Brace::BraceOpen; line: 7; sign:2;
+Get new token:
+type:'Identifier; line: 8; sign:3;
+Get new token:
+type:'Dot; line: 8; sign:9;
+Get new token:
+type:'Identifier; line: 8; sign:10;
+Get new token:
+type:'Rewriting; line: 8; sign:20;
+Get new token:
+type:'Identifier; line: 8; sign:22;
+Get new token:
+type:'Semicolon; line: 8; sign:26;
+Get new token:
+type:'Identifier; line: 9; sign:3;
+Get new token:
+type:'Dot; line: 9; sign:7;
+Get new token:
+type:'Identifier; line: 9; sign:8;
+Get new token:
+type:'Rewriting; line: 9; sign:18;
+Get new token:
+type:'Identifier; line: 9; sign:20;
+Get new token:
+type:'Semicolon; line: 9; sign:23;
+Get new token:
+type:'If; line: 10; sign:3;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 10; sign:5;
+Get new token:
+type:'Identifier; line: 10; sign:6;
+Get new token:
+type:'Relation::GreaterThan; line: 10; sign:19;
+Get new token:
+type:'Numeric::IntValue; line: 10; sign:21;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 10; sign:22;
+Get new token:
+type:'Brace::BraceOpen; line: 11; sign:3;
+Get new token:
+type:'If; line: 12; sign:4;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 12; sign:6;
+Get new token:
+type:'Identifier; line: 12; sign:7;
+Get new token:
+type:'Relation::LessEqualThan; line: 12; sign:20;
+Get new token:
+type:'Numeric::IntValue; line: 12; sign:23;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 12; sign:24;
+Get new token:
+type:'Brace::BraceOpen; line: 13; sign:4;
+Get new token:
+type:'Data::Int; line: 14; sign:5;
+Get new token:
+type:'Identifier; line: 14; sign:11;
+Get new token:
+type:'Rewriting; line: 14; sign:18;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 14; sign:20;
+Get new token:
+type:'Identifier; line: 14; sign:21;
+Get new token:
+type:'Dot; line: 14; sign:27;
+Get new token:
+type:'Identifier; line: 14; sign:28;
+Get new token:
+type:'Aritmetic::PlusMinus::Minus; line: 14; sign:34;
+Get new token:
+type:'Numeric::IntValue; line: 14; sign:36;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 14; sign:37;
+Get new token:
+type:'Aritmetic::MultDiv::Division; line: 14; sign:39;
+Get new token:
+type:'Identifier; line: 14; sign:41;
+Get new token:
+type:'Semicolon; line: 14; sign:53;
+Get new token:
+type:'For; line: 16; sign:5;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 16; sign:8;
+Get new token:
+type:'Data::Int; line: 16; sign:9;
+Get new token:
+type:'Identifier; line: 16; sign:13;
+Get new token:
+type:'Rewriting; line: 16; sign:15;
+Get new token:
+type:'Numeric::IntValue; line: 16; sign:17;
+Get new token:
+type:'Semicolon; line: 16; sign:18;
+Get new token:
+type:'Identifier; line: 16; sign:20;
+Get new token:
+type:'Relation::LessThan; line: 16; sign:22;
+Get new token:
+type:'Identifier; line: 16; sign:24;
+Get new token:
+type:'Semicolon; line: 16; sign:36;
+Get new token:
+type:'Identifier; line: 16; sign:38;
+Get new token:
+type:'Aritmetic::PlusMinus::Plus; line: 16; sign:39;
+Get new token:
+type:'Aritmetic::PlusMinus::Plus; line: 16; sign:40;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 16; sign:41;
+Get new token:
+type:'Brace::BraceOpen; line: 17; sign:5;
+Get new token:
+type:'Identifier; line: 18; sign:6;
+Get new token:
+type:'Identifier; line: 18; sign:16;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 18; sign:20;
+Get new token:
+type:'Numeric::FloatValue; line: 18; sign:21;
+Get new token:
+type:'Comma; line: 18; sign:24;
+Get new token:
+type:'Numeric::FloatValue; line: 18; sign:25;
+Get new token:
+type:'Comma; line: 18; sign:28;
+Get new token:
+type:'Aritmetic::PlusMinus::Minus; line: 18; sign:29;
+Get new token:
+type:'Numeric::IntValue; line: 18; sign:30;
+Get new token:
+type:'Comma; line: 18; sign:32;
+Get new token:
+type:'Identifier; line: 18; sign:33;
+
+Lexer starting...
+Get new token:
+type:'Identifier; line: 0; sign:1;
+Get new token:
+type:'Brace::BraceOpen; line: 1; sign:1;
+Get new token:
+type:'Identifier; line: 2; sign:2;
+Get new token:
+type:'Identifier; line: 2; sign:10;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 2; sign:14;
+Get new token:
+type:'SquareBracket::SquareBracketOpen; line: 2; sign:15;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 2; sign:16;
+Get new token:
+type:'Aritmetic::PlusMinus::Minus; line: 2; sign:17;
+Get new token:
+type:'Numeric::FloatValue; line: 2; sign:18;
+Get new token:
+type:'Comma; line: 2; sign:22;
+Get new token:
+type:'Numeric::IntValue; line: 2; sign:23;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 2; sign:24;
+Get new token:
+type:'Comma; line: 2; sign:25;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 2; sign:26;
+Get new token:
+type:'Numeric::IntValue; line: 2; sign:27;
+Get new token:
+type:'Comma; line: 2; sign:28;
+Get new token:
+type:'Numeric::FloatValue; line: 2; sign:29;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 2; sign:33;
+Get new token:
+type:'Comma; line: 2; sign:34;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 2; sign:35;
+Get new token:
+type:'Numeric::FloatValue; line: 2; sign:36;
+Get new token:
+type:'Comma; line: 2; sign:40;
+Get new token:
+type:'Numeric::IntValue; line: 2; sign:41;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 2; sign:42;
+Get new token:
+type:'SquareBracket::SquareBracketClose; line: 2; sign:43;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 2; sign:44;
+Get new token:
+type:'Semicolon; line: 2; sign:45;
+Get new token:
+type:'Identifier; line: 3; sign:2;
+Get new token:
+type:'Identifier; line: 3; sign:12;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 3; sign:18;
+Get new token:
+type:'Numeric::FloatValue; line: 3; sign:19;
+Get new token:
+type:'Comma; line: 3; sign:23;
+Get new token:
+type:'Numeric::FloatValue; line: 3; sign:24;
+Get new token:
+type:'Comma; line: 3; sign:28;
+Get new token:
+type:'Numeric::IntValue; line: 3; sign:29;
+Get new token:
+type:'Comma; line: 3; sign:30;
+Get new token:
+type:'Aritmetic::PlusMinus::Minus; line: 3; sign:31;
+Get new token:
+type:'Numeric::FloatValue; line: 3; sign:32;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 3; sign:36;
+Get new token:
+type:'Semicolon; line: 3; sign:37;
+Get new token:
+type:'Identifier; line: 4; sign:2;
+Get new token:
+type:'Identifier; line: 4; sign:13;
+Get new token:
+type:'Semicolon; line: 4; sign:17;
+Get new token:
+type:'Identifier; line: 6; sign:2;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 6; sign:7;
+Get new token:
+type:'Data::Int; line: 6; sign:8;
+Get new token:
+type:'Identifier; line: 6; sign:14;
+Get new token:
+type:'Comma; line: 6; sign:15;
+Get new token:
+type:'Data::Int; line: 6; sign:17;
+Get new token:
+type:'Identifier; line: 6; sign:23;
+Get new token:
+type:'Comma; line: 6; sign:24;
+Get new token:
+type:'Data::Int; line: 6; sign:26;
+Get new token:
+type:'Identifier; line: 6; sign:30;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 6; sign:42;
+Get new token:
+type:'Brace::BraceOpen; line: 7; sign:2;
+Get new token:
+type:'Identifier; line: 8; sign:3;
+Get new token:
+type:'Dot; line: 8; sign:9;
+Get new token:
+type:'Identifier; line: 8; sign:10;
+Get new token:
+type:'Rewriting; line: 8; sign:20;
+Get new token:
+type:'Identifier; line: 8; sign:22;
+Get new token:
+type:'Semicolon; line: 8; sign:26;
+Get new token:
+type:'Identifier; line: 9; sign:3;
+Get new token:
+type:'Dot; line: 9; sign:7;
+Get new token:
+type:'Identifier; line: 9; sign:8;
+Get new token:
+type:'Rewriting; line: 9; sign:18;
+Get new token:
+type:'Identifier; line: 9; sign:20;
+Get new token:
+type:'Semicolon; line: 9; sign:23;
+Get new token:
+type:'If; line: 10; sign:3;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 10; sign:5;
+Get new token:
+type:'Identifier; line: 10; sign:6;
+Get new token:
+type:'Relation::GreaterThan; line: 10; sign:19;
+Get new token:
+type:'Numeric::IntValue; line: 10; sign:21;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 10; sign:22;
+Get new token:
+type:'Brace::BraceOpen; line: 11; sign:3;
+Get new token:
+type:'If; line: 12; sign:4;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 12; sign:6;
+Get new token:
+type:'Identifier; line: 12; sign:7;
+Get new token:
+type:'Relation::LessEqualThan; line: 12; sign:20;
+Get new token:
+type:'Numeric::IntValue; line: 12; sign:23;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 12; sign:24;
+Get new token:
+type:'Brace::BraceOpen; line: 13; sign:4;
+Get new token:
+type:'Data::Int; line: 14; sign:5;
+Get new token:
+type:'Identifier; line: 14; sign:11;
+Get new token:
+type:'Rewriting; line: 14; sign:18;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 14; sign:20;
+Get new token:
+type:'Identifier; line: 14; sign:21;
+Get new token:
+type:'Dot; line: 14; sign:27;
+Get new token:
+type:'Identifier; line: 14; sign:28;
+Get new token:
+type:'Aritmetic::PlusMinus::Minus; line: 14; sign:34;
+Get new token:
+type:'Numeric::IntValue; line: 14; sign:36;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 14; sign:37;
+Get new token:
+type:'Aritmetic::MultDiv::Division; line: 14; sign:39;
+Get new token:
+type:'Identifier; line: 14; sign:41;
+Get new token:
+type:'Semicolon; line: 14; sign:53;
+Get new token:
+type:'For; line: 16; sign:5;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 16; sign:8;
+Get new token:
+type:'Data::Int; line: 16; sign:9;
+Get new token:
+type:'Identifier; line: 16; sign:13;
+Get new token:
+type:'Rewriting; line: 16; sign:15;
+Get new token:
+type:'Numeric::IntValue; line: 16; sign:17;
+Get new token:
+type:'Semicolon; line: 16; sign:18;
+Get new token:
+type:'Identifier; line: 16; sign:20;
+Get new token:
+type:'Relation::LessThan; line: 16; sign:22;
+Get new token:
+type:'Identifier; line: 16; sign:24;
+Get new token:
+type:'Semicolon; line: 16; sign:36;
+Get new token:
+type:'Identifier; line: 16; sign:38;
+Get new token:
+type:'Aritmetic::PlusMinus::Plus; line: 16; sign:39;
+Get new token:
+type:'Aritmetic::PlusMinus::Plus; line: 16; sign:40;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 16; sign:41;
+Get new token:
+type:'Brace::BraceOpen; line: 17; sign:5;
+Get new token:
+type:'Identifier; line: 18; sign:6;
+Get new token:
+type:'Identifier; line: 18; sign:16;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 18; sign:20;
+Get new token:
+type:'Numeric::FloatValue; line: 18; sign:21;
+Get new token:
+type:'Comma; line: 18; sign:24;
+Get new token:
+type:'Numeric::FloatValue; line: 18; sign:25;
+Get new token:
+type:'Comma; line: 18; sign:28;
+Get new token:
+type:'Aritmetic::PlusMinus::Minus; line: 18; sign:29;
+Get new token:
+type:'Numeric::IntValue; line: 18; sign:30;
+Get new token:
+type:'Comma; line: 18; sign:32;
+Get new token:
+type:'Identifier; line: 18; sign:33;
+Get new token:
+type:'Aritmetic::MultDiv::Multiplication; line: 18; sign:39;
+Get new token:
+type:'Identifier; line: 18; sign:40;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 18; sign:41;
+Get new token:
+type:'Semicolon; line: 18; sign:42;
+Get new token:
+type:'Identifier; line: 19; sign:6;
+Get new token:
+type:'Dot; line: 19; sign:10;
+Get new token:
+type:'Identifier; line: 19; sign:11;
+Get new token:
+type:'Rewriting; line: 19; sign:21;
+Get new token:
+type:'Identifier; line: 19; sign:23;
+Get new token:
+type:'Semicolon; line: 19; sign:27;
+Get new token:
+type:'Identifier; line: 20; sign:6;
+Get new token:
+type:'Dot; line: 20; sign:10;
+Get new token:
+type:'Identifier; line: 20; sign:11;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 20; sign:14;
+Get new token:
+type:'Identifier; line: 20; sign:15;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 20; sign:19;
+Get new token:
+type:'Semicolon; line: 20; sign:20;
+Get new token:
+type:'Brace::BraceClose; line: 21; sign:5;
+Get new token:
+type:'Brace::BraceClose; line: 22; sign:4;
+Get new token:
+type:'Brace::BraceClose; line: 23; sign:3;
+Get new token:
+type:'Brace::BraceClose; line: 24; sign:2;
+Get new token:
+type:'Brace::BraceClose; line: 25; sign:1;
+Get new token:
+type:'Identifier; line: 27; sign:1;
+Get new token:
+type:'Identifier; line: 27; sign:6;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 27; sign:10;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 27; sign:11;
+Get new token:
+type:'Brace::BraceOpen; line: 28; sign:1;
+Get new token:
+type:'Identifier; line: 29; sign:2;
+Get new token:
+type:'Identifier; line: 29; sign:8;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 29; sign:13;
+Get new token:
+type:'Numeric::FloatValue; line: 29; sign:14;
+Get new token:
+type:'Comma; line: 29; sign:19;
+Get new token:
+type:'Numeric::FloatValue; line: 29; sign:20;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 29; sign:25;
+Get new token:
+type:'Semicolon; line: 29; sign:26;
+Get new token:
+type:'Identifier; line: 30; sign:2;
+Get new token:
+type:'Identifier; line: 30; sign:13;
+Get new token:
+type:'Semicolon; line: 30; sign:18;
+Get new token:
+type:'Identifier; line: 31; sign:2;
+Get new token:
+type:'Identifier; line: 31; sign:8;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 31; sign:14;
+Get new token:
+type:'Numeric::IntValue; line: 31; sign:15;
+Get new token:
+type:'Comma; line: 31; sign:17;
+Get new token:
+type:'Numeric::IntValue; line: 31; sign:18;
+Get new token:
+type:'Comma; line: 31; sign:20;
+Get new token:
+type:'Numeric::IntValue; line: 31; sign:21;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 31; sign:22;
+Get new token:
+type:'Semicolon; line: 31; sign:23;
+Get new token:
+type:'Identifier; line: 32; sign:2;
+Get new token:
+type:'Dot; line: 32; sign:7;
+Get new token:
+type:'Identifier; line: 32; sign:8;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 32; sign:11;
+Get new token:
+type:'Identifier; line: 32; sign:12;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 32; sign:18;
+Get new token:
+type:'Semicolon; line: 32; sign:19;
+Get new token:
+type:'Identifier; line: 33; sign:2;
+Get new token:
+type:'Identifier; line: 33; sign:8;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 33; sign:14;
+Get new token:
+type:'Numeric::IntValue; line: 33; sign:15;
+Get new token:
+type:'Comma; line: 33; sign:18;
+Get new token:
+type:'Numeric::IntValue; line: 33; sign:19;
+Get new token:
+type:'Comma; line: 33; sign:21;
+Get new token:
+type:'Numeric::IntValue; line: 33; sign:22;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 33; sign:23;
+Get new token:
+type:'Semicolon; line: 33; sign:24;
+Get new token:
+type:'Identifier; line: 34; sign:2;
+Get new token:
+type:'Dot; line: 34; sign:7;
+Get new token:
+type:'Identifier; line: 34; sign:8;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 34; sign:11;
+Get new token:
+type:'Identifier; line: 34; sign:12;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 34; sign:18;
+Get new token:
+type:'Semicolon; line: 34; sign:19;
+Get new token:
+type:'Identifier; line: 35; sign:2;
+Get new token:
+type:'Identifier; line: 35; sign:8;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 35; sign:14;
+Get new token:
+type:'Numeric::IntValue; line: 35; sign:15;
+Get new token:
+type:'Comma; line: 35; sign:18;
+Get new token:
+type:'Numeric::IntValue; line: 35; sign:19;
+Get new token:
+type:'Comma; line: 35; sign:21;
+Get new token:
+type:'Numeric::IntValue; line: 35; sign:22;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 35; sign:23;
+Get new token:
+type:'Semicolon; line: 35; sign:24;
+Get new token:
+type:'Identifier; line: 36; sign:2;
+Get new token:
+type:'Dot; line: 36; sign:7;
+Get new token:
+type:'Identifier; line: 36; sign:8;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 36; sign:11;
+Get new token:
+type:'Identifier; line: 36; sign:12;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 36; sign:18;
+Get new token:
+type:'Semicolon; line: 36; sign:19;
+Get new token:
+type:'Brace::BraceClose; line: 37; sign:1;
+End of input stream.
+Get new token:
+type:'Eof; line: 38; sign:1;
+
+Lexer starting...
+Get new token:
+type:'Identifier; line: 0; sign:1;
+Get new token:
+type:'Brace::BraceOpen; line: 1; sign:1;
+Get new token:
+type:'Identifier; line: 2; sign:2;
+Get new token:
+type:'Identifier; line: 2; sign:10;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 2; sign:14;
+Get new token:
+type:'SquareBracket::SquareBracketOpen; line: 2; sign:15;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 2; sign:16;
+Get new token:
+type:'Aritmetic::PlusMinus::Minus; line: 2; sign:17;
+Get new token:
+type:'Numeric::FloatValue; line: 2; sign:18;
+Get new token:
+type:'Comma; line: 2; sign:22;
+Get new token:
+type:'Numeric::IntValue; line: 2; sign:23;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 2; sign:24;
+Get new token:
+type:'Comma; line: 2; sign:25;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 2; sign:26;
+Get new token:
+type:'Numeric::IntValue; line: 2; sign:27;
+Get new token:
+type:'Comma; line: 2; sign:28;
+Get new token:
+type:'Numeric::FloatValue; line: 2; sign:29;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 2; sign:33;
+Get new token:
+type:'Comma; line: 2; sign:34;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 2; sign:35;
+Get new token:
+type:'Numeric::FloatValue; line: 2; sign:36;
+Get new token:
+type:'Comma; line: 2; sign:40;
+Get new token:
+type:'Numeric::IntValue; line: 2; sign:41;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 2; sign:42;
+Get new token:
+type:'SquareBracket::SquareBracketClose; line: 2; sign:43;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 2; sign:44;
+Get new token:
+type:'Semicolon; line: 2; sign:45;
+Get new token:
+type:'Identifier; line: 3; sign:2;
+Get new token:
+type:'Identifier; line: 3; sign:12;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 3; sign:18;
+Get new token:
+type:'Numeric::FloatValue; line: 3; sign:19;
+Get new token:
+type:'Comma; line: 3; sign:23;
+Get new token:
+type:'Numeric::FloatValue; line: 3; sign:24;
+Get new token:
+type:'Comma; line: 3; sign:28;
+Get new token:
+type:'Numeric::IntValue; line: 3; sign:29;
+Get new token:
+type:'Comma; line: 3; sign:30;
+Get new token:
+type:'Aritmetic::PlusMinus::Minus; line: 3; sign:31;
+Get new token:
+type:'Numeric::FloatValue; line: 3; sign:32;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 3; sign:36;
+Get new token:
+type:'Semicolon; line: 3; sign:37;
+Get new token:
+type:'Identifier; line: 4; sign:2;
+Get new token:
+type:'Identifier; line: 4; sign:13;
+Get new token:
+type:'Semicolon; line: 4; sign:17;
+Get new token:
+type:'Identifier; line: 6; sign:2;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 6; sign:7;
+Get new token:
+type:'Data::Int; line: 6; sign:8;
+Get new token:
+type:'Identifier; line: 6; sign:14;
+Get new token:
+type:'Comma; line: 6; sign:15;
+Get new token:
+type:'Data::Int; line: 6; sign:17;
+Get new token:
+type:'Identifier; line: 6; sign:23;
+Get new token:
+type:'Comma; line: 6; sign:24;
+Get new token:
+type:'Data::Int; line: 6; sign:26;
+Get new token:
+type:'Identifier; line: 6; sign:30;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 6; sign:42;
+Get new token:
+type:'Brace::BraceOpen; line: 7; sign:2;
+Get new token:
+type:'Identifier; line: 8; sign:3;
+Get new token:
+type:'Dot; line: 8; sign:9;
+Get new token:
+type:'Identifier; line: 8; sign:10;
+Get new token:
+type:'Rewriting; line: 8; sign:20;
+Get new token:
+type:'Identifier; line: 8; sign:22;
+Get new token:
+type:'Semicolon; line: 8; sign:26;
+Get new token:
+type:'Identifier; line: 9; sign:3;
+Get new token:
+type:'Dot; line: 9; sign:7;
+Get new token:
+type:'Identifier; line: 9; sign:8;
+Get new token:
+type:'Rewriting; line: 9; sign:18;
+Get new token:
+type:'Identifier; line: 9; sign:20;
+Get new token:
+type:'Semicolon; line: 9; sign:23;
+Get new token:
+type:'If; line: 10; sign:3;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 10; sign:5;
+Get new token:
+type:'Identifier; line: 10; sign:6;
+Get new token:
+type:'Relation::GreaterThan; line: 10; sign:19;
+Get new token:
+type:'Numeric::IntValue; line: 10; sign:21;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 10; sign:22;
+Get new token:
+type:'Brace::BraceOpen; line: 11; sign:3;
+Get new token:
+type:'If; line: 12; sign:4;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 12; sign:6;
+Get new token:
+type:'Identifier; line: 12; sign:7;
+Get new token:
+type:'Relation::LessEqualThan; line: 12; sign:20;
+Get new token:
+type:'Numeric::IntValue; line: 12; sign:23;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 12; sign:24;
+Get new token:
+type:'Brace::BraceOpen; line: 13; sign:4;
+Get new token:
+type:'Data::Int; line: 14; sign:5;
+Get new token:
+type:'Identifier; line: 14; sign:11;
+Get new token:
+type:'Rewriting; line: 14; sign:18;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 14; sign:20;
+Get new token:
+type:'Identifier; line: 14; sign:21;
+Get new token:
+type:'Dot; line: 14; sign:27;
+Get new token:
+type:'Identifier; line: 14; sign:28;
+Get new token:
+type:'Aritmetic::PlusMinus::Minus; line: 14; sign:34;
+Get new token:
+type:'Numeric::IntValue; line: 14; sign:36;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 14; sign:37;
+Get new token:
+type:'Aritmetic::MultDiv::Division; line: 14; sign:39;
+Get new token:
+type:'Identifier; line: 14; sign:41;
+Get new token:
+type:'Semicolon; line: 14; sign:53;
+Get new token:
+type:'For; line: 16; sign:5;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 16; sign:8;
+Get new token:
+type:'Data::Int; line: 16; sign:9;
+Get new token:
+type:'Identifier; line: 16; sign:13;
+Get new token:
+type:'Rewriting; line: 16; sign:15;
+Get new token:
+type:'Numeric::IntValue; line: 16; sign:17;
+Get new token:
+type:'Semicolon; line: 16; sign:18;
+Get new token:
+type:'Identifier; line: 16; sign:20;
+Get new token:
+type:'Relation::LessThan; line: 16; sign:22;
+Get new token:
+type:'Identifier; line: 16; sign:24;
+Get new token:
+type:'Semicolon; line: 16; sign:36;
+Get new token:
+type:'Identifier; line: 16; sign:38;
+Get new token:
+type:'Aritmetic::PlusMinus::Plus; line: 16; sign:39;
+Get new token:
+type:'Aritmetic::PlusMinus::Plus; line: 16; sign:40;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 16; sign:41;
+Get new token:
+type:'Brace::BraceOpen; line: 17; sign:5;
+Get new token:
+type:'Identifier; line: 18; sign:6;
+Get new token:
+type:'Identifier; line: 18; sign:16;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 18; sign:20;
+Get new token:
+type:'Numeric::FloatValue; line: 18; sign:21;
+Get new token:
+type:'Comma; line: 18; sign:24;
+Get new token:
+type:'Numeric::FloatValue; line: 18; sign:25;
+Get new token:
+type:'Comma; line: 18; sign:28;
+Get new token:
+type:'Aritmetic::PlusMinus::Minus; line: 18; sign:29;
+Get new token:
+type:'Numeric::IntValue; line: 18; sign:30;
+Get new token:
+type:'Comma; line: 18; sign:32;
+Get new token:
+type:'Identifier; line: 18; sign:33;
+Get new token:
+type:'Aritmetic::MultDiv::Multiplication; line: 18; sign:39;
+Get new token:
+type:'Identifier; line: 18; sign:40;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 18; sign:41;
+Get new token:
+type:'Semicolon; line: 18; sign:42;
+Get new token:
+type:'Identifier; line: 19; sign:6;
+Get new token:
+type:'Dot; line: 19; sign:10;
+Get new token:
+type:'Identifier; line: 19; sign:11;
+Get new token:
+type:'Rewriting; line: 19; sign:21;
+Get new token:
+type:'Identifier; line: 19; sign:23;
+Get new token:
+type:'Semicolon; line: 19; sign:27;
+Get new token:
+type:'Identifier; line: 20; sign:6;
+Get new token:
+type:'Dot; line: 20; sign:10;
+Get new token:
+type:'Identifier; line: 20; sign:11;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 20; sign:14;
+Get new token:
+type:'Identifier; line: 20; sign:15;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 20; sign:19;
+Get new token:
+type:'Semicolon; line: 20; sign:20;
+Get new token:
+type:'Brace::BraceClose; line: 21; sign:5;
+Get new token:
+type:'Brace::BraceClose; line: 22; sign:4;
+Get new token:
+type:'Brace::BraceClose; line: 23; sign:3;
+Get new token:
+type:'Brace::BraceClose; line: 24; sign:2;
+Get new token:
+type:'Brace::BraceClose; line: 25; sign:1;
+Get new token:
+type:'Identifier; line: 27; sign:1;
+Get new token:
+type:'Identifier; line: 27; sign:6;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 27; sign:10;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 27; sign:11;
+Get new token:
+type:'Brace::BraceOpen; line: 28; sign:1;
+Get new token:
+type:'Identifier; line: 29; sign:2;
+Get new token:
+type:'Identifier; line: 29; sign:8;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 29; sign:13;
+Get new token:
+type:'Numeric::FloatValue; line: 29; sign:14;
+Get new token:
+type:'Comma; line: 29; sign:19;
+Get new token:
+type:'Numeric::FloatValue; line: 29; sign:20;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 29; sign:25;
+Get new token:
+type:'Semicolon; line: 29; sign:26;
+Get new token:
+type:'Identifier; line: 30; sign:2;
+Get new token:
+type:'Identifier; line: 30; sign:13;
+Get new token:
+type:'Semicolon; line: 30; sign:18;
+Get new token:
+type:'Identifier; line: 31; sign:2;
+Get new token:
+type:'Identifier; line: 31; sign:8;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 31; sign:14;
+Get new token:
+type:'Numeric::IntValue; line: 31; sign:15;
+Get new token:
+type:'Comma; line: 31; sign:17;
+Get new token:
+type:'Numeric::IntValue; line: 31; sign:18;
+Get new token:
+type:'Comma; line: 31; sign:20;
+Get new token:
+type:'Numeric::IntValue; line: 31; sign:21;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 31; sign:22;
+Get new token:
+type:'Semicolon; line: 31; sign:23;
+Get new token:
+type:'Identifier; line: 32; sign:2;
+Get new token:
+type:'Dot; line: 32; sign:7;
+Get new token:
+type:'Identifier; line: 32; sign:8;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 32; sign:11;
+Get new token:
+type:'Identifier; line: 32; sign:12;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 32; sign:18;
+Get new token:
+type:'Semicolon; line: 32; sign:19;
+Get new token:
+type:'Identifier; line: 33; sign:2;
+Get new token:
+type:'Identifier; line: 33; sign:8;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 33; sign:14;
+Get new token:
+type:'Numeric::IntValue; line: 33; sign:15;
+Get new token:
+type:'Comma; line: 33; sign:18;
+Get new token:
+type:'Numeric::IntValue; line: 33; sign:19;
+Get new token:
+type:'Comma; line: 33; sign:21;
+Get new token:
+type:'Numeric::IntValue; line: 33; sign:22;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 33; sign:23;
+Get new token:
+type:'Semicolon; line: 33; sign:24;
+Get new token:
+type:'Identifier; line: 34; sign:2;
+Get new token:
+type:'Dot; line: 34; sign:7;
+Get new token:
+type:'Identifier; line: 34; sign:8;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 34; sign:11;
+Get new token:
+type:'Identifier; line: 34; sign:12;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 34; sign:18;
+Get new token:
+type:'Semicolon; line: 34; sign:19;
+Get new token:
+type:'Identifier; line: 35; sign:2;
+Get new token:
+type:'Identifier; line: 35; sign:8;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 35; sign:14;
+Get new token:
+type:'Numeric::IntValue; line: 35; sign:15;
+Get new token:
+type:'Comma; line: 35; sign:18;
+Get new token:
+type:'Numeric::IntValue; line: 35; sign:19;
+Get new token:
+type:'Comma; line: 35; sign:21;
+Get new token:
+type:'Numeric::IntValue; line: 35; sign:22;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 35; sign:23;
+Get new token:
+type:'Semicolon; line: 35; sign:24;
+Get new token:
+type:'Identifier; line: 36; sign:2;
+Get new token:
+type:'Dot; line: 36; sign:7;
+Get new token:
+type:'Identifier; line: 36; sign:8;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 36; sign:11;
+Get new token:
+type:'Identifier; line: 36; sign:12;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 36; sign:18;
+Get new token:
+type:'Semicolon; line: 36; sign:19;
+Get new token:
+type:'Brace::BraceClose; line: 37; sign:1;
+End of input stream.
+Get new token:
+type:'Eof; line: 38; sign:1;
+
+Lexer starting...
+Get new token:
+type:'Identifier; line: 0; sign:1;
+Get new token:
+type:'Brace::BraceOpen; line: 1; sign:1;
+Get new token:
+type:'Identifier; line: 2; sign:2;
+Get new token:
+type:'Identifier; line: 2; sign:10;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 2; sign:14;
+Get new token:
+type:'SquareBracket::SquareBracketOpen; line: 2; sign:15;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 2; sign:16;
+Get new token:
+type:'Aritmetic::PlusMinus::Minus; line: 2; sign:17;
+Get new token:
+type:'Numeric::FloatValue; line: 2; sign:18;
+Get new token:
+type:'Comma; line: 2; sign:22;
+Get new token:
+type:'Numeric::IntValue; line: 2; sign:23;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 2; sign:24;
+Get new token:
+type:'Comma; line: 2; sign:25;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 2; sign:26;
+Get new token:
+type:'Numeric::IntValue; line: 2; sign:27;
+Get new token:
+type:'Comma; line: 2; sign:28;
+Get new token:
+type:'Numeric::FloatValue; line: 2; sign:29;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 2; sign:33;
+Get new token:
+type:'Comma; line: 2; sign:34;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 2; sign:35;
+Get new token:
+type:'Numeric::FloatValue; line: 2; sign:36;
+Get new token:
+type:'Comma; line: 2; sign:40;
+Get new token:
+type:'Numeric::IntValue; line: 2; sign:41;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 2; sign:42;
+Get new token:
+type:'SquareBracket::SquareBracketClose; line: 2; sign:43;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 2; sign:44;
+Get new token:
+type:'Semicolon; line: 2; sign:45;
+Get new token:
+type:'Identifier; line: 3; sign:2;
+Get new token:
+type:'Identifier; line: 3; sign:12;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 3; sign:18;
+Get new token:
+type:'Numeric::FloatValue; line: 3; sign:19;
+Get new token:
+type:'Comma; line: 3; sign:23;
+Get new token:
+type:'Numeric::FloatValue; line: 3; sign:24;
+Get new token:
+type:'Comma; line: 3; sign:28;
+Get new token:
+type:'Numeric::IntValue; line: 3; sign:29;
+Get new token:
+type:'Comma; line: 3; sign:30;
+Get new token:
+type:'Aritmetic::PlusMinus::Minus; line: 3; sign:31;
+Get new token:
+type:'Numeric::FloatValue; line: 3; sign:32;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 3; sign:36;
+Get new token:
+type:'Semicolon; line: 3; sign:37;
+Get new token:
+type:'Identifier; line: 4; sign:2;
+Get new token:
+type:'Identifier; line: 4; sign:13;
+Get new token:
+type:'Semicolon; line: 4; sign:17;
+Get new token:
+type:'Identifier; line: 6; sign:2;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 6; sign:7;
+Get new token:
+type:'Data::Int; line: 6; sign:8;
+Get new token:
+type:'Identifier; line: 6; sign:14;
+Get new token:
+type:'Comma; line: 6; sign:15;
+Get new token:
+type:'Data::Int; line: 6; sign:17;
+Get new token:
+type:'Identifier; line: 6; sign:23;
+Get new token:
+type:'Comma; line: 6; sign:24;
+Get new token:
+type:'Data::Int; line: 6; sign:26;
+Get new token:
+type:'Identifier; line: 6; sign:30;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 6; sign:42;
+Get new token:
+type:'Brace::BraceOpen; line: 7; sign:2;
+Get new token:
+type:'Identifier; line: 8; sign:3;
+Get new token:
+type:'Dot; line: 8; sign:9;
+Get new token:
+type:'Identifier; line: 8; sign:10;
+Get new token:
+type:'Rewriting; line: 8; sign:20;
+Get new token:
+type:'Identifier; line: 8; sign:22;
+Get new token:
+type:'Semicolon; line: 8; sign:26;
+Get new token:
+type:'Identifier; line: 9; sign:3;
+Get new token:
+type:'Dot; line: 9; sign:7;
+Get new token:
+type:'Identifier; line: 9; sign:8;
+Get new token:
+type:'Rewriting; line: 9; sign:18;
+Get new token:
+type:'Identifier; line: 9; sign:20;
+Get new token:
+type:'Semicolon; line: 9; sign:23;
+Get new token:
+type:'If; line: 10; sign:3;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 10; sign:5;
+Get new token:
+type:'Identifier; line: 10; sign:6;
+Get new token:
+type:'Relation::GreaterThan; line: 10; sign:19;
+Get new token:
+type:'Numeric::IntValue; line: 10; sign:21;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 10; sign:22;
+Get new token:
+type:'Brace::BraceOpen; line: 11; sign:3;
+Get new token:
+type:'If; line: 12; sign:4;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 12; sign:6;
+Get new token:
+type:'Identifier; line: 12; sign:7;
+Get new token:
+type:'Relation::LessEqualThan; line: 12; sign:20;
+Get new token:
+type:'Numeric::IntValue; line: 12; sign:23;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 12; sign:24;
+Get new token:
+type:'Brace::BraceOpen; line: 13; sign:4;
+Get new token:
+type:'Data::Int; line: 14; sign:5;
+Get new token:
+type:'Identifier; line: 14; sign:11;
+Get new token:
+type:'Rewriting; line: 14; sign:18;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 14; sign:20;
+Get new token:
+type:'Identifier; line: 14; sign:21;
+Get new token:
+type:'Dot; line: 14; sign:27;
+Get new token:
+type:'Identifier; line: 14; sign:28;
+Get new token:
+type:'Aritmetic::PlusMinus::Minus; line: 14; sign:34;
+Get new token:
+type:'Numeric::IntValue; line: 14; sign:36;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 14; sign:37;
+Get new token:
+type:'Aritmetic::MultDiv::Division; line: 14; sign:39;
+Get new token:
+type:'Identifier; line: 14; sign:41;
+Get new token:
+type:'Semicolon; line: 14; sign:53;
+Get new token:
+type:'For; line: 16; sign:5;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 16; sign:8;
+Get new token:
+type:'Data::Int; line: 16; sign:9;
+Get new token:
+type:'Identifier; line: 16; sign:13;
+Get new token:
+type:'Rewriting; line: 16; sign:15;
+Get new token:
+type:'Numeric::IntValue; line: 16; sign:17;
+Get new token:
+type:'Semicolon; line: 16; sign:18;
+Get new token:
+type:'Identifier; line: 16; sign:20;
+Get new token:
+type:'Relation::LessThan; line: 16; sign:22;
+Get new token:
+type:'Identifier; line: 16; sign:24;
+Get new token:
+type:'Semicolon; line: 16; sign:36;
+Get new token:
+type:'Identifier; line: 16; sign:38;
+Get new token:
+type:'Aritmetic::PlusMinus::Plus; line: 16; sign:39;
+Get new token:
+type:'Aritmetic::PlusMinus::Plus; line: 16; sign:40;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 16; sign:41;
+Get new token:
+type:'Brace::BraceOpen; line: 17; sign:5;
+Get new token:
+type:'Identifier; line: 18; sign:6;
+Get new token:
+type:'Identifier; line: 18; sign:16;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 18; sign:20;
+Get new token:
+type:'Numeric::FloatValue; line: 18; sign:21;
+Get new token:
+type:'Comma; line: 18; sign:24;
+Get new token:
+type:'Numeric::FloatValue; line: 18; sign:25;
+Get new token:
+type:'Comma; line: 18; sign:28;
+Get new token:
+type:'Aritmetic::PlusMinus::Minus; line: 18; sign:29;
+Get new token:
+type:'Numeric::IntValue; line: 18; sign:30;
+Get new token:
+type:'Comma; line: 18; sign:32;
+Get new token:
+type:'Identifier; line: 18; sign:33;
+Get new token:
+type:'Aritmetic::MultDiv::Multiplication; line: 18; sign:39;
+Get new token:
+type:'Identifier; line: 18; sign:40;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 18; sign:41;
+Get new token:
+type:'Semicolon; line: 18; sign:42;
+Get new token:
+type:'Identifier; line: 19; sign:6;
+Get new token:
+type:'Dot; line: 19; sign:10;
+Get new token:
+type:'Identifier; line: 19; sign:11;
+Get new token:
+type:'Rewriting; line: 19; sign:21;
+Get new token:
+type:'Identifier; line: 19; sign:23;
+Get new token:
+type:'Semicolon; line: 19; sign:27;
+Get new token:
+type:'Identifier; line: 20; sign:6;
+Get new token:
+type:'Dot; line: 20; sign:10;
+Get new token:
+type:'Identifier; line: 20; sign:11;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 20; sign:14;
+Get new token:
+type:'Identifier; line: 20; sign:15;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 20; sign:19;
+Get new token:
+type:'Semicolon; line: 20; sign:20;
+Get new token:
+type:'Brace::BraceClose; line: 21; sign:5;
+Get new token:
+type:'Brace::BraceClose; line: 22; sign:4;
+Get new token:
+type:'Brace::BraceClose; line: 23; sign:3;
+Get new token:
+type:'Brace::BraceClose; line: 24; sign:2;
+Get new token:
+type:'Brace::BraceClose; line: 25; sign:1;
+Get new token:
+type:'Identifier; line: 27; sign:1;
+Get new token:
+type:'Identifier; line: 27; sign:6;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 27; sign:10;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 27; sign:11;
+Get new token:
+type:'Brace::BraceOpen; line: 28; sign:1;
+Get new token:
+type:'Identifier; line: 29; sign:2;
+Get new token:
+type:'Identifier; line: 29; sign:8;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 29; sign:13;
+Get new token:
+type:'Numeric::FloatValue; line: 29; sign:14;
+Get new token:
+type:'Comma; line: 29; sign:19;
+Get new token:
+type:'Numeric::FloatValue; line: 29; sign:20;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 29; sign:25;
+Get new token:
+type:'Semicolon; line: 29; sign:26;
+Get new token:
+type:'Identifier; line: 30; sign:2;
+Get new token:
+type:'Identifier; line: 30; sign:13;
+Get new token:
+type:'Semicolon; line: 30; sign:18;
+Get new token:
+type:'Identifier; line: 31; sign:2;
+Get new token:
+type:'Identifier; line: 31; sign:8;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 31; sign:14;
+Get new token:
+type:'Numeric::IntValue; line: 31; sign:15;
+Get new token:
+type:'Comma; line: 31; sign:17;
+Get new token:
+type:'Numeric::IntValue; line: 31; sign:18;
+Get new token:
+type:'Comma; line: 31; sign:20;
+Get new token:
+type:'Numeric::IntValue; line: 31; sign:21;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 31; sign:22;
+Get new token:
+type:'Semicolon; line: 31; sign:23;
+Get new token:
+type:'Identifier; line: 32; sign:2;
+Get new token:
+type:'Dot; line: 32; sign:7;
+Get new token:
+type:'Identifier; line: 32; sign:8;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 32; sign:11;
+Get new token:
+type:'Identifier; line: 32; sign:12;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 32; sign:18;
+Get new token:
+type:'Semicolon; line: 32; sign:19;
+Get new token:
+type:'Identifier; line: 33; sign:2;
+Get new token:
+type:'Identifier; line: 33; sign:8;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 33; sign:14;
+Get new token:
+type:'Numeric::IntValue; line: 33; sign:15;
+Get new token:
+type:'Comma; line: 33; sign:18;
+Get new token:
+type:'Numeric::IntValue; line: 33; sign:19;
+Get new token:
+type:'Comma; line: 33; sign:21;
+Get new token:
+type:'Numeric::IntValue; line: 33; sign:22;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 33; sign:23;
+Get new token:
+type:'Semicolon; line: 33; sign:24;
+Get new token:
+type:'Identifier; line: 34; sign:2;
+Get new token:
+type:'Dot; line: 34; sign:7;
+Get new token:
+type:'Identifier; line: 34; sign:8;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 34; sign:11;
+Get new token:
+type:'Identifier; line: 34; sign:12;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 34; sign:18;
+Get new token:
+type:'Semicolon; line: 34; sign:19;
+Get new token:
+type:'Identifier; line: 35; sign:2;
+Get new token:
+type:'Identifier; line: 35; sign:8;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 35; sign:14;
+Get new token:
+type:'Numeric::IntValue; line: 35; sign:15;
+Get new token:
+type:'Comma; line: 35; sign:18;
+Get new token:
+type:'Numeric::IntValue; line: 35; sign:19;
+Get new token:
+type:'Comma; line: 35; sign:21;
+Get new token:
+type:'Numeric::IntValue; line: 35; sign:22;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 35; sign:23;
+Get new token:
+type:'Semicolon; line: 35; sign:24;
+Get new token:
+type:'Identifier; line: 36; sign:2;
+Get new token:
+type:'Dot; line: 36; sign:7;
+Get new token:
+type:'Identifier; line: 36; sign:8;
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 36; sign:11;
+Get new token:
+type:'Identifier; line: 36; sign:12;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 36; sign:18;
+Get new token:
+type:'Semicolon; line: 36; sign:19;
+Get new token:
+type:'Brace::BraceClose; line: 37; sign:1;
+End of input stream.
+Get new token:
+type:'Eof; line: 38; sign:1;

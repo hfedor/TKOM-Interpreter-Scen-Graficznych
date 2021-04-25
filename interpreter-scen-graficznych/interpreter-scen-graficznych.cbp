@@ -39,11 +39,13 @@
 		<Unit filename="include/LexerTest.h" />
 		<Unit filename="include/Tests.h" />
 		<Unit filename="include/Token.h" />
+		<Unit filename="include/TokensStream.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Lexer.cpp" />
 		<Unit filename="src/LexerTest.cpp" />
 		<Unit filename="src/Tests.cpp" />
 		<Unit filename="src/Token.cpp" />
+		<Unit filename="src/TokensStream.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

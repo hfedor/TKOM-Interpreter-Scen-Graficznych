@@ -1,0 +1,833 @@
+
+Lexer starting...
+Starting testing lexer...
+Start Lexer::Test all:
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 1; sign:1;
+End of input stream.
+Get new token:
+type:'Eof; line: 1; sign:2;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 1; sign:2;
+Get new token:
+type:'SquareBracket::SquareBracketOpen; line: 1; sign:3;
+Get new token:
+type:'SquareBracket::SquareBracketClose; line: 1; sign:4;
+Get new token:
+type:'Comma; line: 1; sign:5;
+Get new token:
+type:'Dot; line: 1; sign:6;
+Get new token:
+type:'Semicolon; line: 1; sign:7;
+End of input stream.
+Get new token:
+type:'Relation::GreaterThan; line: 1; sign:8;
+Get new token:
+type:'Relation::GreaterEqualThan; line: 1; sign:9;
+End of input stream.
+Get new token:
+type:'Relation::LessThan; line: 1; sign:11;
+Get new token:
+type:'Relation::LessEqualThan; line: 1; sign:12;
+Get new token:
+type:'Rewriting; line: 1; sign:14;
+Get new token:
+type:'Relation::Equal; line: 1; sign:16;
+End of input stream.
+Get new token:
+type:'Undefined::":"; line: 1; sign:18;
+Get new token:
+type:'DoubleColon; line: 1; sign:19;
+End of input stream.
+Get new token:
+type:'Undefined::"!"; line: 1; sign:21;
+Get new token:
+type:'Relation::NotEqual; line: 1; sign:22;
+End of input stream.
+Get new token:
+type:'Undefined::"&"; line: 1; sign:24;
+Get new token:
+type:'Operator::AndOperator; line: 1; sign:25;
+End of input stream.
+Get new token:
+type:'Undefined::"|"; line: 1; sign:27;
+Get new token:
+type:'Operator::OrOperator; line: 1; sign:28;
+End of input stream.
+Get new token:
+type:'Aritmetic::PlusMinus::Plus; line: 1; sign:30;
+Get new token:
+type:'AritmeticRewriting::PlusRewriting; line: 1; sign:31;
+End of input stream.
+Get new token:
+type:'Aritmetic::PlusMinus::Minus; line: 1; sign:33;
+Get new token:
+type:'AritmeticRewriting::MinusRewriting; line: 1; sign:34;
+End of input stream.
+Get new token:
+type:'Aritmetic::MultDiv::Multiplication; line: 1; sign:36;
+Get new token:
+type:'AritmeticRewriting::MultRewriting; line: 1; sign:37;
+End of input stream.
+Get new token:
+type:'Aritmetic::MultDiv::Division; line: 1; sign:39;
+Get new token:
+type:'AritmeticRewriting::DivisionRewriting; line: 1; sign:40;
+End of input stream.
+Get new token:
+type:'Data::Int; line: 1; sign:42;
+End of input stream.
+Get new token:
+type:'Data::Int; line: 1; sign:45;
+End of input stream.
+Get new token:
+type:'Boolean::True; line: 1; sign:50;
+End of input stream.
+Get new token:
+type:'Boolean::False; line: 1; sign:54;
+End of input stream.
+Get new token:
+type:'Null; line: 1; sign:59;
+End of input stream.
+Get new token:
+type:'For; line: 1; sign:63;
+End of input stream.
+Get new token:
+type:'Foreach; line: 1; sign:66;
+End of input stream.
+Get new token:
+type:'If; line: 1; sign:73;
+End of input stream.
+Get new token:
+type:'Else; line: 1; sign:75;
+End of input stream.
+Get new token:
+type:'Collection; line: 1; sign:79;
+End of input stream.
+Get new token:
+type:'Return; line: 1; sign:89;
+End of input stream.
+Get new token:
+type:'Identifier; line: 1; sign:95;
+End of input stream.
+Get new token:
+type:'Identifier; line: 1; sign:105;
+End of input stream.
+Get new token:
+type:'Identifier; line: 1; sign:116;
+End of input stream.
+Get new token:
+type:'Identifier; line: 1; sign:131;
+End of input stream.
+Get new token:
+type:'Identifier; line: 1; sign:145;
+End of input stream.
+Get new token:
+type:'Undefined::"_"; line: 1; sign:160;
+End of input stream.
+Get new token:
+type:'Undefined::"_1234"; line: 1; sign:161;
+End of input stream.
+Get new token:
+type:'Undefined::"__identifier"; line: 1; sign:166;
+Get new token:
+type:'StringLiteral; line: 1; sign:178;
+Get new token:
+type:'StringLiteral; line: 1; sign:198;
+Get new token:
+type:'StringLiteral; line: 3; sign:1;
+Get new token:
+type:'StringLiteral; line: 4; sign:1;
+Get new token:
+type:'StringLiteral; line: 5; sign:1;
+Get new token:
+type:'StringLiteral; line: 6; sign:1;
+Get new token:
+type:'StringLiteral; line: 7; sign:1;
+Get new token:
+type:'Numeric::IntValue; line: 8; sign:1;
+Get new token:
+type:'Numeric::IntValue; line: 9; sign:1;
+Get new token:
+type:'Numeric::IntValue; line: 10; sign:1;
+Get new token:
+type:'Numeric::IntValue; line: 11; sign:1;
+Get new token:
+type:'Numeric::FloatValue; line: 12; sign:1;
+Get new token:
+type:'Numeric::FloatValue; line: 13; sign:1;
+Get new token:
+type:'Numeric::FloatValue; line: 14; sign:1;
+End of input stream.
+Get new token:
+type:'Eof; line: 15; sign:1;
+All tests passed.
+End Lexer::Test all.
+
+Lexer starting...
+Starting testing lexer...
+Start Lexer::Test all:
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 1; sign:1;
+End of input stream.
+Get new token:
+type:'Eof; line: 1; sign:2;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 1; sign:2;
+Get new token:
+type:'SquareBracket::SquareBracketOpen; line: 1; sign:3;
+Get new token:
+type:'SquareBracket::SquareBracketClose; line: 1; sign:4;
+Get new token:
+type:'Comma; line: 1; sign:5;
+Get new token:
+type:'Dot; line: 1; sign:6;
+Get new token:
+type:'Semicolon; line: 1; sign:7;
+End of input stream.
+Get new token:
+type:'Relation::GreaterThan; line: 1; sign:8;
+Get new token:
+type:'Relation::GreaterEqualThan; line: 1; sign:9;
+End of input stream.
+Get new token:
+type:'Relation::LessThan; line: 1; sign:11;
+Get new token:
+type:'Relation::LessEqualThan; line: 1; sign:12;
+Get new token:
+type:'Rewriting; line: 1; sign:14;
+Get new token:
+type:'Relation::Equal; line: 1; sign:16;
+End of input stream.
+Get new token:
+type:'Undefined::":"; line: 1; sign:18;
+Get new token:
+type:'DoubleColon; line: 1; sign:19;
+End of input stream.
+Get new token:
+type:'Undefined::"!"; line: 1; sign:21;
+Get new token:
+type:'Relation::NotEqual; line: 1; sign:22;
+End of input stream.
+Get new token:
+type:'Undefined::"&"; line: 1; sign:24;
+Get new token:
+type:'Operator::AndOperator; line: 1; sign:25;
+End of input stream.
+Get new token:
+type:'Undefined::"|"; line: 1; sign:27;
+Get new token:
+type:'Operator::OrOperator; line: 1; sign:28;
+End of input stream.
+Get new token:
+type:'Aritmetic::PlusMinus::Plus; line: 1; sign:30;
+Get new token:
+type:'AritmeticRewriting::PlusRewriting; line: 1; sign:31;
+End of input stream.
+Get new token:
+type:'Aritmetic::PlusMinus::Minus; line: 1; sign:33;
+Get new token:
+type:'AritmeticRewriting::MinusRewriting; line: 1; sign:34;
+End of input stream.
+Get new token:
+type:'Aritmetic::MultDiv::Multiplication; line: 1; sign:36;
+Get new token:
+type:'AritmeticRewriting::MultRewriting; line: 1; sign:37;
+End of input stream.
+Get new token:
+type:'Aritmetic::MultDiv::Division; line: 1; sign:39;
+Get new token:
+type:'AritmeticRewriting::DivisionRewriting; line: 1; sign:40;
+End of input stream.
+Get new token:
+type:'Data::Int; line: 1; sign:42;
+End of input stream.
+Get new token:
+type:'Data::Int; line: 1; sign:45;
+End of input stream.
+Get new token:
+type:'Boolean::True; line: 1; sign:50;
+End of input stream.
+Get new token:
+type:'Boolean::False; line: 1; sign:54;
+End of input stream.
+Get new token:
+type:'Null; line: 1; sign:59;
+End of input stream.
+Get new token:
+type:'For; line: 1; sign:63;
+End of input stream.
+Get new token:
+type:'Foreach; line: 1; sign:66;
+End of input stream.
+Get new token:
+type:'If; line: 1; sign:73;
+End of input stream.
+Get new token:
+type:'Else; line: 1; sign:75;
+End of input stream.
+Get new token:
+type:'Collection; line: 1; sign:79;
+End of input stream.
+Get new token:
+type:'Return; line: 1; sign:89;
+End of input stream.
+Get new token:
+type:'Identifier; line: 1; sign:95;
+End of input stream.
+Get new token:
+type:'Identifier; line: 1; sign:105;
+End of input stream.
+Get new token:
+type:'Identifier; line: 1; sign:116;
+End of input stream.
+Get new token:
+type:'Identifier; line: 1; sign:131;
+End of input stream.
+Get new token:
+type:'Identifier; line: 1; sign:145;
+End of input stream.
+Get new token:
+type:'Undefined::"_"; line: 1; sign:160;
+End of input stream.
+Get new token:
+type:'Undefined::"_1234"; line: 1; sign:161;
+End of input stream.
+Get new token:
+type:'Undefined::"__identifier"; line: 1; sign:166;
+Get new token:
+type:'StringLiteral; line: 1; sign:178;
+Get new token:
+type:'StringLiteral; line: 1; sign:198;
+Get new token:
+type:'StringLiteral; line: 3; sign:1;
+Get new token:
+type:'StringLiteral; line: 4; sign:1;
+Get new token:
+type:'StringLiteral; line: 5; sign:1;
+Get new token:
+type:'StringLiteral; line: 6; sign:1;
+Get new token:
+type:'StringLiteral; line: 7; sign:1;
+Get new token:
+type:'Numeric::IntValue; line: 8; sign:1;
+Get new token:
+type:'Numeric::IntValue; line: 9; sign:1;
+Get new token:
+type:'Numeric::IntValue; line: 10; sign:1;
+Get new token:
+type:'Numeric::IntValue; line: 11; sign:1;
+Get new token:
+type:'Numeric::FloatValue; line: 12; sign:1;
+Get new token:
+type:'Numeric::FloatValue; line: 13; sign:1;
+Get new token:
+type:'Numeric::FloatValue; line: 14; sign:1;
+End of input stream.
+Get new token:
+type:'Eof; line: 15; sign:1;
+All tests passed.
+End Lexer::Test all.
+
+Lexer starting...
+Starting testing lexer...
+Start Lexer::Test all:
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 1; sign:1;
+End of input stream.
+Get new token:
+type:'Eof; line: 1; sign:2;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 1; sign:2;
+Get new token:
+type:'SquareBracket::SquareBracketOpen; line: 1; sign:3;
+Get new token:
+type:'SquareBracket::SquareBracketClose; line: 1; sign:4;
+Get new token:
+type:'Comma; line: 1; sign:5;
+Get new token:
+type:'Dot; line: 1; sign:6;
+Get new token:
+type:'Semicolon; line: 1; sign:7;
+End of input stream.
+Get new token:
+type:'Relation::GreaterThan; line: 1; sign:8;
+Get new token:
+type:'Relation::GreaterEqualThan; line: 1; sign:9;
+End of input stream.
+Get new token:
+type:'Relation::LessThan; line: 1; sign:11;
+Get new token:
+type:'Relation::LessEqualThan; line: 1; sign:12;
+Get new token:
+type:'Rewriting; line: 1; sign:14;
+Get new token:
+type:'Relation::Equal; line: 1; sign:16;
+End of input stream.
+Get new token:
+type:'Undefined::":"; line: 1; sign:18;
+Get new token:
+type:'DoubleColon; line: 1; sign:19;
+End of input stream.
+Get new token:
+type:'Undefined::"!"; line: 1; sign:21;
+Get new token:
+type:'Relation::NotEqual; line: 1; sign:22;
+End of input stream.
+Get new token:
+type:'Undefined::"&"; line: 1; sign:24;
+Get new token:
+type:'Operator::AndOperator; line: 1; sign:25;
+End of input stream.
+Get new token:
+type:'Undefined::"|"; line: 1; sign:27;
+Get new token:
+type:'Operator::OrOperator; line: 1; sign:28;
+End of input stream.
+Get new token:
+type:'Aritmetic::PlusMinus::Plus; line: 1; sign:30;
+Get new token:
+type:'AritmeticRewriting::PlusRewriting; line: 1; sign:31;
+End of input stream.
+Get new token:
+type:'Aritmetic::PlusMinus::Minus; line: 1; sign:33;
+Get new token:
+type:'AritmeticRewriting::MinusRewriting; line: 1; sign:34;
+End of input stream.
+Get new token:
+type:'Aritmetic::MultDiv::Multiplication; line: 1; sign:36;
+Get new token:
+type:'AritmeticRewriting::MultRewriting; line: 1; sign:37;
+End of input stream.
+Get new token:
+type:'Aritmetic::MultDiv::Division; line: 1; sign:39;
+Get new token:
+type:'AritmeticRewriting::DivisionRewriting; line: 1; sign:40;
+End of input stream.
+Get new token:
+type:'Data::Int; line: 1; sign:42;
+End of input stream.
+Get new token:
+type:'Data::Int; line: 1; sign:45;
+End of input stream.
+Get new token:
+type:'Boolean::True; line: 1; sign:50;
+End of input stream.
+Get new token:
+type:'Boolean::False; line: 1; sign:54;
+End of input stream.
+Get new token:
+type:'Null; line: 1; sign:59;
+End of input stream.
+Get new token:
+type:'For; line: 1; sign:63;
+End of input stream.
+Get new token:
+type:'Foreach; line: 1; sign:66;
+End of input stream.
+Get new token:
+type:'If; line: 1; sign:73;
+End of input stream.
+Get new token:
+type:'Else; line: 1; sign:75;
+End of input stream.
+Get new token:
+type:'Collection; line: 1; sign:79;
+End of input stream.
+Get new token:
+type:'Return; line: 1; sign:89;
+End of input stream.
+Get new token:
+type:'Identifier; line: 1; sign:95;
+End of input stream.
+Get new token:
+type:'Identifier; line: 1; sign:105;
+End of input stream.
+Get new token:
+type:'Identifier; line: 1; sign:116;
+End of input stream.
+Get new token:
+type:'Identifier; line: 1; sign:131;
+End of input stream.
+Get new token:
+type:'Identifier; line: 1; sign:145;
+End of input stream.
+Get new token:
+type:'Undefined::"_"; line: 1; sign:160;
+End of input stream.
+Get new token:
+type:'Undefined::"_1234"; line: 1; sign:161;
+End of input stream.
+Get new token:
+type:'Undefined::"__identifier"; line: 1; sign:166;
+Get new token:
+type:'StringLiteral; line: 1; sign:178;
+Get new token:
+type:'StringLiteral; line: 1; sign:198;
+Get new token:
+type:'StringLiteral; line: 3; sign:1;
+Get new token:
+type:'StringLiteral; line: 4; sign:1;
+Get new token:
+type:'StringLiteral; line: 5; sign:1;
+Get new token:
+type:'StringLiteral; line: 6; sign:1;
+Get new token:
+type:'StringLiteral; line: 7; sign:1;
+Get new token:
+type:'Numeric::IntValue; line: 8; sign:1;
+Get new token:
+type:'Numeric::IntValue; line: 9; sign:1;
+Get new token:
+type:'Numeric::IntValue; line: 10; sign:1;
+Get new token:
+type:'Numeric::IntValue; line: 11; sign:1;
+Get new token:
+type:'Numeric::FloatValue; line: 12; sign:1;
+Get new token:
+type:'Numeric::FloatValue; line: 13; sign:1;
+Get new token:
+type:'Numeric::FloatValue; line: 14; sign:1;
+End of input stream.
+Get new token:
+type:'Eof; line: 15; sign:1;
+All tests passed.
+End Lexer::Test all.
+
+Lexer starting...
+Starting testing lexer...
+Start Lexer::Test all:
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 1; sign:1;
+End of input stream.
+Get new token:
+type:'Eof; line: 1; sign:2;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 1; sign:2;
+Get new token:
+type:'SquareBracket::SquareBracketOpen; line: 1; sign:3;
+Get new token:
+type:'SquareBracket::SquareBracketClose; line: 1; sign:4;
+Get new token:
+type:'Comma; line: 1; sign:5;
+Get new token:
+type:'Dot; line: 1; sign:6;
+Get new token:
+type:'Semicolon; line: 1; sign:7;
+End of input stream.
+Get new token:
+type:'Relation::GreaterThan; line: 1; sign:8;
+Get new token:
+type:'Relation::GreaterEqualThan; line: 1; sign:9;
+End of input stream.
+Get new token:
+type:'Relation::LessThan; line: 1; sign:11;
+Get new token:
+type:'Relation::LessEqualThan; line: 1; sign:12;
+Get new token:
+type:'Rewriting; line: 1; sign:14;
+Get new token:
+type:'Relation::Equal; line: 1; sign:16;
+End of input stream.
+Get new token:
+type:'Undefined::":"; line: 1; sign:18;
+Get new token:
+type:'DoubleColon; line: 1; sign:19;
+End of input stream.
+Get new token:
+type:'Undefined::"!"; line: 1; sign:21;
+Get new token:
+type:'Relation::NotEqual; line: 1; sign:22;
+End of input stream.
+Get new token:
+type:'Undefined::"&"; line: 1; sign:24;
+Get new token:
+type:'Operator::AndOperator; line: 1; sign:25;
+End of input stream.
+Get new token:
+type:'Undefined::"|"; line: 1; sign:27;
+Get new token:
+type:'Operator::OrOperator; line: 1; sign:28;
+End of input stream.
+Get new token:
+type:'Aritmetic::PlusMinus::Plus; line: 1; sign:30;
+Get new token:
+type:'AritmeticRewriting::PlusRewriting; line: 1; sign:31;
+End of input stream.
+Get new token:
+type:'Aritmetic::PlusMinus::Minus; line: 1; sign:33;
+Get new token:
+type:'AritmeticRewriting::MinusRewriting; line: 1; sign:34;
+End of input stream.
+Get new token:
+type:'Aritmetic::MultDiv::Multiplication; line: 1; sign:36;
+Get new token:
+type:'AritmeticRewriting::MultRewriting; line: 1; sign:37;
+End of input stream.
+Get new token:
+type:'Aritmetic::MultDiv::Division; line: 1; sign:39;
+Get new token:
+type:'AritmeticRewriting::DivisionRewriting; line: 1; sign:40;
+End of input stream.
+Get new token:
+type:'Data::Int; line: 1; sign:42;
+End of input stream.
+Get new token:
+type:'Data::Int; line: 1; sign:45;
+End of input stream.
+Get new token:
+type:'Boolean::True; line: 1; sign:50;
+End of input stream.
+Get new token:
+type:'Boolean::False; line: 1; sign:54;
+End of input stream.
+Get new token:
+type:'Null; line: 1; sign:59;
+End of input stream.
+Get new token:
+type:'For; line: 1; sign:63;
+End of input stream.
+Get new token:
+type:'Foreach; line: 1; sign:66;
+End of input stream.
+Get new token:
+type:'If; line: 1; sign:73;
+End of input stream.
+Get new token:
+type:'Else; line: 1; sign:75;
+End of input stream.
+Get new token:
+type:'Collection; line: 1; sign:79;
+End of input stream.
+Get new token:
+type:'Return; line: 1; sign:89;
+End of input stream.
+Get new token:
+type:'Identifier; line: 1; sign:95;
+End of input stream.
+Get new token:
+type:'Identifier; line: 1; sign:105;
+End of input stream.
+Get new token:
+type:'Identifier; line: 1; sign:116;
+End of input stream.
+Get new token:
+type:'Identifier; line: 1; sign:131;
+End of input stream.
+Get new token:
+type:'Identifier; line: 1; sign:145;
+End of input stream.
+Get new token:
+type:'Undefined::"_"; line: 1; sign:160;
+End of input stream.
+Get new token:
+type:'Undefined::"_1234"; line: 1; sign:161;
+End of input stream.
+Get new token:
+type:'Undefined::"__identifier"; line: 1; sign:166;
+Get new token:
+type:'StringLiteral; line: 1; sign:178;
+Get new token:
+type:'Brace::BraceOpen; line: 1; sign:198;
+Get new token:
+type:'Brace::BraceClose; line: 1; sign:199;
+Get new token:
+type:'StringLiteral; line: 1; sign:200;
+Get new token:
+type:'StringLiteral; line: 3; sign:1;
+Get new token:
+type:'StringLiteral; line: 4; sign:1;
+Get new token:
+type:'StringLiteral; line: 5; sign:1;
+Get new token:
+type:'StringLiteral; line: 6; sign:1;
+Get new token:
+type:'StringLiteral; line: 7; sign:1;
+Get new token:
+type:'Numeric::IntValue; line: 8; sign:1;
+Get new token:
+type:'Numeric::IntValue; line: 9; sign:1;
+Get new token:
+type:'Numeric::IntValue; line: 10; sign:1;
+Get new token:
+type:'Numeric::IntValue; line: 11; sign:1;
+Get new token:
+type:'Numeric::FloatValue; line: 12; sign:1;
+Get new token:
+type:'Numeric::FloatValue; line: 13; sign:1;
+Get new token:
+type:'Numeric::FloatValue; line: 14; sign:1;
+End of input stream.
+Get new token:
+type:'Eof; line: 15; sign:1;
+All tests passed.
+End Lexer::Test all.
+
+Lexer starting...
+Starting testing lexer...
+Start Lexer::Test all:
+Get new token:
+type:'Parenthesis::ParenthesisOpen; line: 1; sign:1;
+End of input stream.
+Get new token:
+type:'Eof; line: 1; sign:2;
+Get new token:
+type:'Parenthesis::ParenthesisClose; line: 1; sign:2;
+Get new token:
+type:'SquareBracket::SquareBracketOpen; line: 1; sign:3;
+Get new token:
+type:'SquareBracket::SquareBracketClose; line: 1; sign:4;
+Get new token:
+type:'Comma; line: 1; sign:5;
+Get new token:
+type:'Dot; line: 1; sign:6;
+Get new token:
+type:'Semicolon; line: 1; sign:7;
+End of input stream.
+Get new token:
+type:'Relation::GreaterThan; line: 1; sign:8;
+Get new token:
+type:'Relation::GreaterEqualThan; line: 1; sign:9;
+End of input stream.
+Get new token:
+type:'Relation::LessThan; line: 1; sign:11;
+Get new token:
+type:'Relation::LessEqualThan; line: 1; sign:12;
+Get new token:
+type:'Rewriting; line: 1; sign:14;
+Get new token:
+type:'Relation::Equal; line: 1; sign:16;
+End of input stream.
+Get new token:
+type:'Undefined::":"; line: 1; sign:18;
+Get new token:
+type:'DoubleColon; line: 1; sign:19;
+End of input stream.
+Get new token:
+type:'Undefined::"!"; line: 1; sign:21;
+Get new token:
+type:'Relation::NotEqual; line: 1; sign:22;
+End of input stream.
+Get new token:
+type:'Undefined::"&"; line: 1; sign:24;
+Get new token:
+type:'Operator::AndOperator; line: 1; sign:25;
+End of input stream.
+Get new token:
+type:'Undefined::"|"; line: 1; sign:27;
+Get new token:
+type:'Operator::OrOperator; line: 1; sign:28;
+End of input stream.
+Get new token:
+type:'Aritmetic::PlusMinus::Plus; line: 1; sign:30;
+Get new token:
+type:'AritmeticRewriting::PlusRewriting; line: 1; sign:31;
+End of input stream.
+Get new token:
+type:'Aritmetic::PlusMinus::Minus; line: 1; sign:33;
+Get new token:
+type:'AritmeticRewriting::MinusRewriting; line: 1; sign:34;
+End of input stream.
+Get new token:
+type:'Aritmetic::MultDiv::Multiplication; line: 1; sign:36;
+Get new token:
+type:'AritmeticRewriting::MultRewriting; line: 1; sign:37;
+End of input stream.
+Get new token:
+type:'Aritmetic::MultDiv::Division; line: 1; sign:39;
+Get new token:
+type:'AritmeticRewriting::DivisionRewriting; line: 1; sign:40;
+End of input stream.
+Get new token:
+type:'Data::Int; line: 1; sign:42;
+End of input stream.
+Get new token:
+type:'Data::Int; line: 1; sign:45;
+End of input stream.
+Get new token:
+type:'Boolean::True; line: 1; sign:50;
+End of input stream.
+Get new token:
+type:'Boolean::False; line: 1; sign:54;
+End of input stream.
+Get new token:
+type:'Null; line: 1; sign:59;
+End of input stream.
+Get new token:
+type:'For; line: 1; sign:63;
+End of input stream.
+Get new token:
+type:'Foreach; line: 1; sign:66;
+End of input stream.
+Get new token:
+type:'If; line: 1; sign:73;
+End of input stream.
+Get new token:
+type:'Else; line: 1; sign:75;
+End of input stream.
+Get new token:
+type:'Collection; line: 1; sign:79;
+End of input stream.
+Get new token:
+type:'Return; line: 1; sign:89;
+End of input stream.
+Get new token:
+type:'Identifier; line: 1; sign:95;
+End of input stream.
+Get new token:
+type:'Identifier; line: 1; sign:105;
+End of input stream.
+Get new token:
+type:'Identifier; line: 1; sign:116;
+End of input stream.
+Get new token:
+type:'Identifier; line: 1; sign:131;
+End of input stream.
+Get new token:
+type:'Identifier; line: 1; sign:145;
+End of input stream.
+Get new token:
+type:'Undefined::"_"; line: 1; sign:160;
+End of input stream.
+Get new token:
+type:'Undefined::"_1234"; line: 1; sign:161;
+End of input stream.
+Get new token:
+type:'Undefined::"__identifier"; line: 1; sign:166;
+Get new token:
+type:'StringLiteral; line: 1; sign:178;
+Get new token:
+type:'Brace::BraceOpen; line: 1; sign:198;
+Get new token:
+type:'Brace::BraceClose; line: 1; sign:199;
+Get new token:
+type:'StringLiteral; line: 1; sign:200;
+Get new token:
+type:'StringLiteral; line: 3; sign:1;
+Get new token:
+type:'StringLiteral; line: 4; sign:1;
+Get new token:
+type:'StringLiteral; line: 5; sign:1;
+Get new token:
+type:'StringLiteral; line: 6; sign:1;
+Get new token:
+type:'StringLiteral; line: 7; sign:1;
+Get new token:
+type:'Numeric::IntValue; line: 8; sign:1;
+Get new token:
+type:'Numeric::IntValue; line: 9; sign:1;
+Get new token:
+type:'Numeric::IntValue; line: 10; sign:1;
+Get new token:
+type:'Numeric::IntValue; line: 11; sign:1;
+Get new token:
+type:'Numeric::FloatValue; line: 12; sign:1;
+Get new token:
+type:'Numeric::FloatValue; line: 13; sign:1;
+Get new token:
+type:'Numeric::FloatValue; line: 14; sign:1;
+End of input stream.
+Get new token:
+type:'Eof; line: 15; sign:1;
+All tests passed.
+End Lexer::Test all.

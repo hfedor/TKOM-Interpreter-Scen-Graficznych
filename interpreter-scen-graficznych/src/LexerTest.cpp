@@ -24,6 +24,15 @@ LexerTest::LexerTest(iostream* new_stream, ofstream* new_log_file)
     SetStream(new_stream); // set new stream
 }
 
+LexerTest::LexerTest(iostream* new_stream, TokensStream* new_tokens_stream, ofstream* new_log_file)
+{
+    SetLogFile(new_log_file); // set new log file
+
+    SetStream(new_stream); // set new stream
+
+    SetTokensStream(new_tokens_stream); // set new tokens stream
+}
+
 // LEXERS ATTRIBUTES TESTS
 void LexerTest::TestLexersLinesCount(int expected)
 {
@@ -218,6 +227,12 @@ int LexerTest::SetStream(iostream* new_stream)
     lexer.SetInputStream(stream); // set new stream for lexer
 }
 
+int LexerTest::SetTokensStream(TokensStream* new_tokens_stream)
+{
+    tokens_stream = new_tokens_stream; // set new tokens stream
+    lexer.SetTokensStream(tokens_stream); // set new stream for lexer
+}
+
 // TESTS
 int LexerTest::TestAll()
 {
@@ -270,9 +285,12 @@ int LexerTest::TestAll()
         TestGetNextToken(ParenthesisOpen());
         TestLexerState(1,1,'\n','(',NULL);
 
+        TestGetNextToken(Eof());
+        TestLexerState(1,2,'(',3,NULL);
+
         *stream << ')';
         TestGetNextToken(ParenthesisClose());
-        TestLexerState(1,2,'(',')',NULL);
+        TestLexerState(1,2,3,')',NULL);
 
         *stream << '[';
         TestGetNextToken(SquareBracketOpen());
@@ -290,231 +308,241 @@ int LexerTest::TestAll()
         TestGetNextToken(Dot());
         TestLexerState(1,6,',','.',NULL);
 
-/*
         *stream << ';';
-        TestGetNextToken(TokenType::Semicolon);
+        TestGetNextToken(Semicolon());
         TestLexerState(1,7,'.',';',NULL);
 
         *stream << '>';
-        TestGetNextToken(RelationType::GreaterThan);
+        TestGetNextToken(GreaterThan());
         TestLexerState(1,8,NULL,'>',NULL);
 
         *stream << ">=";
-        TestGetNextToken(RelationType::GreaterEqualThan);
+        TestGetNextToken(GreaterEqualThan());
         TestLexerState(1,10,'>','=',NULL);
 
         *stream << '<';
-        TestGetNextToken(RelationType::LessThan);
+        TestGetNextToken(LessThan());
         TestLexerState(1,11,NULL,'<',NULL);
 
         *stream << "<=";
-        TestGetNextToken(RelationType::LessEqualThan);
+        TestGetNextToken(LessEqualThan());
         TestLexerState(1,13,'<','=',NULL);
 
         *stream << "= ";
-        TestGetNextToken(RelationType::Rewriting);
+        TestGetNextToken(Rewriting());
         TestLexerState(1,15,'=',' ',NULL);
 
         *stream << "==";
-        TestGetNextToken(RelationType::Equal);
+        TestGetNextToken(Equal());
         TestLexerState(1,17,'=','=',NULL);
 
         *stream << ':';
-        TestGetNextToken(TokenType::Undefined, ":");
+        TestGetNextToken(Undefined(":"));
         TestLexerState(1,18,NULL,':',NULL);
 
         *stream << "::";
-        TestGetNextToken(TokenType::DoubleColon);
+        TestGetNextToken(DoubleColon());
         TestLexerState(1,20,':',':',NULL);
 
         *stream << '!';
-        TestGetNextToken(TokenType::Undefined, "!");
+        TestGetNextToken(Undefined("!"));
         TestLexerState(1,21,NULL,'!',NULL);
 
         *stream << "!=";
-        TestGetNextToken(RelationType::NotEqual);
+        TestGetNextToken(NotEqual());
         TestLexerState(1,23,'!','=',NULL);
 
         *stream << '&';
-        TestGetNextToken(TokenType::Undefined, "&");
+        TestGetNextToken(Undefined("&"));
         TestLexerState(1,24,NULL,'&',NULL);
 
         *stream << "&&";
-        TestGetNextToken(OperatorType::AndOperator);
+        TestGetNextToken(AndOperator());
         TestLexerState(1,26,'&','&',NULL);
 
         *stream << '|';
-        TestGetNextToken(TokenType::Undefined, "|");
+        TestGetNextToken(Undefined("|"));
         TestLexerState(1,27,NULL,'|',NULL);
 
         *stream << "||";
-        TestGetNextToken(OperatorType::OrOperator);
+        TestGetNextToken(OrOperator());
         TestLexerState(1,29,'|','|',NULL);
 
         *stream << '+';
-        TestGetNextToken(PlusMinusType::Plus);
+        TestGetNextToken(Plus());
         TestLexerState(1,30,NULL,'+',NULL);
 
         *stream << "+=";
-        TestGetNextToken(AritmeticRewritingType::PlusRewriting);
+        TestGetNextToken(PlusRewriting());
         TestLexerState(1,32,'+','=',NULL);
 
         *stream << '-';
-        TestGetNextToken(PlusMinusType::Minus);
+        TestGetNextToken(Minus());
         TestLexerState(1,33,NULL,'-',NULL);
 
         *stream << "-=";
-        TestGetNextToken(AritmeticRewritingType::MinusRewriting);
+        TestGetNextToken(MinusRewriting());
         TestLexerState(1,35,'-','=',NULL);
 
         *stream << '*';
-        TestGetNextToken(MultDivType::Multiplication);
+        TestGetNextToken(Multiplication());
         TestLexerState(1,36,NULL,'*',NULL);
 
         *stream << "*=";
-        TestGetNextToken(AritmeticRewritingType::MultRewriting);
+        TestGetNextToken(MultRewriting());
         TestLexerState(1,38,'*','=',NULL);
 
         *stream << '/';
-        TestGetNextToken(MultDivType::Division);
+        TestGetNextToken(Division());
         TestLexerState(1,39,NULL,'/',NULL);
 
         *stream << "/=";
-        TestGetNextToken(AritmeticRewritingType::DivisionRewriting);
+        TestGetNextToken(DivisionRewriting());
         TestLexerState(1,41,'/','=',NULL);
 
         *stream << "int";
-        TestGetNextToken(DataType::Int);
+        TestGetNextToken(Int());
         TestLexerState(1,44,NULL,'t',NULL);
 
         *stream << "float";
-        TestGetNextToken(DataType::Float);
+        TestGetNextToken(Float());
         TestLexerState(1,49,NULL,'t',NULL);
 
         *stream << "true";
-        TestGetNextToken(BooleanType::True);
+        TestGetNextToken(True());
         TestLexerState(1,53,NULL,'e',NULL);
 
         *stream << "false";
-        TestGetNextToken(BooleanType::False);
+        TestGetNextToken(False());
         TestLexerState(1,58,NULL,'e',NULL);
 
         *stream << "NULL";
-        TestGetNextToken(TokenType::Null);
+        TestGetNextToken(Null());
         TestLexerState(1,62,NULL,'L',NULL);
 
         *stream << "for";
-        TestGetNextToken(TokenType::For);
+        TestGetNextToken(For());
         TestLexerState(1,65,NULL,'r',NULL);
 
         *stream << "foreach";
-        TestGetNextToken(TokenType::Foreach);
+        TestGetNextToken(Foreach());
         TestLexerState(1,72,NULL,'h',NULL);
 
         *stream << "if";
-        TestGetNextToken(TokenType::If);
+        TestGetNextToken(If());
         TestLexerState(1,74,NULL,'f',NULL);
 
         *stream << "else";
-        TestGetNextToken(TokenType::Else);
+        TestGetNextToken(Else());
         TestLexerState(1,78,NULL,'e',NULL);
 
         *stream << "collection";
-        TestGetNextToken(TokenType::Collection);
+        TestGetNextToken(Collection());
         TestLexerState(1,88,NULL,'n',NULL);
 
         *stream << "return";
-        TestGetNextToken(TokenType::Return);
+        TestGetNextToken(Return());
         TestLexerState(1,94,NULL,'n',NULL);
 
         *stream << "identifier";
-        TestGetNextToken(TokenType::Identifier, "identifier");
+        TestGetNextToken(Identifier("identifier"));
         TestLexerState(1,104,NULL,'r',NULL);
 
         *stream << "identifier1";
-        TestGetNextToken(TokenType::Identifier, "identifier1");
+        TestGetNextToken(Identifier("identifier1"));
         TestLexerState(1,115,NULL,'1',NULL);
 
         *stream << "identifier_test";
-        TestGetNextToken(TokenType::Identifier, "identifier_test");
+        TestGetNextToken(Identifier("identifier_test"));
         TestLexerState(1,130,NULL,'t',NULL);
 
         *stream << "IdentifierTest";
-        TestGetNextToken(TokenType::Identifier, "IdentifierTest");
+        TestGetNextToken(Identifier("IdentifierTest"));
         TestLexerState(1,144,NULL,'t',NULL);
 
         *stream << "_IdentifierTest";
-        TestGetNextToken(TokenType::Identifier, "_IdentifierTest");
+        TestGetNextToken(Identifier("_IdentifierTest"));
         TestLexerState(1,159,NULL,'t',NULL);
 
         *stream << "_";
-        TestGetNextToken(TokenType::Undefined, "_");
+        TestGetNextToken(Undefined("_"));
         TestLexerState(1,160,NULL,'_',NULL);
 
         *stream << "_1234";
-        TestGetNextToken(TokenType::Undefined, "_1234");
+        TestGetNextToken(Undefined("_1234"));
         TestLexerState(1,165,NULL,'4',NULL);
 
         *stream << "__identifier";
-        TestGetNextToken(TokenType::Undefined, "__identifier");
+        TestGetNextToken(Undefined("__identifier"));
         TestLexerState(1,177,NULL,'r',NULL);
 
         *stream << "\"StringLiteral test\"";
-        TestGetNextToken(TokenType::StringLiteral, "\"StringLiteral test\"");
+        TestGetNextToken(StringLiteral("\"StringLiteral test\""));
         TestLexerState(1,197,'t','\"',NULL);
 
+        *stream << '{';
+        TestGetNextToken(BraceOpen());
+        TestLexerState(1,198,'"','{',NULL);
+
+        *stream << '}';
+        TestGetNextToken(BraceClose());
+        TestLexerState(1,199,'{','}',NULL);
+
         *stream << "\"StringLiteral\ntest\"" << endl;
-        TestGetNextToken(TokenType::StringLiteral, "\"StringLiteral\ntest\"");
+        TestGetNextToken(StringLiteral("\"StringLiteral\ntest\""));
         TestLexerState(2,5,'t','\"',NULL);
 
         *stream << "\"StringLiteral\ttest\"" << endl;
-        TestGetNextToken(TokenType::StringLiteral, "\"StringLiteral\ttest\"");
+        TestGetNextToken(StringLiteral("\"StringLiteral\ttest\""));
         TestLexerState(3,20,'t','\"',NULL);
 
         *stream << string("\"StringLiteral\\ntest\"") << endl;
-        TestGetNextToken(TokenType::StringLiteral, "\"StringLiteral\ntest\"");
+        TestGetNextToken(StringLiteral("\"StringLiteral\ntest\""));
         TestLexerState(4,21,'t','\"',NULL);
 
         *stream << string("\"StringLiteral\\ttest\"") << endl;
-        TestGetNextToken(TokenType::StringLiteral, "\"StringLiteral\ttest\"");
+        TestGetNextToken(StringLiteral("\"StringLiteral\ttest\""));
         TestLexerState(5,21,'t','\"',NULL);
 
         *stream << string("\"StringLiteral\\\\test\"") << endl;
-        TestGetNextToken(TokenType::StringLiteral, "\"StringLiteral\\test\"");
+        TestGetNextToken(StringLiteral("\"StringLiteral\\test\""));
         TestLexerState(6,21,'t','\"',NULL);
 
         *stream << string("\"\\\"StringLiteral test\\\"\"") << endl;
-        TestGetNextToken(TokenType::StringLiteral, "\"\"StringLiteral test\"\"");
+        TestGetNextToken(StringLiteral("\"\"StringLiteral test\"\""));
         TestLexerState(7,24,'\"','\"',NULL);
 
         *stream << '0' << endl;
-        TestGetNextToken(NumericType::IntValue, 0);
+        TestGetNextToken(IntValue(0));
         TestLexerState(9,0,'0','\n',NULL);
 
         *stream << '1' << endl;
-        TestGetNextToken(NumericType::IntValue, 1);
+        TestGetNextToken(IntValue(1));
         TestLexerState(10,0,'1','\n',NULL);
 
         *stream << '9' << endl;
-        TestGetNextToken(NumericType::IntValue, 9);
+        TestGetNextToken(IntValue(9));
         TestLexerState(11,0,'9','\n',NULL);
 
         *stream << "123" << endl;
-        TestGetNextToken(NumericType::IntValue, 123);
+        TestGetNextToken(IntValue(123));
         TestLexerState(12,0,'3','\n',NULL);
 
         *stream << "0.1" << endl;
-        TestGetNextToken(NumericType::FloatValue, (float)0.1);
+        TestGetNextToken(FloatValue((float)0.1));
         TestLexerState(13,0,'1','\n',NULL);
 
-        *stream << "0.123456789" << endl;
-        TestGetNextToken(NumericType::FloatValue, (float)0.123456789);
-        TestLexerState(14,0,'9','\n',NULL);
+        *stream << "0.12345" << endl;
+        TestGetNextToken(FloatValue((float)0.12345));
+        TestLexerState(14,0,'5','\n',NULL);
 
         *stream << "123.123" << endl;
-        TestGetNextToken(NumericType::FloatValue, (float)123.123);
+        TestGetNextToken(FloatValue((float)123.123));
         TestLexerState(15,0,'3','\n',NULL);
-*/
+
+        TestGetNextToken(Eof());
+        TestLexerState(15,1,'\n',3,NULL);
+
         *log_file << "All tests passed." << endl;
         cout << "All Lexer's tests passed." << endl;
 
@@ -542,31 +570,7 @@ void LexerTest::TestGetNextToken(T expected)
         exc.thrownClass = "Lexer";
         exc.thrownFunction = "TestGetNextToken";
         exc.thrownStatement = "The TestGetNextToken error: eq. \n";
-        exc.thrownStatement += result->TypeToString();
-        exc.thrownStatement += "\n when exp. \n";
-        exc.thrownStatement += expected.TypeToString();
-        exc.thrownStatement += "\nin line:";
-        exc.thrownStatement += GetLexersLinesCount();
-        exc.thrownStatement += " sign:";
-        exc.thrownStatement += GetLexersSignsCount();
-        exc.thrownStatement += ".\n";
-        exc.thrownStatement += lexer.ShowPresentPosition();
-        throw exc;
-    }
-}
-
-template <typename T, typename v>
-T LexerTest::TestGetNextToken(const T& expected, const v& exp_value)
-{
-    T result = lexer.GetNextToken();
-
-    if(result != expected || result.GetValue != exp_value)
-    {
-        exceptionData exc;
-        exc.thrownClass = "Lexer";
-        exc.thrownFunction = "TestGetNextToken";
-        exc.thrownStatement = "The TestGetNextToken error: eq. \n";
-        exc.thrownStatement += result.ToString();
+        exc.thrownStatement += result->ToString();
         exc.thrownStatement += "\n when exp. \n";
         exc.thrownStatement += expected.ToString();
         exc.thrownStatement += "\nin line:";
@@ -624,7 +628,6 @@ int LexerTest::TestStepBack(char expected)
         throw exc;
     }
 }
-
 
 void LexerTest::TestLexerState(int exp_line, int exp_sign, char exp_last_sign, char exp_present_sign, char exp_next_sign)
 {

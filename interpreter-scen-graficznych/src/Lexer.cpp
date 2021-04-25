@@ -1,5 +1,7 @@
 #include "Lexer.h"
 
+#include "ExceptionData.h"
+
 using namespace std;
 
 // CONSTRUCTORS
@@ -7,33 +9,35 @@ Lexer::Lexer()
 {
 }
 
-Lexer::Lexer(istream* new_inout_stream)
-{
-    input_stream = new_inout_stream;
-}
+Lexer::Lexer(istream* input_stream, TokensStream* tokens_stream)
+    : input_stream(input_stream), tokens_stream(tokens_stream){}
 
-Lexer::Lexer(istream* new_inout_stream, ofstream* new_log_file)
+Lexer::Lexer(istream* input_stream, TokensStream* tokens_stream, ofstream* log_file)
+    : input_stream(input_stream), tokens_stream(tokens_stream), log_file(log_file)
 {
-    input_stream = new_inout_stream;
-    log_file = new_log_file;
-
     *log_file << "\nLexer starting..." << endl;
 }
 
 // METHODS
+void Lexer::AnalizeInput()
+{
+    while(*GetNextToken() != Eof())
+        ;
+}
+
 char Lexer::GetSign()
 {
     if(input_stream == NULL) // if input stream is null
     {
         *log_file << "There is no input stream entered!" << endl;
-        return NULL;
+        return 0;
     }
 
-    if(next_sign == NULL) // if there is no next sign stored in memory - there was no step back in last move
+    if(next_sign == 0) // if there is no next sign stored in memory - there was no step back in last move
     {
         last_stream_buffor = stream_buffor;
 
-        if(present_sign != NULL) // if there is some present sign before getting next sign from the stream
+        if(present_sign != 0) // if there is some present sign before getting next sign from the stream
             last_sign = present_sign; // setting last sign as present sign before getting the next sign
 
         istream& result = input_stream->get(present_sign); // get next sign from the stream and put it to the 'result'
@@ -48,14 +52,14 @@ char Lexer::GetSign()
         else if(!input_stream->good()) // if stream isn't good - there is an error
         {
             *log_file << "Error reading input stream!" << endl;
-            return NULL;
+            return 0;
         }
     }
     else // there was a step back in last move
     {
         last_sign = present_sign; // set 'last_sign' as 'present_sign' before getting next sign from the stream
         present_sign = next_sign; // set 'present_sing' as 'next_sign' - 'present_sign' before getting step back
-        next_sign = NULL; // set 'next_sign' as NULL
+        next_sign = 0; // set 'next_sign' as NULL
     }
 
     if(present_sign == '\n') // if received sign is end-of-line sign
@@ -68,8 +72,9 @@ char Lexer::GetSign()
     }
     else
     {
-        last_signs_count = NULL; // it want be needed
-        signs_count++; // next line
+        last_signs_count = 0; // it want be needed
+        if(last_sign != 3)
+            signs_count++; // next sign
     }
 
     if(present_sign != 3)
@@ -93,87 +98,99 @@ Token* Lexer::GetNextToken()
 
     Token *new_token;
 
-    new_token = BuildParenthesisOpen(present_sign, token_line, token_sign);
+    new_token = BuildParenthesisOpen(token_line, token_sign);
     if(new_token != NULL)
         return new_token;
 
-    new_token = BuildParenthesisClose(present_sign, token_line, token_sign);
+    new_token = BuildParenthesisClose(token_line, token_sign);
     if(new_token != NULL)
         return new_token;
 
-    new_token = BuildSquareBracketOpen(present_sign, token_line, token_sign);
+    new_token = BuildSquareBracketOpen(token_line, token_sign);
     if(new_token != NULL)
         return new_token;
 
-    new_token = BuildSquareBracketClose(present_sign, token_line, token_sign);
+    new_token = BuildSquareBracketClose(token_line, token_sign);
     if(new_token != NULL)
         return new_token;
 
-    new_token = BuildComma(present_sign, token_line, token_sign);
+    new_token = BuildBraceOpen(token_line, token_sign);
     if(new_token != NULL)
         return new_token;
 
-    new_token = BuildDot(present_sign, token_line, token_sign);
+    new_token = BuildBraceClose(token_line, token_sign);
     if(new_token != NULL)
         return new_token;
 
-    new_token = BuildSemicolon(present_sign, token_line, token_sign);
+    new_token = BuildComma(token_line, token_sign);
     if(new_token != NULL)
         return new_token;
 
-    new_token = BuildGreaterThan(present_sign, token_line, token_sign);
+    new_token = BuildDot(token_line, token_sign);
     if(new_token != NULL)
         return new_token;
 
-    new_token = BuildLessThan(present_sign, token_line, token_sign);
+    new_token = BuildSemicolon(token_line, token_sign);
     if(new_token != NULL)
         return new_token;
 
-    new_token = BuildEqual(present_sign, token_line, token_sign);
+    new_token = BuildGreaterThan(token_line, token_sign);
     if(new_token != NULL)
         return new_token;
 
-    new_token = BuildDoubleColon(present_sign, token_line, token_sign);
+    new_token = BuildLessThan(token_line, token_sign);
     if(new_token != NULL)
         return new_token;
 
-    new_token = BuildNotEqual(present_sign, token_line, token_sign);
+    new_token = BuildEqual(token_line, token_sign);
     if(new_token != NULL)
         return new_token;
 
-    new_token = BuildAndOperator(present_sign, token_line, token_sign);
+    new_token = BuildDoubleColon(token_line, token_sign);
     if(new_token != NULL)
         return new_token;
 
-    new_token = BuildOrOperator(present_sign, token_line, token_sign);
+    new_token = BuildNotEqual(token_line, token_sign);
     if(new_token != NULL)
         return new_token;
 
-    new_token = BuildPlus(present_sign, token_line, token_sign);
+    new_token = BuildAndOperator(token_line, token_sign);
     if(new_token != NULL)
         return new_token;
 
-    new_token = BuildMinus(present_sign, token_line, token_sign);
+    new_token = BuildOrOperator(token_line, token_sign);
     if(new_token != NULL)
         return new_token;
 
-    new_token = BuildMultiplication(present_sign, token_line, token_sign);
+    new_token = BuildPlus(token_line, token_sign);
     if(new_token != NULL)
         return new_token;
 
-    new_token = BuildDivision(present_sign, token_line, token_sign);
+    new_token = BuildMinus(token_line, token_sign);
     if(new_token != NULL)
         return new_token;
 
-    new_token = BuildIdentifier(present_sign, token_line, token_sign);
+    new_token = BuildMultiplication(token_line, token_sign);
     if(new_token != NULL)
         return new_token;
 
-    new_token = BuildStringLiteral(present_sign, token_line, token_sign);
+    new_token = BuildDivision(token_line, token_sign);
     if(new_token != NULL)
         return new_token;
 
-    new_token = BuildNumeric(present_sign, token_line, token_sign);
+    new_token = BuildIdentifier(token_line, token_sign);
+    if(new_token != NULL)
+        return new_token;
+
+    new_token = BuildStringLiteral(token_line, token_sign);
+    if(new_token != NULL)
+        return new_token;
+
+    new_token = BuildNumeric(token_line, token_sign);
+    if(new_token != NULL)
+        return new_token;
+
+    new_token = BuildEof(token_line, token_sign);
     if(new_token != NULL)
         return new_token;
 
@@ -208,33 +225,33 @@ string Lexer::MakeUpStreamBuffor()
 
 char Lexer::StepBack()
 {
-    if(last_sign == NULL)
+    if(last_sign == 0)
     {
         *log_file << "Error: There is no last_sign stored in memory!" << endl;
-        return NULL;
+        return 0;
     }
 
     if(present_sign == '\n')
     {
-        if(last_signs_count == NULL)
+        if(last_signs_count == 0)
         {
             *log_file << "Error: There is no last_signs_count stored in memory!" << endl;
-            return NULL;
+            return 0;
         }
 
         signs_count = last_signs_count;
-        last_signs_count = NULL;
+        last_signs_count = 0;
         lines_count--;
     }
     else
         signs_count--;
 
     if(present_sign == 3)
-        next_sign = NULL;
+        next_sign = 0;
     else
         next_sign = present_sign;
     present_sign = last_sign;
-    last_sign = NULL;
+    last_sign = 0;
     return present_sign;
 }
 
@@ -252,414 +269,316 @@ string Lexer::ShowPresentPosition()
     return "...\n" + stream_buffor + "..." + present_position;
 }
 
+template <typename T>
+T* Lexer::AddNewToken(int token_line, int token_sign)
+{
+        T *token = new T(token_line, token_sign);
+        tokens_stream->AddToken(token);
+        tokens.push_back(token);
+        *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+
+        return token;
+}
+
+template <typename T, typename V>
+T* Lexer::AddNewToken(V value ,int token_line, int token_sign)
+{
+        T *token = new T(value, token_line, token_sign);
+        tokens_stream->AddToken(token);
+        tokens.push_back(token);
+        *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+
+        return token;
+}
+
 // TOKEN BUILDERS
-Token* Lexer::BuildParenthesisOpen(char present_sign, int token_line, int token_sign)
+Token* Lexer::BuildParenthesisOpen(int token_line, int token_sign)
 {
     if(present_sign == '(')
-    {
-        ParenthesisOpen *token = new ParenthesisOpen(token_line, token_sign);
-        tokens.push_back(token);
-        *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
-
-        return token;
-    }
+        return AddNewToken<ParenthesisOpen>(token_line,token_sign);
 
     return NULL;
 }
 
-Token* Lexer::BuildParenthesisClose(char present_sign, int token_line, int token_sign)
+Token* Lexer::BuildParenthesisClose(int token_line, int token_sign)
 {
     if(present_sign == ')')
-    {
-        ParenthesisClose *token = new ParenthesisClose(token_line, token_sign);
-        tokens.push_back(token);
-        *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
-
-        return token;
-    }
+        return AddNewToken<ParenthesisClose>(token_line,token_sign);
 
     return NULL;
 }
 
-Token* Lexer::BuildSquareBracketOpen(char present_sign, int token_line, int token_sign)
+Token* Lexer::BuildSquareBracketOpen( int token_line, int token_sign)
 {
     if(present_sign == '[')
-    {
-        SquareBracketOpen *token = new SquareBracketOpen(token_line, token_sign);
-        tokens.push_back(token);
-        *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
-
-        return token;
-    }
+        return AddNewToken<SquareBracketOpen>(token_line,token_sign);
 
     return NULL;
 }
 
-Token* Lexer::BuildSquareBracketClose(char present_sign, int token_line, int token_sign)
+Token* Lexer::BuildSquareBracketClose( int token_line, int token_sign)
 {
     if(present_sign == ']')
-    {
-        SquareBracketClose *token = new SquareBracketClose(token_line, token_sign);
-        tokens.push_back(token);
-        *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
-
-        return token;
-    }
+        return AddNewToken<SquareBracketClose>(token_line,token_sign);
 
     return NULL;
 }
 
-Token* Lexer::BuildComma(char present_sign, int token_line, int token_sign)
+Token* Lexer::BuildBraceOpen( int token_line, int token_sign)
+{
+    if(present_sign == '{')
+        return AddNewToken<BraceOpen>(token_line,token_sign);
+
+    return NULL;
+}
+
+Token* Lexer::BuildBraceClose( int token_line, int token_sign)
+{
+    if(present_sign == '}')
+        return AddNewToken<BraceClose>(token_line,token_sign);
+
+    return NULL;
+}
+
+Token* Lexer::BuildComma( int token_line, int token_sign)
 {
     if(present_sign == ',')
-    {
-        Comma *token = new Comma(token_line, token_sign);
-        tokens.push_back(token);
-        *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
-
-        return token;
-    }
+        return AddNewToken<Comma>(token_line,token_sign);
 
     return NULL;
 }
 
-Token* Lexer::BuildDot(char present_sign, int token_line, int token_sign)
+Token* Lexer::BuildDot( int token_line, int token_sign)
 {
     if(present_sign == '.')
-    {
-        Dot *token = new Dot(token_line, token_sign);
-        tokens.push_back(token);
-        *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
-
-        return token;
-    }
+        return AddNewToken<Dot>(token_line,token_sign);
 
     return NULL;
 }
 
-Token* Lexer::BuildSemicolon(char present_sign, int token_line, int token_sign)
+Token* Lexer::BuildSemicolon( int token_line, int token_sign)
 {
     if(present_sign == ';')
-    {
-        Semicolon *token = new Semicolon(token_line, token_sign);
-        tokens.push_back(token);
-        *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
-
-        return token;
-    }
+        return AddNewToken<Semicolon>(token_line,token_sign);
 
     return NULL;
 }
 
-Token* Lexer::BuildGreaterThan(char present_sign, int token_line, int token_sign)
+Token* Lexer::BuildGreaterThan( int token_line, int token_sign)
 {
     if(present_sign == '>')
     {
         if(GetSign() == '=')
-        {
-            GreaterEqualThan *token = new GreaterEqualThan(token_line, token_sign);
-            tokens.push_back(token);
-            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
-
-            return token;
-        }
+            return AddNewToken<GreaterEqualThan>(token_line,token_sign);
         else
         {
             if(!IsWhiteSpace(present_sign))
                 StepBack();
 
-            GreaterThan *token = new GreaterThan(token_line, token_sign);
-            tokens.push_back(token);
-            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
-
-            return token;
+            return AddNewToken<GreaterThan>(token_line,token_sign);
         }
     }
 
     return NULL;
 }
 
-Token* Lexer::BuildLessThan(char present_sign, int token_line, int token_sign)
+Token* Lexer::BuildLessThan( int token_line, int token_sign)
 {
     if(present_sign == '<')
     {
         if(GetSign() == '=')
-        {
-            LessEqualThan *token = new LessEqualThan(token_line, token_sign);
-            tokens.push_back(token);
-            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
-
-            return token;
-        }
+            return AddNewToken<LessEqualThan>(token_line,token_sign);
         else
         {
             if(!IsWhiteSpace(present_sign))
                 StepBack();
 
-            LessThan *token = new LessThan(token_line, token_sign);
-            tokens.push_back(token);
-            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
-
-            return token;
+            return AddNewToken<LessThan>(token_line,token_sign);
         }
     }
 
     return NULL;
 }
 
-Token* Lexer::BuildEqual(char present_sign, int token_line, int token_sign)
+Token* Lexer::BuildEqual(int token_line, int token_sign)
 {
     if(present_sign == '=')
     {
         if(GetSign() == '=')
-        {
-            Equal *token = new Equal(token_line, token_sign);
-            tokens.push_back(token);
-            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
-
-            return token;
-        }
+            return AddNewToken<Equal>(token_line,token_sign);
         else
         {
             if(!IsWhiteSpace(present_sign))
                 StepBack();
 
-            Rewriting *token = new Rewriting(token_line, token_sign);
-            tokens.push_back(token);
-            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
-
-            return token;
+            return AddNewToken<Rewriting>(token_line,token_sign);
         }
     }
 
     return NULL;
 }
 
-Token* Lexer::BuildDoubleColon(char present_sign, int token_line, int token_sign)
+Token* Lexer::BuildDoubleColon( int token_line, int token_sign)
 {
     if(present_sign == ':')
     {
         if(GetSign() == ':')
-        {
-            DoubleColon *token = new DoubleColon(token_line, token_sign);
-            tokens.push_back(token);
-            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
-
-            return token;
-        }
+            return AddNewToken<DoubleColon>(token_line,token_sign);
         else
         {
+            string token_value = ":";
+            if(!IsWhiteSpace(present_sign) && present_sign != 3)
+                token_value += present_sign;
+
             if(!IsWhiteSpace(present_sign))
                 StepBack();
 
-            Undefined *token = new Undefined(":"+present_sign, token_line, token_sign);
-            tokens.push_back(token);
-            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
-
-            return token;
+            return AddNewToken<Undefined>(token_value,token_line,token_sign);
         }
     }
 
     return NULL;
 }
 
-Token* Lexer::BuildNotEqual(char present_sign, int token_line, int token_sign)
+Token* Lexer::BuildNotEqual( int token_line, int token_sign)
 {
     if(present_sign == '!')
     {
         if(GetSign() == '=')
-        {
-            NotEqual *token = new NotEqual(token_line, token_sign);
-            tokens.push_back(token);
-            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
-
-            return token;
-        }
+            return AddNewToken<NotEqual>(token_line,token_sign);
         else
         {
+            string token_value = "!";
+            if(!IsWhiteSpace(present_sign) && present_sign != 3)
+                token_value += present_sign;
+
             if(!IsWhiteSpace(present_sign))
                 StepBack();
 
-            Undefined *token = new Undefined("!"+present_sign, token_line, token_sign);
-            tokens.push_back(token);
-            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
-
-            return token;
+            return AddNewToken<Undefined>(token_value,token_line,token_sign);
         }
     }
 
     return NULL;
 }
 
-Token* Lexer::BuildAndOperator(char present_sign, int token_line, int token_sign)
+Token* Lexer::BuildAndOperator( int token_line, int token_sign)
 {
     if(present_sign == '&')
     {
         if(GetSign() == '&')
-        {
-            AndOperator *token = new AndOperator(token_line, token_sign);
-            tokens.push_back(token);
-            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
-
-            return token;
-        }
+            return AddNewToken<AndOperator>(token_line,token_sign);
         else
         {
+            string token_value = "&";
+            if(!IsWhiteSpace(present_sign) && present_sign != 3)
+                token_value += present_sign;
+
             if(!IsWhiteSpace(present_sign))
                 StepBack();
 
-            Undefined *token = new Undefined("&"+present_sign, token_line, token_sign);
-            tokens.push_back(token);
-            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
-
-            return token;
+            return AddNewToken<Undefined>(token_value,token_line,token_sign);
         }
     }
 
     return NULL;
 }
 
-Token* Lexer::BuildOrOperator(char present_sign, int token_line, int token_sign)
+Token* Lexer::BuildOrOperator( int token_line, int token_sign)
 {
     if(present_sign == '|')
     {
         if(GetSign() == '|')
-        {
-            OrOperator *token = new OrOperator(token_line, token_sign);
-            tokens.push_back(token);
-            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
-
-            return token;
-        }
+            return AddNewToken<OrOperator>(token_line,token_sign);
         else
         {
+            string token_value = "|";
+            if(!IsWhiteSpace(present_sign) && present_sign != 3)
+                token_value += present_sign;
+
             if(!IsWhiteSpace(present_sign))
                 StepBack();
 
-            Undefined *token = new Undefined("|"+present_sign, token_line, token_sign);
-            tokens.push_back(token);
-            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
-
-            return token;
+            return AddNewToken<Undefined>(token_value,token_line,token_sign);
         }
     }
 
     return NULL;
 }
 
-Token* Lexer::BuildPlus(char present_sign, int token_line, int token_sign)
+Token* Lexer::BuildPlus( int token_line, int token_sign)
 {
     if(present_sign == '+')
     {
         if(GetSign() == '=')
-        {
-            PlusRewriting *token = new PlusRewriting(token_line, token_sign);
-            tokens.push_back(token);
-            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
-
-            return token;
-        }
+            return AddNewToken<PlusRewriting>(token_line,token_sign);
         else
         {
             if(!IsWhiteSpace(present_sign))
                 StepBack();
 
-            Plus *token = new Plus(token_line, token_sign);
-            tokens.push_back(token);
-            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
-
-            return token;
+            return AddNewToken<Plus>(token_line,token_sign);
         }
     }
 
     return NULL;
 }
 
-Token* Lexer::BuildMinus(char present_sign, int token_line, int token_sign)
+Token* Lexer::BuildMinus( int token_line, int token_sign)
 {
     if(present_sign == '-')
     {
         if(GetSign() == '=')
-        {
-            MinusRewriting *token = new MinusRewriting(token_line, token_sign);
-            tokens.push_back(token);
-            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
-
-            return token;
-        }
+            return AddNewToken<MinusRewriting>(token_line,token_sign);
         else
         {
             if(!IsWhiteSpace(present_sign))
                 StepBack();
 
-            Minus *token = new Minus(token_line, token_sign);
-            tokens.push_back(token);
-            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
-
-            return token;
+            return AddNewToken<Minus>(token_line,token_sign);
         }
     }
 
     return NULL;
 }
 
-Token* Lexer::BuildMultiplication(char present_sign, int token_line, int token_sign)
+Token* Lexer::BuildMultiplication( int token_line, int token_sign)
 {
     if(present_sign == '*')
     {
         if(GetSign() == '=')
-        {
-            MultRewriting *token = new MultRewriting(token_line, token_sign);
-            tokens.push_back(token);
-            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
-
-            return token;
-        }
+            return AddNewToken<MultRewriting>(token_line,token_sign);
         else
         {
             if(!IsWhiteSpace(present_sign))
                 StepBack();
 
-            Multiplication *token = new Multiplication(token_line, token_sign);
-            tokens.push_back(token);
-            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
-
-            return token;
+            return AddNewToken<Multiplication>(token_line,token_sign);
         }
     }
 
     return NULL;
 }
 
-Token* Lexer::BuildDivision(char present_sign, int token_line, int token_sign)
+Token* Lexer::BuildDivision( int token_line, int token_sign)
 {
     if(present_sign == '/')
     {
         if(GetSign() == '=')
-        {
-            DivisionRewriting *token = new DivisionRewriting(token_line, token_sign);
-            tokens.push_back(token);
-            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
-
-            return token;
-        }
+            return AddNewToken<DivisionRewriting>(token_line,token_sign);
         else
         {
             if(!IsWhiteSpace(present_sign))
                 StepBack();
 
-            Division *token = new Division(token_line, token_sign);
-            tokens.push_back(token);
-            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
-
-            return token;
+            return AddNewToken<Division>(token_line,token_sign);
         }
     }
 
     return NULL;
 }
 
-Token* Lexer::BuildIdentifier(char present_sign, int token_line, int token_sign)
+Token* Lexer::BuildIdentifier( int token_line, int token_sign)
 {
     if(IsStringBegin(present_sign))
     {
@@ -676,137 +595,93 @@ Token* Lexer::BuildIdentifier(char present_sign, int token_line, int token_sign)
                 {
                     token_value << present_sign;
 
-                    while(IsStringElem(GetSign()))
-                        token_value << present_sign;
+                    for(int i = 0; i < MAX_IDENTIFIER - 1; i++)
+                    {
+                        if(IsStringElem(GetSign()))
+                            token_value << present_sign;
+                        else
+                            break;
+
+                        if(i == MAX_IDENTIFIER - 2)
+                        {
+                            exceptionData exc;
+                            exc.thrownClass = "Lexer";
+                            exc.thrownFunction = "BuildIdentifier";
+                            exc.thrownStatement = "Too long identifier:";
+                            exc.thrownStatement += token_value.str();
+                            throw exc;
+                        }
+                    }
                 }
 
                 if(!IsWhiteSpace(present_sign))
                     StepBack();
 
-                Undefined *token = new Undefined(token_value.str(), token_line, token_sign);
-                tokens.push_back(token);
-                *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
-
-                return token;
+                return AddNewToken<Undefined>(token_value.str(),token_line,token_sign);
             }
         }
 
-        while(IsStringElem(GetSign()))
-            token_value << present_sign;
+        for(int i = 0; i < MAX_IDENTIFIER - 1; i++)
+        {
+            if(IsStringElem(GetSign()))
+                token_value << present_sign;
+            else
+                break;
+
+            if(i == MAX_IDENTIFIER - 2)
+            {
+                exceptionData exc;
+                exc.thrownClass = "Lexer";
+                exc.thrownFunction = "BuildIdentifier";
+                exc.thrownStatement = "Too long identifier:";
+                exc.thrownStatement += token_value.str();
+                throw exc;
+            }
+        }
 
         if(!IsWhiteSpace(present_sign))
             StepBack();
 
         if(token_value.str() == "int")
-        {
-            Int *token = new Int(token_line, token_sign);
-            tokens.push_back(token);
-            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
-
-            return token;
-        }
+            return AddNewToken<Int>(token_line,token_sign);
 
         if(token_value.str() == "float")
-        {
-            Float *token = new Float(token_line, token_sign);
-            tokens.push_back(token);
-            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
-
-            return token;
-        }
+            return AddNewToken<Float>(token_line,token_sign);
 
         if(token_value.str() == "true")
-        {
-            True *token = new True(token_line, token_sign);
-            tokens.push_back(token);
-            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
-
-            return token;
-        }
+            return AddNewToken<True>(token_line,token_sign);
 
         if(token_value.str() == "false")
-        {
-            False *token = new False(token_line, token_sign);
-            tokens.push_back(token);
-            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
-
-            return token;
-        }
+            return AddNewToken<False>(token_line,token_sign);
 
         if(token_value.str() == "NULL")
-        {
-            Null *token = new Null(token_line, token_sign);
-            tokens.push_back(token);
-            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
-
-            return token;
-        }
+            return AddNewToken<Null>(token_line,token_sign);
 
         if(token_value.str() == "for")
-        {
-            For *token = new For(token_line, token_sign);
-            tokens.push_back(token);
-            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
-
-            return token;
-        }
+            return AddNewToken<For>(token_line,token_sign);
 
         if(token_value.str() == "foreach")
-        {
-            Foreach *token = new Foreach(token_line, token_sign);
-            tokens.push_back(token);
-            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
-
-            return token;
-        }
+            return AddNewToken<Foreach>(token_line,token_sign);
 
         if(token_value.str() == "if")
-        {
-            If *token = new If(token_line, token_sign);
-            tokens.push_back(token);
-            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
-
-            return token;
-        }
+            return AddNewToken<If>(token_line,token_sign);
 
         if(token_value.str() == "else")
-        {
-            Else *token = new Else(token_line, token_sign);
-            tokens.push_back(token);
-            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
-
-            return token;
-        }
+            return AddNewToken<Else>(token_line,token_sign);
 
         if(token_value.str() == "collection")
-        {
-            Collection *token = new Collection(token_line, token_sign);
-            tokens.push_back(token);
-            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
-
-            return token;
-        }
+            return AddNewToken<Collection>(token_line,token_sign);
 
         if(token_value.str() == "return")
-        {
-            Return *token = new Return(token_line, token_sign);
-            tokens.push_back(token);
-            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
+            return AddNewToken<Return>(token_line,token_sign);
 
-            return token;
-        }
-
-        Identifier *token = new Identifier(token_value.str(), token_line, token_sign);
-        tokens.push_back(token);
-        *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
-
-        return token;
+        return AddNewToken<Identifier>(token_value.str(),token_line,token_sign);
     }
 
     return NULL;
 }
 
-Token* Lexer::BuildStringLiteral(char present_sign, int token_line, int token_sign)
+Token* Lexer::BuildStringLiteral( int token_line, int token_sign)
 {
     if(present_sign == '"')
     {
@@ -815,53 +690,56 @@ Token* Lexer::BuildStringLiteral(char present_sign, int token_line, int token_si
 
         bool correct_string = true;
 
-        while(GetSign() != '"')
+        for(int i = 0; i < MAX_STRING_LITERAL - 1; i++)
         {
-            if(present_sign == '\\')
+            if(GetSign() != '"')
             {
-                GetSign();
-                if(present_sign == '"')
-                    token_value << '"';
-                else if(present_sign == '\\')
-                    token_value << '\\';
-                else if(present_sign == 'n')
-                    token_value << '\n';
-                else if(present_sign == 't')
-                    token_value << '\t';
-                else
+                if(present_sign == '\\')
                 {
-                    correct_string = false;
-                    StepBack();
+                    GetSign();
+                    if(present_sign == '"')
+                        token_value << '"';
+                    else if(present_sign == '\\')
+                        token_value << '\\';
+                    else if(present_sign == 'n')
+                        token_value << '\n';
+                    else if(present_sign == 't')
+                        token_value << '\t';
+                    else
+                    {
+                        correct_string = false;
+                        StepBack();
+                    }
                 }
+                else
+                    token_value << present_sign;
             }
             else
-                token_value << present_sign;
+                break;
+
+            if(i == MAX_STRING_LITERAL - 2)
+            {
+                exceptionData exc;
+                exc.thrownClass = "Lexer";
+                exc.thrownFunction = "BuildIdentifier";
+                exc.thrownStatement = "Too long identifier:";
+                exc.thrownStatement += token_value.str();
+                throw exc;
+            }
         }
 
         token_value << present_sign;
 
         if(correct_string)
-        {
-            StringLiteral *token = new StringLiteral(token_value.str(), token_line, token_sign);
-            tokens.push_back(token);
-            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
-
-            return token;
-        }
+            return AddNewToken<StringLiteral>(token_value.str(),token_line,token_sign);
         else
-        {
-            Undefined *token = new Undefined(token_value.str(), token_line, token_sign);
-            tokens.push_back(token);
-            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
-
-            return token;
-        }
+            return AddNewToken<Undefined>(token_value.str(),token_line,token_sign);
     }
 
     return NULL;
 }
 
-Token* Lexer::BuildNumeric(char present_sign, int token_line, int token_sign)
+Token* Lexer::BuildNumeric( int token_line, int token_sign)
 {
     if(present_sign == '0')
     {
@@ -876,52 +754,36 @@ Token* Lexer::BuildNumeric(char present_sign, int token_line, int token_sign)
             if(IsDigit(GetSign()))
             {
                 token_value << present_sign;
-                float_value += (present_sign - '0')/10;
+                float_value += (float)(present_sign - '0')/10;
             }
             else
-            {
-                Undefined *token = new Undefined(token_value.str(), token_line, token_sign);
-                tokens.push_back(token);
-                *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
-
-                return token;
-            }
+                return AddNewToken<Undefined>(token_value.str(),token_line,token_sign);
 
             int i = 100;
+            int j = 2;
             while(IsDigit(GetSign()))
             {
                 token_value << present_sign;
-                float_value += (present_sign - '0')/i;
+                float_value += (float)(present_sign - '0')/i;
 
                 i *= 10;
+                j++;
+                if(j >= FLOAT_PRECISION)
+                    return AddNewToken<Undefined>(token_value.str(),token_line,token_sign);
             }
 
             if(!IsWhiteSpace(present_sign))
                 StepBack();
 
-            FloatValue *token = new FloatValue(float_value, token_line, token_sign);
-            tokens.push_back(token);
-            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
-
-            return token;
+            return AddNewToken<FloatValue>(float_value,token_line,token_sign);
         }
         else if(IsStringElem(present_sign))
-        {
-            Undefined *token = new Undefined(token_value.str(), token_line, token_sign);
-            tokens.push_back(token);
-            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
-
-            return token;
-        }
+            return AddNewToken<Undefined>(token_value.str(),token_line,token_sign);
         else
             if(!IsWhiteSpace(present_sign))
                 StepBack();
 
-        IntValue *token = new IntValue(0, token_line, token_sign);
-        tokens.push_back(token);
-        *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
-
-        return token;
+        return AddNewToken<IntValue>(0,token_line,token_sign);
     }
 
     if(IsNonZeroDigit(present_sign))
@@ -936,6 +798,9 @@ Token* Lexer::BuildNumeric(char present_sign, int token_line, int token_sign)
 
             int_value *= 10;
             int_value += present_sign - '0';
+
+            if(int_value > MAX_INT)
+                return AddNewToken<Undefined>(token_value.str(),token_line,token_sign);
         }
 
         if(present_sign == '.')
@@ -947,57 +812,64 @@ Token* Lexer::BuildNumeric(char present_sign, int token_line, int token_sign)
             if(IsDigit(GetSign()))
             {
                 token_value << present_sign;
-                float_value += (present_sign - '0')/10;
+                float_value *= 10;
+                float_value += present_sign - '0';
             }
             else
-            {
-                Undefined token(token_value.str(), token_line, token_sign);
-                *log_file << "Get new token:\ntype:'" << token.TypeToString() << "; value: " << token.GetValue() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
-                return &token;
-            }
+                return AddNewToken<Undefined>(token_value.str(),token_line,token_sign);
 
-            int i = 100;
+            int i = 10;
+            int j = 2;
             while(IsDigit(GetSign()))
             {
-                token_value << present_sign;
-                float_value += (present_sign - '0')/i;
-
                 i *= 10;
+                token_value << present_sign;
+                float_value *= 10;
+                float_value += present_sign - '0';
+                j++;
+                if(j >= FLOAT_PRECISION)
+                    return AddNewToken<Undefined>(token_value.str(),token_line,token_sign);
             }
+            float_value /= i;
 
             if(!IsWhiteSpace(present_sign))
                 StepBack();
 
-            FloatValue *token = new FloatValue(float_value, token_line, token_sign);
-            tokens.push_back(token);
-            *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
-
-            return token;
+            return AddNewToken<FloatValue>(float_value,token_line,token_sign);
         }
         else
             if(!IsWhiteSpace(present_sign))
                 StepBack();
 
-        IntValue *token = new IntValue(0, token_line, token_sign);
-        tokens.push_back(token);
-        *log_file << "Get new token:\ntype:'" << token->TypeToString() << "; line: " << token_line << "; sign:" << token_sign << ";" << endl;
-
-        return token;
+        return AddNewToken<IntValue>(int_value,token_line,token_sign);
     }
 
     return NULL;
 }
 
+Token* Lexer::BuildEof( int token_line, int token_sign)
+{
+    if(present_sign == 3)
+        return AddNewToken<Eof>(token_line,token_sign);
+
+    return NULL;
+}
+
 // SETTERS
-int Lexer::SetLogFile(ofstream* new_log_file)
+void Lexer::SetLogFile(ofstream* new_log_file)
 {
     log_file = new_log_file;
     *log_file << "\nLexer starting..." << endl;
 }
 
-int Lexer::SetInputStream(iostream* new_input_stream)
+void Lexer::SetInputStream(istream* new_input_stream)
 {
     input_stream = new_input_stream;
+}
+
+void Lexer::SetTokensStream(TokensStream* new_tokens_stream)
+{
+    tokens_stream = new_tokens_stream;
 }
 
 Lexer::~Lexer()

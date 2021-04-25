@@ -1,45 +1,61 @@
 # depslib dependency file v1.0
-1617653056 source:c:\users\lenovo\documents\moje programy\c++\tkom2\interpreter-scen-graficznych\main.cpp
+1619397887 source:c:\users\lenovo\documents\moje programy\c++\tkom2\interpreter-scen-graficznych\main.cpp
 	<iostream>
 	"Lexer.h"
 	"Tests.h"
 
-1619305472 source:c:\users\lenovo\documents\moje programy\c++\tkom2\interpreter-scen-graficznych\src\lexer.cpp
+1619397825 source:c:\users\lenovo\documents\moje programy\c++\tkom2\interpreter-scen-graficznych\src\lexer.cpp
 	"Lexer.h"
+	"ExceptionData.h"
 
-1619302456 c:\users\lenovo\documents\moje programy\c++\tkom2\interpreter-scen-graficznych\include\lexer.h
+1619397767 c:\users\lenovo\documents\moje programy\c++\tkom2\interpreter-scen-graficznych\include\lexer.h
 	<iostream>
 	<fstream>
 	<sstream>
 	<list>
 	"Token.h"
+	"TokensStream.h"
 
-1617652958 c:\users\lenovo\documents\moje programy\c++\tkom2\interpreter-scen-graficznych\include\tests.h
+1619376788 c:\users\lenovo\documents\moje programy\c++\tkom2\interpreter-scen-graficznych\include\tests.h
 	"LexerTest.h"
+	"TokensStream.h"
 	<fstream>
 
-1619301026 c:\users\lenovo\documents\moje programy\c++\tkom2\interpreter-scen-graficznych\include\lexertest.h
+1619378163 c:\users\lenovo\documents\moje programy\c++\tkom2\interpreter-scen-graficznych\include\lexertest.h
 	"Lexer.h"
 	"Token.h"
+	"TokensStream.h"
 	<iostream>
 	<fstream>
 
-1619306417 source:c:\users\lenovo\documents\moje programy\c++\tkom2\interpreter-scen-graficznych\src\lexertest.cpp
+1619397767 source:c:\users\lenovo\documents\moje programy\c++\tkom2\interpreter-scen-graficznych\src\lexertest.cpp
 	"LexerTest.h"
 	"ExceptionData.h"
 
-1618078038 source:c:\users\lenovo\documents\moje programy\c++\tkom2\interpreter-scen-graficznych\src\tests.cpp
+1619395769 source:c:\users\lenovo\documents\moje programy\c++\tkom2\interpreter-scen-graficznych\src\tests.cpp
 	"Tests.h"
 	<iostream>
 	<fstream>
 	<sstream>
 
-1617912892 c:\users\lenovo\documents\moje programy\c++\tkom2\interpreter-scen-graficznych\include\exceptiondata.h
+1619391055 c:\users\lenovo\documents\moje programy\c++\tkom2\interpreter-scen-graficznych\include\exceptiondata.h
 	<iostream>
 
-1619298252 source:c:\users\lenovo\documents\moje programy\c++\tkom2\interpreter-scen-graficznych\src\token.cpp
+1619379709 source:c:\users\lenovo\documents\moje programy\c++\tkom2\interpreter-scen-graficznych\src\token.cpp
 	"Token.h"
 
-1619306379 c:\users\lenovo\documents\moje programy\c++\tkom2\interpreter-scen-graficznych\include\token.h
+1619397506 c:\users\lenovo\documents\moje programy\c++\tkom2\interpreter-scen-graficznych\include\token.h
 	<iostream>
+	<string>
+
+1619391512 c:\users\lenovo\documents\moje programy\c++\tkom2\interpreter-scen-graficznych\include\tokensstream.h
+	<iostream>
+	<fstream>
+	"Token.h"
+
+1619391512 source:c:\users\lenovo\documents\moje programy\c++\tkom2\interpreter-scen-graficznych\src\tokensstream.cpp
+	"TokensStream.h"
+
+1619391055 source:c:\users\lenovo\documents\moje programy\c++\tkom2\interpreter-scen-graficznych\src\exceptiondata.cpp
+	"ExceptionData.h"
 
